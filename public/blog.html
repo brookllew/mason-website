@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Digital Marketing Insights | Mason Interactive</title>
+<meta name="description" content="Marketing insights from Mason Interactive. Paid media strategy, creative best practices, SEO, higher education marketing, and eCommerce growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --white: #f5f5f0;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    transition: background 0.6s ease, color 0.6s ease;
+  }
+
+  /* HIGHER ED MODE */
+  body.highered-mode {
+    --bg: #ede8df;
+    --bg2: #e4dfd6;
+    --cream: #2a2a28;
+    --muted: #7a7a72;
+    --accent: #2eb87a;
+    --border: rgba(42,42,40,0.10);
+  }
+  body.highered-mode nav::after {
+    background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%);
+  }
+  body.highered-mode::after { opacity: 0.15; }
+  body.highered-mode .logo-light { display: none !important; }
+  body.highered-mode .logo-dark { display: block !important; }
+  body.highered-mode .toggle-btn.active { background: var(--accent); color: #fff; }
+
+  /* NOISE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.95) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--cream); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 12px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s, color 0.3s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-cta-arrow {
+    color: #fff;
+    background: #F4632A;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s, color 0.3s;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover .nav-cta-label,
+  .nav-cta:hover .nav-cta-arrow { background: #d94f1e; }
+  .nav-cta:hover .nav-cta-arrow { transform: rotate(45deg); }
+
+  /* NAV TOGGLE */
+  .nav-toggle {
+    display: flex;
+    gap: 2px;
+    background: rgba(240,235,224,0.06);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .toggle-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+  .toggle-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  .blog-hero {
+    min-height: 52vh;
+    padding: 160px 48px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(100, 180, 120, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .blog-hero > * { position: relative; z-index: 1; }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 400;
+    line-height: 0.93;
+    letter-spacing: -0.03em;
+    margin-top: 20px;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    margin-top: 32px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { color: var(--cream); }
+  .filter-btn.active {
+    color: var(--cream);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── FEATURED POST ── */
+  .featured-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .featured-post {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.3s;
+  }
+  .featured-post:hover { background: rgba(200,240,96,0.04); }
+  .featured-img {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-sky {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 110% 80% at 30% 40%, #c5daea 0%, #6a95b5 40%, #1e3f5a 100%),
+                radial-gradient(ellipse 60% 40% at 75% 25%, rgba(255,255,255,0.4) 0%, transparent 55%);
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .featured-post:hover .featured-sky { transform: scale(1.03); }
+  .featured-tag {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 6px 12px;
+    z-index: 2;
+  }
+  .featured-body {
+    background: var(--bg2);
+    padding: 56px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .post-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .post-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .post-read {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .featured-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 2.8vw, 42px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .featured-excerpt {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+    flex-grow: 1;
+  }
+  .post-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 36px;
+    transition: color 0.3s;
+  }
+  .featured-post:hover .post-cta { color: var(--accent); }
+  .post-cta-arrow {
+    width: 28px; height: 28px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    transition: transform 0.3s;
+  }
+  .featured-post:hover .post-cta-arrow { transform: rotate(45deg); }
+
+  /* ── POST GRID ── */
+  .posts-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .posts-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .posts-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+  }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .post-card {
+    background: var(--bg);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-card:hover { background: var(--bg2); }
+  .post-card-img {
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-card-sky {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+    filter: brightness(0.9);
+  }
+  .post-card:hover .post-card-sky {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+  }
+  .card-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 4px 10px;
+    z-index: 2;
+  }
+  .post-card-body {
+    padding: 28px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .post-card-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .post-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 1.6vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    transition: color 0.3s;
+  }
+  .post-card:hover .post-card-title { color: var(--accent); }
+  .post-card-excerpt {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 8px;
+  }
+  .post-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .post-author {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .post-arrow {
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .post-card:hover .post-arrow { color: var(--accent); transform: translateX(4px); }
+
+  /* sky palettes for post cards */
+  .ps-1 { background: radial-gradient(ellipse 110% 80% at 25% 50%, #b8cfe0 0%, #6292b0 40%, #244a68 100%); }
+  .ps-2 { background: radial-gradient(ellipse 100% 75% at 60% 45%, #e8d0a8 0%, #c08545 45%, #6e3e14 100%); }
+  .ps-3 { background: radial-gradient(ellipse 120% 70% at 40% 55%, #c8d8e8 0%, #7098b8 38%, #2a4a64 100%); }
+  .ps-4 { background: radial-gradient(ellipse 100% 80% at 55% 40%, #ead4a8 0%, #c28840 44%, #704010 100%); }
+  .ps-5 { background: radial-gradient(ellipse 115% 75% at 35% 52%, #c0d5e5 0%, #5888a8 40%, #1e3e58 100%); }
+  .ps-6 { background: radial-gradient(ellipse 95% 78% at 58% 48%, #ecd0a0 0%, #be8040 42%, #6e3c10 100%); }
+
+  /* ── NEWSLETTER BAND ── */
+  .newsletter-band {
+    padding: 100px 48px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .newsletter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.2vw, 50px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 16px;
+  }
+  .newsletter-title em { font-style: italic; color: var(--accent); }
+  .newsletter-sub {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-top: 16px;
+    font-weight: 300;
+  }
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .newsletter-input {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .newsletter-input::placeholder { color: var(--muted); }
+  .newsletter-input:focus { border-color: rgba(200,240,96,0.4); }
+  .newsletter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: flex-start;
+  }
+  .newsletter-btn:hover { background: var(--accent); }
+  .newsletter-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 2;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px; display:block;">
+    <img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px; display:none;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li>
+      <div class="nav-toggle">
+        <a href="mason-homepage.html" class="toggle-btn active">All</a>
+        <a href="mason-higher-education.html" class="toggle-btn">Higher Ed</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta">
+    <span class="nav-cta-label">Let's Talk</span>
+    <span class="nav-cta-arrow">↗</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <p class="section-label reveal">Thinking out loud</p>
+  <h1 class="hero-headline reveal">Ideas worth<br><em>stealing.</em></h1>
+  <p class="hero-sub reveal">Strategy, creative, and performance marketing insights from the Mason team. No fluff, no gatekeeping.</p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar reveal">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="paid-media">Paid Media</button>
+  <button class="filter-btn" data-filter="creative">Creative</button>
+  <button class="filter-btn" data-filter="seo">SEO</button>
+  <button class="filter-btn" data-filter="higher-ed">Higher Ed</button>
+  <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+  <button class="filter-btn" data-filter="strategy">Strategy</button>
+</div>
+
+<!-- FEATURED POST -->
+<section class="featured-section reveal">
+  <a href="/roas-is-killing-your-growth/" class="featured-post" data-category="strategy">
+    <div class="featured-img">
+      <div class="featured-sky"></div>
+      <span class="featured-tag">Strategy</span>
+    </div>
+    <div class="featured-body">
+      <div>
+        <div class="featured-meta">
+          <span class="post-date">Feb 2025</span>
+          <span class="post-dot"></span>
+          <span class="post-read">8 min read</span>
+        </div>
+        <h2 class="featured-title">ROAS Is Killing Your Growth</h2>
+        <p class="featured-excerpt">Every brand chasing ROAS targets is optimizing for the wrong thing. Here's why your most profitable metric might be the one that's quietly strangling your business — and what to measure instead.</p>
+      </div>
+      <span class="post-cta">
+        Read the piece
+        <span class="post-cta-arrow">↗</span>
+      </span>
+    </div>
+  </a>
+</section>
+
+<!-- ALL POSTS GRID -->
+<section class="posts-section">
+  <div class="posts-header reveal">
+    <div>
+      <p class="section-label">Recent</p>
+      <h2 class="posts-title" style="margin-top:8px;">All posts</h2>
+    </div>
+  </div>
+
+  <div class="posts-grid reveal" id="posts-grid">
+
+    <a href="/5-reasons-why/" class="post-card" data-category="ecommerce">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-1"></div>
+        <span class="card-tag">eCommerce</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Jan 2025</span>
+          <span class="post-dot"></span>
+          <span class="post-read">6 min</span>
+        </div>
+        <h3 class="post-card-title">5 Reasons Your DTC Brand Is Leaving Money on the Table</h3>
+        <p class="post-card-excerpt">The gaps most growing brands don't see until it's too late — and how to close them before your competitors do.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Mason Team</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/jenna-state-of-search/" class="post-card" data-category="seo">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-2"></div>
+        <span class="card-tag">SEO</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Dec 2024</span>
+          <span class="post-dot"></span>
+          <span class="post-read">5 min</span>
+        </div>
+        <h3 class="post-card-title">The State of Search in 2025</h3>
+        <p class="post-card-excerpt">AI Overviews, zero-click results, and the shifting landscape of organic traffic. What it means for your SEO strategy right now.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Jenna M.</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/blog/meta-creative-testing/" class="post-card" data-category="paid-media">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-3"></div>
+        <span class="card-tag">Paid Media</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Nov 2024</span>
+          <span class="post-dot"></span>
+          <span class="post-read">7 min</span>
+        </div>
+        <h3 class="post-card-title">How We Run Creative Testing on Meta in 2025</h3>
+        <p class="post-card-excerpt">Our exact framework for testing creative at scale — without blowing your budget or polluting your data.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Mason Team</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/institutional-growth/" class="post-card" data-category="higher-ed">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-4"></div>
+        <span class="card-tag">Higher Ed</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Oct 2024</span>
+          <span class="post-dot"></span>
+          <span class="post-read">9 min</span>
+        </div>
+        <h3 class="post-card-title">The Institutional Growth Playbook</h3>
+        <p class="post-card-excerpt">How higher ed institutions can build enrollment pipelines that don't collapse every spring. A framework for sustainable growth.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Mason Team</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/blog/ugc-creative-strategy/" class="post-card" data-category="creative">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-5"></div>
+        <span class="card-tag">Creative</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Sep 2024</span>
+          <span class="post-dot"></span>
+          <span class="post-read">6 min</span>
+        </div>
+        <h3 class="post-card-title">UGC in 2025: What Still Works and What Doesn't</h3>
+        <p class="post-card-excerpt">The UGC playbook has changed. Here's what's actually driving performance, and the mistakes most brands are still making.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Mason Creative</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/blog/email-klaviyo-flows/" class="post-card" data-category="strategy">
+      <div class="post-card-img">
+        <div class="post-card-sky ps-6"></div>
+        <span class="card-tag">Strategy</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span class="post-date">Aug 2024</span>
+          <span class="post-dot"></span>
+          <span class="post-read">5 min</span>
+        </div>
+        <h3 class="post-card-title">The 6 Klaviyo Flows Every DTC Brand Needs</h3>
+        <p class="post-card-excerpt">Most brands have a welcome series and an abandoned cart. Here are the four flows they're missing that are leaving serious revenue behind.</p>
+        <div class="post-card-footer">
+          <span class="post-author">Mason Lifecycle</span>
+          <span class="post-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-band">
+  <div class="reveal">
+    <p class="section-label">Stay Sharp</p>
+    <h2 class="newsletter-title">Insights in<br>your inbox.<br><em>Monthly.</em></h2>
+    <p class="newsletter-sub">Strategy, creative, and performance ideas from the Mason team. No fluff, no frequency — just the good stuff when we have it.</p>
+  </div>
+  <div class="reveal">
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address">
+      <button class="newsletter-btn">Subscribe</button>
+      <p class="newsletter-note">No spam. Unsubscribe whenever. We hate bad email too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="nav-logo">
+    <img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px; display:block;">
+    <img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px; display:none;">
+  </a>
+  <div class="footer-meta">
+    <p>20 Jay Street, Suite 1115</p>
+    <p>Brooklyn, New York</p>
+    <br>
+    <p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p>
+  </div>
+</footer>
+
+<script>
+  // Mode persistence
+  const mode = localStorage.getItem('mason-mode') || 'default';
+  if (mode === 'highered') {
+    document.body.classList.add('highered-mode');
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    const heBtn = document.querySelector('.toggle-btn[href*="higher"]');
+    if (heBtn) heBtn.classList.add('active');
+  }
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.post-card').forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

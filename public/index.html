@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mason Interactive | AI-Powered Creative Agency NYC | Paid Media, Branding & Strategy</title>
+<meta name="description" content="Creative-led, AI-accelerated full service agency in Brooklyn, NY. Paid media, creative production, SEO, and lifecycle marketing for eCommerce brands and higher education institutions. Since 2008.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --white: #f5f5f0;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+    mix-blend-mode: normal;
+    overflow: visible;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.9) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s;
+    opacity: 0.7;
+  }
+  .nav-links a:hover { color: var(--cream); opacity: 1; }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 12px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s, color 0.3s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-cta-arrow {
+    color: #fff;
+    background: #F4632A;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s, color 0.3s;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover .nav-cta-label,
+  .nav-cta:hover .nav-cta-arrow { background: #d94f1e; }
+  .nav-cta:hover .nav-cta-arrow { transform: rotate(45deg); }
+
+  /* HERO — contained video block like Within */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 48px 0;
+    position: relative;
+  }
+
+  .hero-video-module {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/8;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 0;
+  }
+  .hero-video-module video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Bottom gradient so text overlaid on video is readable */
+  .hero-video-module::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 48px;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  /* Higher Ed: swap hero video source (JS handles this) */
+
+  /* Higher Ed: client tiles become text/logo cards instead of media */
+  body.highered-mode .client-item {
+    aspect-ratio: auto;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px 24px;
+    border: 1px solid rgba(42,42,40,0.15);
+    background: var(--bg2);
+  }
+  body.highered-mode .client-item video,
+  body.highered-mode .client-item img,
+  body.highered-mode .client-item .client-sky {
+    display: none;
+  }
+  body.highered-mode .client-item::after {
+    display: none;
+  }
+  body.highered-mode .client-name {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    font-size: clamp(18px, 1.8vw, 24px);
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  body.highered-mode .client-item:hover .client-name {
+    transform: none;
+  }
+  /* Higher Ed: make all overlay text always visible, no hover needed */
+  body.highered-mode .client-overlay {
+    position: relative;
+    padding: 0;
+  }
+  body.highered-mode .client-industry {
+    opacity: 1;
+    transform: none;
+    color: var(--accent);
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  body.highered-mode .client-services {
+    opacity: 1;
+    transform: none;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  body.highered-mode .client-result {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 12px;
+  }
+  .client-result { display: none; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s forwards;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(64px, 8vw, 128px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-descriptor {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 360px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 64px;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* TICKER */
+  .ticker {
+    border-top: 2px solid rgba(240,235,224,0.12);
+    border-bottom: 2px solid rgba(240,235,224,0.12);
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+  }
+  .ticker-inner span {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.6;
+    padding: 0 28px;
+  }
+  .ticker-inner span.accent { color: var(--accent); opacity: 1; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .clients-toggle {
+    display: flex;
+    gap: 2px;
+    background: rgba(240,235,224,0.06);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  .clients-toggle {
+    display: flex;
+    gap: 2px;
+    background: rgba(240,235,224,0.06);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  .toggle-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    text-decoration: none;
+  }
+  .toggle-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ── DUAL BRAND SYSTEM ── */
+
+  /* Smooth transition on all variable-driven properties */
+  body {
+    transition: background 0.6s ease, color 0.6s ease;
+  }
+  body *, body *::before, body *::after {
+    transition: background 0.6s ease, color 0.6s ease, border-color 0.6s ease, opacity 0.6s ease;
+  }
+
+  /* HIGHER ED MODE — cream background, consulting energy */
+  body.highered-mode {
+    --bg: #ede8df;
+    --bg2: #e4dfd6;
+    --cream: #2a2a28;
+    --muted: #7a7a72;
+    --accent: #2eb87a;
+    --border: rgba(42,42,40,0.10);
+  }
+  body.highered-mode nav::after {
+    background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%);
+  }
+  /* Let's Talk button stays rust #F4632A in all modes — no override needed */
+  body.highered-mode .hero::before {
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(46, 184, 122, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(30, 140, 90, 0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(46, 184, 122, 0.05) 0%, transparent 50%);
+  }
+  body.highered-mode .client-item::after {
+    background: linear-gradient(to top, rgba(237,232,223,0.85) 0%, rgba(237,232,223,0.2) 50%, transparent 100%);
+  }
+  body.highered-mode .client-name { color: #2a2a28; }
+  body.highered-mode .client-services { color: rgba(42,42,40,0.7); }
+  body.highered-mode .footer-link {
+    color: #ede8df;
+    background: #2a2a28;
+  }
+  body.highered-mode .footer-link:hover { background: var(--accent); color: #fff; }
+  /* Logo swap for Higher Ed mode */
+  body.highered-mode .logo-light { display: none !important; }
+  body.highered-mode .logo-dark { display: block !important; }
+  body.highered-mode::after { opacity: 0.15; }
+  body.highered-mode .toggle-btn { color: #7a7a72; }
+  body.highered-mode .toggle-btn.active { background: var(--accent); color: #fff; }
+
+  /* Sky gradients for Higher Ed mode — warm, institutional */
+  body.highered-mode .sky-1  { background: linear-gradient(135deg, #d4cfc6 0%, #c2b8a8 50%, #afa596 100%); }
+  body.highered-mode .sky-2  { background: linear-gradient(135deg, #c8d5c0 0%, #a8bfa0 50%, #8aaa80 100%); }
+  body.highered-mode .sky-3  { background: linear-gradient(135deg, #d0ccc4 0%, #b8b0a4 50%, #a09888 100%); }
+  body.highered-mode .sky-4  { background: linear-gradient(135deg, #c4d0c0 0%, #a4bca0 50%, #88a878 100%); }
+  body.highered-mode .sky-5  { background: linear-gradient(135deg, #d2cec6 0%, #bab2a6 50%, #a49c8c 100%); }
+  body.highered-mode .sky-6  { background: linear-gradient(135deg, #c6d2c0 0%, #a6bea0 50%, #8caa7c 100%); }
+  body.highered-mode .sky-7  { background: linear-gradient(135deg, #cec8c0 0%, #b6aea4 50%, #9e968a 100%); }
+  body.highered-mode .sky-8  { background: linear-gradient(135deg, #c2cec0 0%, #a2baa0 50%, #86a67c 100%); }
+  body.highered-mode .sky-9  { background: linear-gradient(135deg, #d0cbc2 0%, #b8b0a2 50%, #a29888 100%); }
+  body.highered-mode .sky-10 { background: linear-gradient(135deg, #c4d0be 0%, #a4bc9e 50%, #88a87a 100%); }
+  body.highered-mode .sky-11 { background: linear-gradient(135deg, #ccc8c0 0%, #b4aca2 50%, #9c948a 100%); }
+  body.highered-mode .sky-12 { background: linear-gradient(135deg, #c0ccbe 0%, #a0b89e 50%, #84a47a 100%); }
+  body.highered-mode .sky-13 { background: linear-gradient(135deg, #d0ccc4 0%, #b8b2a4 50%, #a09a8c 100%); }
+  body.highered-mode .sky-14 { background: linear-gradient(135deg, #c2cec0 0%, #a2ba9e 50%, #86a678 100%); }
+  body.highered-mode .sky-15 { background: linear-gradient(135deg, #cec8c0 0%, #b4aea2 50%, #9e968c 100%); }
+  body.highered-mode .sky-16 { background: linear-gradient(135deg, #c0cabe 0%, #a0b69c 50%, #84a278 100%); }
+
+  /* Cross-reference band */
+  .cross-ref {
+    padding: 60px 48px;
+    border-top: 2px solid rgba(240,235,224,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .cross-ref-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.4;
+  }
+  .cross-ref-text em { color: var(--accent); font-style: normal; }
+  .cross-ref-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  .cross-ref-link:hover { opacity: 0.7; }
+  .cross-ref-ecomm { display: none; }
+  .cross-ref-highered { display: none; }
+  body.highered-mode .cross-ref-ecomm { display: flex; }
+  body.ecomm-mode .cross-ref-highered { display: flex; }
+  .clients-section {
+    padding: 60px 48px 24px;
+  }
+  .clients-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    border-bottom: 2px solid rgba(240,235,224,0.12);
+    padding-bottom: 24px;
+  }
+  .clients-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .client-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+
+  .client-row {
+    display: contents;
+  }
+
+  .client-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .client-sky {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+    filter: brightness(0.85);
+  }
+  .client-item:hover .client-sky {
+    transform: scale(1.04);
+    filter: brightness(0.7) saturate(0.9);
+  }
+
+  /* Video & image assets in client tiles */
+  .client-item video,
+  .client-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+    filter: brightness(0.85);
+    z-index: 0;
+  }
+  .client-item:hover video,
+  .client-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.7) saturate(0.9);
+  }
+  /* Fallback background for tiles with missing local assets */
+  .client-item { background: var(--bg2); }
+
+  /* 16 unique sky palettes */
+  .sky-1  { background: radial-gradient(ellipse 120% 80% at 30% 60%, #c9d8e8 0%, #8faec8 40%, #4a6d8c 100%), radial-gradient(ellipse 60% 40% at 70% 30%, rgba(255,255,255,0.6) 0%, transparent 60%); }
+  .sky-2  { background: radial-gradient(ellipse 100% 70% at 60% 40%, #e8d5b0 0%, #c4956a 50%, #7a4f2c 100%), radial-gradient(ellipse 50% 50% at 20% 20%, rgba(255,240,200,0.5) 0%, transparent 55%); }
+  .sky-3  { background: radial-gradient(ellipse 110% 80% at 40% 50%, #b8cfe0 0%, #6a93b0 45%, #2c4d65 100%), radial-gradient(ellipse 70% 30% at 80% 25%, rgba(255,255,255,0.5) 0%, transparent 50%); }
+  .sky-4  { background: radial-gradient(ellipse 100% 90% at 50% 60%, #e8c5a0 0%, #b8825a 45%, #6b3d22 100%), radial-gradient(ellipse 40% 60% at 30% 20%, rgba(255,220,170,0.6) 0%, transparent 55%); }
+  .sky-5  { background: radial-gradient(ellipse 120% 70% at 35% 55%, #d0e0ee 0%, #7095b5 40%, #334d66 100%), radial-gradient(ellipse 55% 45% at 75% 30%, rgba(255,255,255,0.55) 0%, transparent 55%); }
+  .sky-6  { background: radial-gradient(ellipse 90% 80% at 55% 45%, #f0d8b5 0%, #c88c50 45%, #7a4a1e 100%), radial-gradient(ellipse 60% 35% at 20% 30%, rgba(255,235,190,0.5) 0%, transparent 55%); }
+  .sky-7  { background: radial-gradient(ellipse 110% 75% at 45% 55%, #c0d5e8 0%, #5a8aaa 40%, #1e3d55 100%), radial-gradient(ellipse 65% 40% at 70% 20%, rgba(255,255,255,0.6) 0%, transparent 50%); }
+  .sky-8  { background: radial-gradient(ellipse 100% 85% at 50% 50%, #edd5a8 0%, #bf8840 45%, #6e4010 100%), radial-gradient(ellipse 45% 55% at 25% 25%, rgba(255,225,160,0.55) 0%, transparent 55%); }
+  .sky-9  { background: radial-gradient(ellipse 115% 75% at 40% 60%, #d5e8f0 0%, #7ab0c8 42%, #2a5c78 100%), radial-gradient(ellipse 50% 40% at 78% 28%, rgba(255,255,255,0.5) 0%, transparent 55%); }
+  .sky-10 { background: radial-gradient(ellipse 95% 80% at 55% 45%, #eac8a0 0%, #c07840 45%, #7a3e15 100%), radial-gradient(ellipse 60% 40% at 15% 30%, rgba(255,215,155,0.55) 0%, transparent 55%); }
+  .sky-11 { background: radial-gradient(ellipse 120% 70% at 38% 58%, #c5d8e5 0%, #608aaa 42%, #253d55 100%), radial-gradient(ellipse 55% 38% at 72% 22%, rgba(255,255,255,0.55) 0%, transparent 50%); }
+  .sky-12 { background: radial-gradient(ellipse 100% 80% at 48% 52%, #f2d9b2 0%, #c88a48 45%, #6e4018 100%), radial-gradient(ellipse 42% 52% at 28% 22%, rgba(255,228,175,0.5) 0%, transparent 55%); }
+  .sky-13 { background: radial-gradient(ellipse 110% 72% at 42% 56%, #b5cedf 0%, #508098 42%, #1a3a50 100%), radial-gradient(ellipse 62% 36% at 76% 26%, rgba(255,255,255,0.52) 0%, transparent 52%); }
+  .sky-14 { background: radial-gradient(ellipse 98% 82% at 52% 48%, #ebd2a8 0%, #be8845 43%, #723c18 100%), radial-gradient(ellipse 48% 52% at 22% 24%, rgba(255,222,165,0.52) 0%, transparent 52%); }
+  .sky-15 { background: radial-gradient(ellipse 112% 74% at 36% 54%, #bdd2e2 0%, #5888a8 40%, #224258 100%), radial-gradient(ellipse 58% 42% at 74% 24%, rgba(255,255,255,0.58) 0%, transparent 52%); }
+  .sky-16 { background: radial-gradient(ellipse 102% 78% at 50% 50%, #eccc9e 0%, #c2843e 44%, #7a3e12 100%), radial-gradient(ellipse 44% 54% at 26% 26%, rgba(255,218,158,0.52) 0%, transparent 52%); }
+
+  .client-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    z-index: 1;
+  }
+
+  /* Client tile text — Mike's hierarchy */
+  .client-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .client-industry {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s, transform 0.4s;
+  }
+  .client-item:hover .client-industry {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #fff;
+    line-height: 1.2;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .client-services {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s 0.05s, transform 0.4s;
+  }
+  .client-item:hover .client-services {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .client-arrow { display: none; }
+
+  /* SERVICES STRIP */
+  .services-section {
+    padding: 48px 48px;
+    background: var(--bg2);
+    border: none;
+    position: relative;
+  }
+  .services-section::before, .services-section::after {
+    content: '';
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    height: 1px;
+    background: rgba(240,235,224,0.12);
+  }
+  .services-section::before { top: 0; }
+  .services-section::after { bottom: 0; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 48px 40px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover { background: #161614; }
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 32px;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .service-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .service-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 2px solid rgba(240,235,224,0.12);
+    padding: 5px 10px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .service-card:hover .service-tag {
+    border-color: rgba(200,240,96,0.3);
+    color: var(--accent);
+  }
+
+  /* QUOTE BAND */
+  .quote-band {
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+  .quote-text em { color: var(--accent); font-style: normal; }
+  .quote-attr {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 24px;
+  }
+  .quote-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .quote-result {
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    display: block;
+  }
+  .footer-cta {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 64px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .footer-cta em { font-style: italic; color: var(--accent); }
+  .footer-link {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin-top: 32px;
+    transition: background 0.3s;
+  }
+  .footer-link:hover { background: var(--accent); }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 2;
+  }
+
+  /* HERO GRADIENT ATMOSPHERE */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(100, 180, 120, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+
+  /* NOISE OVERLAY */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SCROLL REVEAL */
+  /* Rotating quotes */
+  .rotating-quote {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .rotating-quote.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px; display:block;">
+    <img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px; display:none;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta"><span class="nav-cta-label">Let's Talk</span><span class="nav-cta-arrow">↗</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p style="font-family:'DM Mono',monospace; font-size:clamp(11px, 1.1vw, 14px); font-weight:400; color:var(--cream); letter-spacing:0.14em; text-transform:uppercase; line-height:1.6; margin-bottom:24px; opacity:0; animation:fadeUp 1s 0.2s forwards;">Creative-Led, AI-Accelerated Full Service Agency <span style="color:var(--muted);">· Since 2008 · Brooklyn, New York</span></p>
+
+  <!-- Contained video module — like Within -->
+  <div class="hero-video-module">
+    <video autoplay muted loop playsinline>
+      <source src="laurentferrier.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" style="flex-direction:column; align-items:flex-start; gap:20px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; width:100%;">
+        <h1 class="hero-headline">
+          Human creativity<br>
+          just got an <em>unfair<br>
+          advantage.</em>
+        </h1>
+        <a href="/work/" style="display:inline-block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bg); background:var(--accent); padding:18px 32px; text-decoration:none; border-radius:16px; white-space:nowrap; transition:background 0.3s; flex-shrink:0;">See Our Work →</a>
+      </div>
+      <p style="font-family:'DM Mono',monospace; font-size:clamp(11px, 1.1vw, 14px); font-weight:400; color:rgba(255,255,255,0.7); letter-spacing:0.14em; text-transform:uppercase; line-height:1.6;">Running AI-native paid media for brands spending $10K to $10M a month.</p>
+    </div>
+  </div>
+
+  <div class="hero-sub" style="margin-top:32px;">
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">$1B+</span>
+        <span class="stat-label">In managed ad spend</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">17</span>
+        <span class="stat-label">Years of growth</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Brands & institutions</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; display:flex; align-items:center; gap:20px; opacity:0; animation:fadeUp 1s 1s forwards;">
+    <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Show me</span>
+    <div class="clients-toggle">
+      <button class="toggle-btn active" onclick="filterClients('all')">All</button>
+      <a href="mason-higher-education.html" class="toggle-btn">Higher Education →</a>
+      <button class="toggle-btn" onclick="filterClients('ecommerce')">eCommerce & DTC</button>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT GRID — way up front, Within-style -->
+<section class="clients-section" style="padding-top:80px;">
+  <div style="border-bottom:1px solid rgba(240,235,224,0.08); padding-bottom:20px; margin-bottom:32px;" class="reveal">
+    <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream);">Creative that scales.</p>
+  </div>
+
+  <div class="client-list reveal">
+
+    <!-- eCOMMERCE / LUXURY — Row 1 -->
+    <div class="client-row">
+      <div class="client-item" data-industry="ecommerce">
+        <video autoplay muted loop playsinline poster="https://masoninteractive.com/wp-content/uploads/2024/08/3-768x768.webp">
+          <source src="https://masoninteractive.com/wp-content/uploads/2023/12/3.aman-tennis-shorter-7.16.25-1.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Luxury Hospitality</span>
+          <span class="client-name">Aman</span>
+          <span class="client-services">Brand Strategy · Paid Media · Creative</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-2"></div>
+        <video autoplay muted loop playsinline>
+          <source src="laurentferrier.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Swiss Luxury Watches</span>
+          <span class="client-name">Laurent Ferrier</span>
+          <span class="client-services">Brand Campaign · Video · Digital</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-3"></div>
+        <video autoplay muted loop playsinline>
+          <source src="edward sexton.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Savile Row Tailoring</span>
+          <span class="client-name">Edward Sexton</span>
+          <span class="client-services">Creative · Media · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-14"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Liberal Arts</span>
+          <span class="client-name">Drew University</span>
+          <span class="client-services">Enrollment · Paid Social · Creative</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- eCOMMERCE / LIFESTYLE — Row 2 -->
+    <div class="client-row">
+      <div class="client-item" data-industry="ecommerce">
+        <video autoplay muted loop playsinline>
+          <source src="roam-video.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Travel & Lifestyle</span>
+          <span class="client-name">Roam Luggage</span>
+          <span class="client-services">Creative Direction · Video · Paid Media</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-6"></div>
+        <img src="g-shock.jpg" alt="Casio G-Shock">
+        <div class="client-overlay">
+          <span class="client-industry">Watches & Culture</span>
+          <span class="client-name">Casio G-Shock</span>
+          <span class="client-services">Email · Paid Media · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-7"></div>
+        <img src="marimekko.webp" alt="Marimekko">
+        <div class="client-overlay">
+          <span class="client-industry">Design & Lifestyle</span>
+          <span class="client-name">Marimekko</span>
+          <span class="client-services">Creative · Paid Social · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-8"></div>
+        <img src="bennett-winch.jpg" alt="Bennett Winch">
+        <div class="client-overlay">
+          <span class="client-industry">Luxury Goods</span>
+          <span class="client-name">Bennett Winch</span>
+          <span class="client-services">Digital Strategy · Paid Media</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGHER ED — Row 3 -->
+    <div class="client-row">
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-9"></div>
+        <video autoplay muted loop playsinline>
+          <source src="lacrosse.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Public University</span>
+          <span class="client-name">Eastern CT State</span>
+          <span class="client-services">Branding · Video · Paid Media · Creative</span>
+          <span class="client-result">3× Enrollment Growth</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <img src="https://masoninteractive.com/wp-content/uploads/2024/08/2.cia-bw.jpg" alt="Culinary Institute of America">
+        <div class="client-overlay">
+          <span class="client-industry">Culinary Arts</span>
+          <span class="client-name">Culinary Institute of America</span>
+          <span class="client-services">Enrollment · Paid Media · SEO</span>
+          <span class="client-result">↑ 156% Purchases</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-11"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Graduate Psychology</span>
+          <span class="client-name">The Chicago School</span>
+          <span class="client-services">Paid Media · SEO · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-12"></div>
+        <video autoplay muted loop playsinline>
+          <source src="lewisuniversity.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Private University</span>
+          <span class="client-name">Lewis University</span>
+          <span class="client-services">Creative Production · Paid Media</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGHER ED — Row 4 -->
+    <div class="client-row">
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-13"></div>
+        <img src="international center of photography.png.webp" alt="ICP">
+        <div class="client-overlay">
+          <span class="client-industry">Arts & Culture</span>
+          <span class="client-name">Intl. Center of Photography</span>
+          <span class="client-services">SEO · Paid Media · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="ecommerce">
+        <div class="client-sky sky-4"></div>
+        <img src="dagne-dover.jpg" alt="Dagne Dover">
+        <div class="client-overlay">
+          <span class="client-industry">Fashion / Accessories</span>
+          <span class="client-name">Dagne Dover</span>
+          <span class="client-services">Paid Media · Creative · Lifecycle</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-15"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Community College</span>
+          <span class="client-name">Rowan College</span>
+          <span class="client-services">Enrollment Marketing · Paid Media</span>
+        </div>
+      </div>
+      <div class="client-item" data-industry="highered">
+        <div class="client-sky sky-16"></div>
+        <video autoplay muted loop playsinline>
+          <source src="neucognition.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Health & Wellness</span>
+          <span class="client-name">Neucognition</span>
+          <span class="client-services">Creative Direction · Video · Paid Media</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HIGHER ED CTA BAND -->
+<a href="mason-higher-education.html" style="display:block; padding:40px 48px; background:var(--bg2); text-decoration:none; transition:background 0.3s; border-top:1px solid rgba(240,235,224,0.08);" onmouseover="this.style.background='#1a1a18'" onmouseout="this.style.background='var(--bg2)'">
+  <div style="display:flex; align-items:center; justify-content:space-between;">
+    <div>
+      <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent);">Higher Education</span>
+      <span style="display:block; font-family:'Playfair Display',serif; font-size:clamp(18px,2vw,28px); color:var(--cream); margin-top:8px;">We also partner with <em style="color:var(--accent); font-style:italic;">60+ colleges and universities.</em></span>
+    </div>
+    <span style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">See Higher Ed Work →</span>
+  </div>
+</a>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span>Creative &amp; Production</span><span class="accent">✦</span>
+    <span>Paid Media</span><span class="accent">✦</span>
+    <span>AI-Assisted Analytics</span><span class="accent">✦</span>
+    <span>Lifecycle &amp; Retention</span><span class="accent">✦</span>
+    <span>SEO &amp; AIO</span><span class="accent">✦</span>
+    <span>E-Commerce Growth</span><span class="accent">✦</span>
+    <span>UGC &amp; Video</span><span class="accent">✦</span>
+    <span>Google Premier Partner</span><span class="accent">✦</span>
+    <span>Meta Partner</span><span class="accent">✦</span>
+    <span>Creative &amp; Production</span><span class="accent">✦</span>
+    <span>Paid Media</span><span class="accent">✦</span>
+    <span>AI-Assisted Analytics</span><span class="accent">✦</span>
+    <span>Lifecycle &amp; Retention</span><span class="accent">✦</span>
+    <span>SEO &amp; AIO</span><span class="accent">✦</span>
+    <span>E-Commerce Growth</span><span class="accent">✦</span>
+    <span>UGC &amp; Video</span><span class="accent">✦</span>
+    <span>Google Premier Partner</span><span class="accent">✦</span>
+    <span>Meta Partner</span><span class="accent">✦</span>
+  </div>
+</div>
+
+<!-- CREATIVE INTEL CALLOUT -->
+<section style="padding:48px 48px; border-bottom:2px solid rgba(240,235,224,0.12);" class="reveal">
+  <div>
+    <p class="section-label">Mason Intel · Proprietary AI</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.5vw,40px); font-weight:400; letter-spacing:-0.02em; margin-top:16px; line-height:1.2; max-width:800px;">Our AI. Your <em style="color:var(--accent);">unfair advantage.</em></h2>
+    <p style="font-size:15px; line-height:1.8; color:var(--muted); font-weight:300; margin-top:20px; max-width:700px;">Mason Intel is a proprietary AI engine built in-house — not a third-party dashboard, not a reskinned report. It ingests data from Meta, Google, TikTok, Klaviyo, Shopify, GA4, and your CRM simultaneously, cross-referencing more data points than any human team could process. Every account gets real-time analysis, automated budget recommendations, and creative performance scoring. 24/7, across every channel, at once.</p>
+    <div style="display:flex; gap:48px; margin-top:28px;">
+      <div>
+        <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">Built by Mason</span>
+      </div>
+      <div>
+        <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">7+ Platform Integrations</span>
+      </div>
+      <div>
+        <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">No Other Agency Has This</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="reveal">
+    <p class="section-label">What We Do</p>
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-top: 16px;">
+      <h2 class="clients-title" style="font-size: clamp(28px, 3vw, 48px);">Full-service. Creative-first. Always.</h2>
+      <a href="/services/" style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-decoration:none;">All Services →</a>
+    </div>
+  </div>
+  <div class="services-grid reveal" style="grid-template-columns:repeat(3, 1fr);">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-name">Creative &amp; Production</h3>
+      <div class="service-tags">
+        <span class="service-tag">Brand Film</span>
+        <span class="service-tag">UGC</span>
+        <span class="service-tag">Photography</span>
+        <span class="service-tag">Ad Creative</span>
+        <span class="service-tag">CTV</span>
+        <span class="service-tag">Motion Graphics</span>
+        <span class="service-tag">OOH</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-name">Paid Media</h3>
+      <div class="service-tags">
+        <span class="service-tag">Google</span>
+        <span class="service-tag">Meta</span>
+        <span class="service-tag">TikTok</span>
+        <span class="service-tag">Amazon</span>
+        <span class="service-tag">Programmatic</span>
+        <span class="service-tag">YouTube</span>
+        <span class="service-tag">CTV</span>
+        <span class="service-tag">Pinterest</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-name">SEO &amp; AIO</h3>
+      <div class="service-tags">
+        <span class="service-tag">Technical SEO</span>
+        <span class="service-tag">AI Search</span>
+        <span class="service-tag">Content Strategy</span>
+        <span class="service-tag">Local SEO</span>
+        <span class="service-tag">Link Building</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <h3 class="service-name">Email &amp; SMS</h3>
+      <div class="service-tags">
+        <span class="service-tag">Lifecycle Flows</span>
+        <span class="service-tag">Campaigns</span>
+        <span class="service-tag">SMS</span>
+        <span class="service-tag">Klaviyo</span>
+        <span class="service-tag">HubSpot</span>
+        <span class="service-tag">Retention</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <h3 class="service-name">Lead Generation</h3>
+      <div class="service-tags">
+        <span class="service-tag">Landing Pages</span>
+        <span class="service-tag">Full Funnel</span>
+        <span class="service-tag">Enrollment</span>
+        <span class="service-tag">CRM</span>
+        <span class="service-tag">Nurture</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <h3 class="service-name">Strategy &amp; Advisory</h3>
+      <div class="service-tags">
+        <span class="service-tag">Channel Strategy</span>
+        <span class="service-tag">Brand Strategy</span>
+        <span class="service-tag">Creative Briefs</span>
+        <span class="service-tag">Audits</span>
+        <span class="service-tag">Advisory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTATING QUOTES -->
+<section style="padding:48px 48px; position:relative;" class="reveal">
+  <div style="position:absolute; top:0; left:48px; right:48px; height:1px; background:rgba(240,235,224,0.12);"></div>
+  <div style="max-width:700px;">
+    <p class="section-label">What Clients Say</p>
+    <div id="quote-rotator" style="margin-top:24px; min-height:200px;">
+      <div class="rotating-quote active">
+        <p class="quote-text">"Mason is an incredible partner and has truly become <em>an extension of our team.</em>"</p>
+        <div class="quote-attr" style="margin-top:24px;">
+          <span class="quote-brand">Nicole Weiss · Dagne Dover</span>
+          <span class="quote-result">Director of Integrated Marketing</span>
+        </div>
+      </div>
+      <div class="rotating-quote">
+        <p class="quote-text">"A true partner, helping us navigate the ever-changing landscape of paid digital media and acting like <em>an extension of our own team.</em>"</p>
+        <div class="quote-attr" style="margin-top:24px;">
+          <span class="quote-brand">Scott Lucente · The Culinary Institute of America</span>
+          <span class="quote-result">Director of Digital and Online Media</span>
+        </div>
+      </div>
+      <div class="rotating-quote">
+        <p class="quote-text">"MASON's growth strategy led to a <em>$14M Series A</em> in one of the most challenging CPG environments."</p>
+        <div class="quote-attr" style="margin-top:24px;">
+          <span class="quote-brand">Needed</span>
+          <span class="quote-result">Prenatal Wellness · DTC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:60px 48px; background:var(--bg2);">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+    <div style="display:flex; align-items:center; gap:20px;">
+      <h2 class="footer-cta">Let's <em>talk.</em></h2>
+      <a href="/lets-talk/" style="text-decoration:none;">
+        <span style="width:48px; height:48px; background:#F4632A; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff;">↗</span>
+      </a>
+    </div>
+    <p style="font-family:'DM Mono',monospace; font-size:11px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream); opacity:0.4;">Brooklyn, NY · Google Premier Partner · Meta Partner · © 2026 Mason Interactive</p>
+  </div>
+</footer>
+
+<script>
+  // Client filter
+  function filterClients(filter) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.client-item').forEach(item => {
+      if (filter === 'all' || item.dataset.industry === filter) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+  document.querySelectorAll('.cross-ref-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.switch;
+      switchMode(target);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Quote rotator
+  const quotes = document.querySelectorAll('.rotating-quote');
+  let currentQuote = 0;
+  setInterval(() => {
+    quotes[currentQuote].classList.remove('active');
+    currentQuote = (currentQuote + 1) % quotes.length;
+    quotes[currentQuote].classList.add('active');
+  }, 5000);
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Stagger children
+        e.target.querySelectorAll('.client-item, .service-card').forEach((child, i) => {
+          child.style.transitionDelay = (i * 0.08) + 's';
+          child.style.opacity = '0';
+          child.style.transform = 'translateY(20px)';
+          child.style.transition = 'opacity 0.6s, transform 0.6s';
+          setTimeout(() => {
+            child.style.opacity = '1';
+            child.style.transform = 'translateY(0)';
+          }, i * 80 + 100);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

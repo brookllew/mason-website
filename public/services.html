@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid Media Agency | Creative, SEO & Email Marketing | Mason Interactive</title>
+<meta name="description" content="Full-service paid media, creative production, SEO, email, and lead generation. AI-powered analytics. Google Premier Partner, Meta Business Partner. Brooklyn, NY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HIGHER ED MODE */
+  body.highered-mode { --bg:#ede8df; --bg2:#e4dfd6; --cream:#2a2a28; --muted:#7a7a72; --accent:#2eb87a; --border:rgba(42,42,40,0.10); }
+  body.highered-mode nav::after { background:linear-gradient(to bottom,rgba(237,232,223,0.95) 0%,transparent 100%); }
+  body.highered-mode::after { opacity:0.15; }
+  body.highered-mode .logo-light { display:none !important; }
+  body.highered-mode .logo-dark { display:block !important; }
+  body.highered-mode .toggle-btn.active { background:var(--accent); color:#fff; }
+  body { transition:background 0.6s ease, color 0.6s ease; }
+
+  /* NOISE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.9) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--cream); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 10px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover .nav-cta-label { background: var(--accent); }
+  .nav-cta-arrow {
+    width: 38px; height: 38px;
+    background: #F4632A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #fff;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-cta:hover .nav-cta-arrow { background: var(--accent); transform: rotate(45deg); }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── HERO ─── */
+  .services-hero {
+    min-height: 60vh;
+    padding: 160px 48px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .services-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(100, 180, 120, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .services-hero > * { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 110px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    margin-top: 40px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+  }
+  .hero-meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .hero-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── SERVICE PILLARS ─── */
+  .pillars-section {
+    padding: 0;
+  }
+  .pillar {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    border-bottom: 1px solid var(--border);
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+  .pillar:hover { background: var(--bg2); }
+
+  .pillar-sidebar {
+    padding: 64px 48px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+  }
+  .pillar-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+  .pillar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 24px;
+  }
+  .pillar-name em { font-style: italic; color: var(--accent); }
+  .pillar-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    margin-top: 40px;
+    transition: color 0.3s;
+  }
+  .pillar:hover .pillar-cta { color: var(--accent); }
+  .pillar-cta-arrow {
+    width: 28px; height: 28px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: transform 0.3s;
+  }
+  .pillar:hover .pillar-cta-arrow { transform: rotate(45deg); }
+
+  .pillar-body {
+    padding: 64px 64px 64px 80px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 48px;
+  }
+  .pillar-desc {
+    font-size: 18px;
+    line-height: 1.8;
+    color: rgba(240,235,224,0.65);
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  .pillar-capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    align-self: start;
+  }
+  .capability {
+    background: var(--bg);
+    padding: 28px 32px;
+    transition: background 0.3s;
+  }
+  .pillar:hover .capability { background: #0d0d0b; }
+  .cap-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .cap-detail {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .pillar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-self: end;
+  }
+  .pillar-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .pillar:hover .pillar-tag {
+    border-color: rgba(200,240,96,0.25);
+    color: var(--accent);
+  }
+
+  /* ─── APPROACH BAND ─── */
+  .approach-band {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .approach-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 80px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .approach-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .approach-title em { font-style: italic; color: var(--accent); }
+  .approach-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .approach-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .approach-step {
+    background: var(--bg2);
+    padding: 48px 36px;
+  }
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .step-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .step-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ─── VERTICALS BAND ─── */
+  .verticals-section {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .verticals-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .verticals-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .verticals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .vertical-card {
+    background: var(--bg);
+    padding: 48px 40px;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .vertical-card:hover { background: var(--bg2); }
+  .vertical-icon {
+    font-size: 28px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .vertical-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .vertical-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .vertical-clients {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    transition: color 0.3s;
+  }
+  .vertical-card:hover .vertical-clients { color: var(--accent); }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    padding: 140px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+  }
+  .cta-headline em { font-style: italic; color: var(--accent); }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .cta-btn-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 16px 28px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+  }
+  .cta-btn:hover .cta-btn-label { background: var(--accent); }
+  .cta-btn-arrow {
+    width: 48px; height: 48px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--bg);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .cta-btn:hover .cta-btn-arrow { background: var(--accent); transform: rotate(45deg); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 2;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px;display:block;"><img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px;display:none;"></a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/" class="active">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><div class="nav-toggle" style="display:flex;gap:2px;background:rgba(240,235,224,0.06);border-radius:100px;padding:3px;"><a href="mason-homepage.html" class="toggle-btn active" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;padding:6px 14px;border-radius:100px;text-decoration:none;">All</a><a href="mason-higher-education.html" class="toggle-btn" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;padding:6px 14px;border-radius:100px;text-decoration:none;">Higher Ed</a></div></li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta">
+    <span class="nav-cta-label">Let's Talk</span>
+    <span class="nav-cta-arrow">↗</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="services-hero">
+  <p class="hero-eyebrow reveal">Services</p>
+  <h1 class="hero-headline reveal">Every channel.<br><em>One team.</em></h1>
+  <p class="hero-sub reveal">We don't hand off between departments. Creative, media, and lifecycle work together from day one — because that's where the magic happens.</p>
+  <div class="hero-meta reveal">
+    <div class="hero-stat">
+      <span class="hero-stat-num">$1B+</span>
+      <span class="hero-stat-label">Ad Budgets Managed</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">100+</span>
+      <span class="hero-stat-label">Brands Served</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">17</span>
+      <span class="hero-stat-label">Years of Growth</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE PILLARS -->
+<section class="pillars-section">
+
+  <!-- 01 Creative & Production -->
+  <div class="pillar reveal">
+    <div class="pillar-sidebar">
+      <div>
+        <span class="pillar-num">01</span>
+        <h2 class="pillar-name">Creative &amp;<br><em>Production</em></h2>
+      </div>
+      <a href="/lets-talk/" class="pillar-cta">
+        Start a project
+        <span class="pillar-cta-arrow">↗</span>
+      </a>
+    </div>
+    <div class="pillar-body">
+      <p class="pillar-desc">We make creative that doesn't just look good — it performs. From brand campaigns to scroll-stopping UGC, every asset is built with the algorithm and the audience in mind.</p>
+      <div class="pillar-capabilities">
+        <div class="capability">
+          <p class="cap-name">Brand Campaigns</p>
+          <p class="cap-detail">TV · OOH · Digital Video<br>Long-form · Documentaries</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Performance Creative</p>
+          <p class="cap-detail">Meta Ads · TikTok · YouTube<br>Static · Motion · Carousels</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">UGC &amp; Influencer</p>
+          <p class="cap-detail">Creator sourcing · Scripting<br>Whitelisting · Partnerships</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Photo &amp; Video Production</p>
+          <p class="cap-detail">On-location · Studio<br>Lifestyle · Product · Editorial</p>
+        </div>
+      </div>
+      <div class="pillar-tags">
+        <span class="pillar-tag">Brand Identity</span>
+        <span class="pillar-tag">Video</span>
+        <span class="pillar-tag">Photography</span>
+        <span class="pillar-tag">UGC</span>
+        <span class="pillar-tag">Motion Graphics</span>
+        <span class="pillar-tag">Ad Creative</span>
+        <span class="pillar-tag">Content Strategy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Paid Media -->
+  <div class="pillar reveal">
+    <div class="pillar-sidebar">
+      <div>
+        <span class="pillar-num">02</span>
+        <h2 class="pillar-name">Paid<br><em>Media</em></h2>
+      </div>
+      <a href="/lets-talk/" class="pillar-cta">
+        Start a project
+        <span class="pillar-cta-arrow">↗</span>
+      </a>
+    </div>
+    <div class="pillar-body">
+      <p class="pillar-desc">Full-funnel paid strategy across every platform. We don't just spend your budget — we engineer it. Spend with precision, scale with confidence.</p>
+      <div class="pillar-capabilities">
+        <div class="capability">
+          <p class="cap-name">Paid Social</p>
+          <p class="cap-detail">Meta · TikTok · Pinterest<br>Snapchat · Reddit · X</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Paid Search</p>
+          <p class="cap-detail">Google Ads · Bing · Shopping<br>Performance Max · Local</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Streaming &amp; Video</p>
+          <p class="cap-detail">YouTube · CTV · Netflix<br>Hulu · Programmatic OTT</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Amazon &amp; Retail</p>
+          <p class="cap-detail">Sponsored Products · DSP<br>Instacart · Criteo · Walmart</p>
+        </div>
+      </div>
+      <div class="pillar-tags">
+        <span class="pillar-tag">Google</span>
+        <span class="pillar-tag">Meta</span>
+        <span class="pillar-tag">TikTok</span>
+        <span class="pillar-tag">Amazon</span>
+        <span class="pillar-tag">Programmatic</span>
+        <span class="pillar-tag">CTV</span>
+        <span class="pillar-tag">Attribution</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Owned & Lifecycle -->
+  <div class="pillar reveal">
+    <div class="pillar-sidebar">
+      <div>
+        <span class="pillar-num">03</span>
+        <h2 class="pillar-name">Owned &amp;<br><em>Lifecycle</em></h2>
+      </div>
+      <a href="/lets-talk/" class="pillar-cta">
+        Start a project
+        <span class="pillar-cta-arrow">↗</span>
+      </a>
+    </div>
+    <div class="pillar-body">
+      <p class="pillar-desc">Acquisition is just the beginning. We build the email, SMS, and SEO programs that own the relationship long after the first click — turning buyers into lifetime customers.</p>
+      <div class="pillar-capabilities">
+        <div class="capability">
+          <p class="cap-name">Email Marketing</p>
+          <p class="cap-detail">Klaviyo · Salesforce · HubSpot<br>Flows · Campaigns · A/B Testing</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">SMS &amp; Push</p>
+          <p class="cap-detail">Attentive · Postscript<br>Segmentation · Automation</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">SEO</p>
+          <p class="cap-detail">Technical · On-page · Link building · AI Search (AIO)<br>Content strategy · Local SEO</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Retention Strategy</p>
+          <p class="cap-detail">LTV modeling · Loyalty programs<br>Churn analysis · Segmentation</p>
+        </div>
+      </div>
+      <div class="pillar-tags">
+        <span class="pillar-tag">Klaviyo</span>
+        <span class="pillar-tag">Email</span>
+        <span class="pillar-tag">SMS</span>
+        <span class="pillar-tag">SEO</span>
+        <span class="pillar-tag">Retention</span>
+        <span class="pillar-tag">LTV</span>
+        <span class="pillar-tag">Automation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Lead Generation -->
+  <div class="pillar reveal">
+    <div class="pillar-sidebar">
+      <div>
+        <span class="pillar-num">04</span>
+        <h2 class="pillar-name">Lead<br><em>Generation</em></h2>
+      </div>
+      <a href="/lets-talk/" class="pillar-cta">
+        Start a project
+        <span class="pillar-cta-arrow">↗</span>
+      </a>
+    </div>
+    <div class="pillar-body">
+      <p class="pillar-desc">Enrollment, inquiry, and demo pipelines that don't just generate volume — they deliver quality. Specialized for higher education, healthcare, and B2B service companies.</p>
+      <div class="pillar-capabilities">
+        <div class="capability">
+          <p class="cap-name">Enrollment Marketing</p>
+          <p class="cap-detail">Inquiry gen · Nurture sequences<br>Open house campaigns · Yield</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Landing Page Strategy</p>
+          <p class="cap-detail">CRO · A/B testing<br>Form optimization · Heat mapping</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Lead Nurture</p>
+          <p class="cap-detail">CRM integration · Drip campaigns<br>Lead scoring · Sales alignment</p>
+        </div>
+        <div class="capability">
+          <p class="cap-name">Analytics &amp; Attribution</p>
+          <p class="cap-detail">GA4 · Looker Studio · MMM<br>CPL tracking · ROI reporting</p>
+        </div>
+      </div>
+      <div class="pillar-tags">
+        <span class="pillar-tag">Higher Ed</span>
+        <span class="pillar-tag">Healthcare</span>
+        <span class="pillar-tag">B2B</span>
+        <span class="pillar-tag">CRO</span>
+        <span class="pillar-tag">CRM</span>
+        <span class="pillar-tag">Lead Nurture</span>
+        <span class="pillar-tag">Attribution</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- OUR APPROACH -->
+<section class="approach-band">
+  <div class="approach-header reveal">
+    <div>
+      <p class="section-label">How We Work</p>
+      <h2 class="approach-title" style="margin-top:16px;">The integrated<br><em>advantage.</em></h2>
+    </div>
+    <p class="approach-body">Most agencies separate creative from media. We never do. When the people making the ads also run the ads, everything gets sharper — faster creative iteration, smarter spend, and results that compound.</p>
+  </div>
+  <div class="approach-steps reveal">
+    <div class="approach-step">
+      <span class="step-num">01 — Discover</span>
+      <h3 class="step-name">Audit & Strategy</h3>
+      <p class="step-desc">We start by understanding your brand, audience, and competitive landscape. No templates — a real strategic foundation built for your category.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">02 — Create</span>
+      <h3 class="step-name">Creative Development</h3>
+      <p class="step-desc">Our in-house studio produces brand and performance creative simultaneously. Every asset is built with placement, audience, and conversion in mind.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">03 — Launch</span>
+      <h3 class="step-name">Activate & Distribute</h3>
+      <p class="step-desc">Paid media, lifecycle, and organic channels work from the same strategy. We activate across platforms with precision, not spray-and-pray.</p>
+    </div>
+    <div class="approach-step">
+      <span class="step-num">04 — Optimize</span>
+      <h3 class="step-name">Test, Learn, Scale</h3>
+      <p class="step-desc">Weekly creative testing, real-time media optimization, and monthly strategy reviews. We move fast because we built the systems to do so.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section class="verticals-section">
+  <div class="verticals-header reveal">
+    <div>
+      <p class="section-label">Industries</p>
+      <h2 class="verticals-title" style="margin-top:12px;">Where we specialize.</h2>
+    </div>
+  </div>
+  <div class="verticals-grid reveal">
+    <div class="vertical-card">
+      <span class="vertical-icon">🛍</span>
+      <h3 class="vertical-name">eCommerce &amp; DTC</h3>
+      <p class="vertical-desc">Fashion, beauty, CPG, wellness. We've scaled over 60 DTC brands — from seed to IPO-ready. We know the playbook and when to break it.</p>
+      <p class="vertical-clients">Dagne Dover · Marimekko · Oars + Alps · RiseWell</p>
+    </div>
+    <div class="vertical-card">
+      <span class="vertical-icon">🎓</span>
+      <h3 class="vertical-name">Higher Education</h3>
+      <p class="vertical-desc">Enrollment marketing for universities, colleges, and specialty institutions. We drive inquiries, applications, and yield — at every stage of the funnel.</p>
+      <p class="vertical-clients">Culinary Institute · Rowan College · Drew University · ECSU</p>
+    </div>
+    <div class="vertical-card">
+      <span class="vertical-icon">💊</span>
+      <h3 class="vertical-name">Health &amp; Wellness</h3>
+      <p class="vertical-desc">Supplements, personal care, aesthetics, and telehealth. We understand compliance constraints and still find the creative that converts.</p>
+      <p class="vertical-clients">Needed · RiseWell · Lushful Aesthetics</p>
+    </div>
+    <div class="vertical-card">
+      <span class="vertical-icon">🏨</span>
+      <h3 class="vertical-name">Luxury &amp; Hospitality</h3>
+      <p class="vertical-desc">Premium brands require premium creative. We know how to move affluent audiences without cheapening the brand — a rare balance in performance marketing.</p>
+      <p class="vertical-clients">Alexis Bittar · Marimekko · Aman Essentials · Eataly</p>
+    </div>
+    <div class="vertical-card">
+      <span class="vertical-icon">📸</span>
+      <h3 class="vertical-name">Arts &amp; Culture</h3>
+      <p class="vertical-desc">Galleries, arts institutions, and photography schools. Audiences who are hard to reach and harder to convert — we've cracked the formula.</p>
+      <p class="vertical-clients">ICP · Casio G-Shock · New York Institute of Photography</p>
+    </div>
+    <div class="vertical-card">
+      <span class="vertical-icon">🏢</span>
+      <h3 class="vertical-name">B2B &amp; Professional</h3>
+      <p class="vertical-desc">Longer sales cycles, complex buying committees, high-value leads. We align paid media with CRM to deliver pipeline, not just impressions.</p>
+      <p class="vertical-clients">The Chicago School · William James College · Pacific Oaks</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band reveal">
+  <h2 class="cta-headline">Ready to build<br>something <em>great?</em></h2>
+  <a href="/lets-talk/" class="cta-btn">
+    <span class="cta-btn-label">Start a Project</span>
+    <span class="cta-btn-arrow">↗</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="nav-logo"><img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px;display:block;"><img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px;display:none;"></a>
+  <div class="footer-meta">
+    <p>20 Jay Street, Suite 1115</p>
+    <p>Brooklyn, New York</p>
+    <br>
+    <p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p>
+  </div>
+</footer>
+
+<script>
+  // Mode persistence
+  const urlMode = new URLSearchParams(window.location.search).get('mode');
+  if (urlMode) localStorage.setItem('mason-mode', urlMode);
+  const mode = localStorage.getItem('mason-mode') || 'default';
+  if (mode === 'highered') {
+    document.body.classList.add('highered-mode');
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    const heBtn = document.querySelector('.toggle-btn[href*="higher"]');
+    if (heBtn) heBtn.classList.add('active');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = '0s';
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

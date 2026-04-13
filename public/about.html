@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mason Interactive | Creative Branding & Strategy Agency Brooklyn NY</title>
+<meta name="description" content="Founded in 2008 in Brooklyn, NY. $1B+ in managed ad spend. 100+ brands and institutions. Creative strategy, paid media, and AI-powered analytics. Meet the team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  /* HIGHER ED MODE */
+  body.highered-mode {
+    --bg: #ede8df;
+    --bg2: #e4dfd6;
+    --cream: #2a2a28;
+    --muted: #7a7a72;
+    --accent: #2eb87a;
+    --border: rgba(42,42,40,0.10);
+  }
+  body.highered-mode nav::after {
+    background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%);
+  }
+  body.highered-mode::after { opacity: 0.15; }
+  body.highered-mode .logo-light { display: none !important; }
+  body.highered-mode .logo-dark { display: block !important; }
+  body.highered-mode .toggle-btn.active { background: var(--accent); color: #fff; }
+
+  body { transition: background 0.6s ease, color 0.6s ease; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.9) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo img { height: 28px; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 12px 22px;
+    border-radius: 100px 0 0 100px;
+  }
+  .nav-cta-arrow {
+    color: #fff;
+    background: #F4632A;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .nav-cta { display: flex; align-items: center; gap: 3px; text-decoration: none; }
+
+  /* NAV TOGGLE */
+  .nav-toggle {
+    display: flex;
+    gap: 2px;
+    background: rgba(240,235,224,0.06);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .toggle-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+  .toggle-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 140px 48px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* NUMBERS */
+  .numbers-strip {
+    display: flex;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .number-block {
+    flex: 1;
+    padding: 32px 48px;
+    border-right: 1px solid var(--border);
+  }
+  .number-block:last-child { border-right: none; }
+  .number-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .number-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* STORY */
+  .story-section {
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .story-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 16px;
+  }
+  .story-title em { font-style: italic; color: var(--accent); }
+  .story-body p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .story-body strong { color: var(--cream); font-weight: 400; }
+
+  /* VALUES */
+  .values-section {
+    padding: 60px 48px;
+    background: var(--bg2);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 40px;
+  }
+  .value-card {
+    background: var(--bg2);
+    padding: 36px 32px;
+    transition: background 0.3s;
+  }
+  .value-card:hover { background: var(--bg); }
+  .value-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .value-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .value-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* TEAM */
+  .team-section { padding: 60px 48px; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-top: 40px;
+  }
+  .team-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+  .team-photo {
+    position: absolute;
+    inset: 0;
+    filter: grayscale(30%) brightness(0.75);
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+  }
+  .team-card:hover .team-photo {
+    transform: scale(1.04);
+    filter: grayscale(0%) brightness(0.55);
+  }
+  .team-sky-1 { background: linear-gradient(160deg, #1a2535 0%, #2d3d50 40%, #3d4f60 100%); }
+  .team-sky-2 { background: linear-gradient(160deg, #251a18 0%, #3d2820 40%, #523530 100%); }
+  .team-sky-3 { background: linear-gradient(160deg, #1a2520 0%, #253d2d 40%, #304d38 100%); }
+  .team-sky-4 { background: linear-gradient(160deg, #251820 0%, #3d2535 40%, #4d2d40 100%); }
+  .team-sky-5 { background: linear-gradient(160deg, #20201a 0%, #35352a 40%, #454535 100%); }
+  .team-sky-6 { background: linear-gradient(160deg, #182025 0%, #253040 40%, #303d50 100%); }
+  .team-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  }
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+  }
+  .team-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s, transform 0.4s;
+  }
+  .team-card:hover .team-role {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PARTNERS */
+  .partners-section {
+    padding: 48px;
+    background: var(--bg2);
+  }
+  .partners-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .partner-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .partner-badge:hover { color: var(--cream); border-color: rgba(240,235,224,0.3); }
+
+  /* FOOTER */
+  footer { display: block; }
+  .footer-cta {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 64px);
+    font-weight: 400;
+  }
+  .footer-cta em { font-style: italic; color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="Mason Logo White.png" alt="Mason" class="logo-light">
+    <img src="Mason Logo.png" alt="Mason" class="logo-dark" style="display:none;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/" class="active">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li>
+      <div class="nav-toggle">
+        <a href="mason-homepage.html" class="toggle-btn active">All</a>
+        <a href="mason-higher-education.html" class="toggle-btn">Higher Ed</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta"><span class="nav-cta-label">Let's Talk</span><span class="nav-cta-arrow">↗</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="section-label" style="opacity:0; animation:fadeUp 1s 0.2s forwards;">Who We Are</p>
+    <h1 class="hero-headline" style="margin-top:16px; opacity:0; animation:fadeUp 1s 0.4s forwards;">
+      <em>Creative</em> is still the<br>unfair advantage.<br>AI is how we<br>scale it.
+    </h1>
+  </div>
+  <div style="opacity:0; animation:fadeUp 1s 0.6s forwards;">
+    <p class="hero-body">Since 2008, Mason has helped brands grow. The landscape has changed and so have we. We've evolved into a creative-first full service partner where human directors and AI-native producers work side by side.</p>
+    <p class="hero-body" style="margin-top:16px;">The idea still comes from a person. The concept, the casting, the taste, the edit. What's different now is what happens after. AI lets our team ship hundreds of variants, localize at the asset level, and keep paid media fed with fresh creative the algorithm actually rewards.</p>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers-strip reveal">
+  <div class="number-block">
+    <p class="number-val">2008</p>
+    <p class="number-label">Founded in<br>Brooklyn, NY</p>
+  </div>
+  <div class="number-block">
+    <p class="number-val">$1B+</p>
+    <p class="number-label">Ad budgets<br>managed</p>
+  </div>
+  <div class="number-block">
+    <p class="number-val">100+</p>
+    <p class="number-label">Brands &<br>institutions</p>
+  </div>
+  <div class="number-block">
+    <p class="number-val">2</p>
+    <p class="number-label">Verticals:<br>eComm + Higher Ed</p>
+  </div>
+  <div class="number-block">
+    <p class="number-val">17</p>
+    <p class="number-label">Years of<br>growth</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="reveal">
+    <p class="section-label">Our Story</p>
+    <h2 class="story-title">Built different,<br><em>on purpose.</em></h2>
+  </div>
+  <div class="reveal">
+    <div class="story-body">
+      <p>Mason was founded in 2008 with a conviction: <strong>performance and creativity aren't opposites.</strong> At a time when most agencies chose between being a "creative shop" or a "media buyer," we refused to split the two.</p>
+      <p>Over 17 years, that conviction has been validated. When the team writing the ads also manages the spend, the feedback loop is tight. Creative learns from data instantly. Media buys informed by brand strategy. <strong>The result is work that's both beautiful and profitable.</strong></p>
+      <p>Today we operate across two deep verticals, <strong>eCommerce & DTC</strong> and <strong>Higher Education</strong>, where we've built proprietary knowledge a generalist agency can't match. We know what works in luxury and fashion. We know the enrollment funnel cold. We bring the cross-pollination of those worlds to every client.</p>
+      <p>Creatives, strategists, media buyers, and technologists, one roof, one P&L. From luxury watchmakers to DTC disruptors to the universities chasing next year's class, we bring the same obsession: <strong>craft work that's impossible to scroll past, run at a scale that moves the number.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="reveal">
+    <p class="section-label">How We Think</p>
+    <h2 class="story-title" style="margin-top:12px;">What we <em>believe.</em></h2>
+  </div>
+  <div class="values-grid reveal">
+    <div class="value-card">
+      <span class="value-num">01</span>
+      <h3 class="value-name">Creative is strategy</h3>
+      <p class="value-desc">The ad is the message. We don't treat creative as decoration for the media plan. The best-performing ads say the right thing, to the right person, in the right way.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">02</span>
+      <h3 class="value-name">Data without soul is noise</h3>
+      <p class="value-desc">We love data. But numbers without interpretation are just spreadsheets. We pair rigorous analytics with human intuition, and we've learned when to trust each one.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">03</span>
+      <h3 class="value-name">Integration wins</h3>
+      <p class="value-desc">Siloed agencies cost you money. When creative, paid, and lifecycle work from the same strategy, insights travel faster and results compound.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">04</span>
+      <h3 class="value-name">Depth over breadth</h3>
+      <p class="value-desc">We don't work in every vertical. We work deeply in two. Our higher ed clients get insights from luxury DTC spend, and vice versa. Cross-vertical intelligence is our edge.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">05</span>
+      <h3 class="value-name">Honest over comfortable</h3>
+      <p class="value-desc">We tell clients what they need to hear. If a campaign isn't working, we say so first and fix it second. The best relationships are built on candor, not cheerleading.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">06</span>
+      <h3 class="value-name">Senior talent, always</h3>
+      <p class="value-desc">Your account is run by people who've been doing this for years. The people who pitch you are the people who do the work. No juniors running your campaigns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="reveal" style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:8px;">
+    <div>
+      <p class="section-label">The Team</p>
+      <h2 class="story-title" style="margin-top:12px;">The people behind the work.</h2>
+    </div>
+  </div>
+  <div class="team-grid reveal">
+    <div class="team-card">
+      <div class="team-photo team-sky-1"></div>
+      <div class="team-overlay">
+        <p class="team-name">Brook Shepard</p>
+        <p class="team-role">Founder & CEO</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-sky-2"></div>
+      <div class="team-overlay">
+        <p class="team-name">Michael Mellia</p>
+        <p class="team-role">Creative Director</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-sky-3"></div>
+      <div class="team-overlay">
+        <p class="team-name">Ashley Bruzas</p>
+        <p class="team-role">VP, Client Services</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-sky-4"></div>
+      <div class="team-overlay">
+        <p class="team-name">Brian Poole</p>
+        <p class="team-role">VP, Paid Media</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-sky-5"></div>
+      <div class="team-overlay">
+        <p class="team-name">Caitlin Groseclose</p>
+        <p class="team-role">Director, Strategy</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-sky-6"></div>
+      <div class="team-overlay">
+        <p class="team-name">Andrew Womble</p>
+        <p class="team-role">Director, SEO</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo" style="background:linear-gradient(160deg, #1a2025 0%, #2a3540 40%, #354550 100%);"></div>
+      <div class="team-overlay">
+        <p class="team-name">Caroline Pachacz</p>
+        <p class="team-role">Director, Lifecycle</p>
+      </div>
+    </div>
+    <div class="team-card" style="background:var(--bg2); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; padding:32px;">
+      <p style="font-family:'Playfair Display',serif; font-size:20px; font-weight:400; color:var(--cream); text-align:center; line-height:1.3;">We're always looking<br>for great people.</p>
+      <a href="/lets-talk/" style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); text-decoration:none;">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section reveal">
+  <p class="section-label">Platform Partners</p>
+  <div class="partners-row">
+    <span class="partner-badge">Google Premier Partner</span>
+    <span class="partner-badge">Meta Business Partner</span>
+    <span class="partner-badge">TikTok Marketing Partner</span>
+    <span class="partner-badge">Klaviyo Partner</span>
+    <span class="partner-badge">Amazon Ads Partner</span>
+    <span class="partner-badge">HubSpot Solutions Partner</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:60px 48px; background:var(--bg2);">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+    <div style="display:flex; align-items:center; gap:20px;">
+      <h2 class="footer-cta">Let's <em>talk.</em></h2>
+      <a href="/lets-talk/" style="text-decoration:none;">
+        <span style="width:48px; height:48px; background:#F4632A; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff;">↗</span>
+      </a>
+    </div>
+    <p style="font-family:'DM Mono',monospace; font-size:11px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream); opacity:0.4; text-align:center;">Brooklyn, NY · Google Premier Partner · Meta Partner · © 2026 Mason Interactive</p>
+  </div>
+</footer>
+
+<script>
+  // Mode persistence
+  const mode = localStorage.getItem('mason-mode') || 'default';
+  if (mode === 'highered') {
+    document.body.classList.add('highered-mode');
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    const heBtn = document.querySelector('.toggle-btn[href*="higher"]');
+    if (heBtn) heBtn.classList.add('active');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
