@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Portfolio — Mason Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CURSOR */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor.expand { width: 60px; height: 60px; background: var(--cream); }
+
+  /* NOISE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  /* NAV — minimal, no active state since page is off-nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.95) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 10px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover .nav-cta-label { background: var(--accent); }
+  .nav-cta-arrow {
+    width: 38px; height: 38px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: var(--bg);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-cta:hover .nav-cta-arrow { background: var(--accent); transform: rotate(45deg); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  .cp-hero {
+    min-height: 100vh;
+    padding: 0 48px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .cp-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(100, 180, 120, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cp-hero > * { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(60px, 9vw, 140px);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    max-width: 1000px;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .hero-capabilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+  }
+  .hero-cap {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .hero-cap:hover {
+    color: var(--accent);
+    border-color: rgba(200,240,96,0.3);
+  }
+
+  /* ── FILTER ── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    gap: 0;
+  }
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 22px 24px;
+    cursor: none;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { color: var(--cream); }
+  .filter-btn.active { color: var(--cream); border-bottom-color: var(--accent); }
+
+  /* ── MASONRY-STYLE PORTFOLIO GRID ── */
+  .portfolio-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Two-column editorial layout alternating between sizes */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  /* Wide item spans both columns */
+  .portfolio-item.wide {
+    grid-column: span 2;
+  }
+
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+    cursor: none;
+  }
+  .portfolio-item.tall .portfolio-visual { aspect-ratio: 4/5; }
+  .portfolio-item.square .portfolio-visual { aspect-ratio: 1/1; }
+  .portfolio-item.wide .portfolio-visual { aspect-ratio: 21/9; }
+  .portfolio-item.landscape .portfolio-visual { aspect-ratio: 16/9; }
+
+  .portfolio-visual {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-sky {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+    filter: brightness(0.8);
+  }
+  .portfolio-item:hover .portfolio-sky {
+    transform: scale(1.04);
+    filter: brightness(0.45);
+  }
+
+  /* gradient overlays */
+  .portfolio-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 40%, transparent 70%);
+    z-index: 1;
+  }
+
+  .portfolio-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px 32px;
+    z-index: 2;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .portfolio-item:hover .portfolio-info { transform: translateY(-12px); }
+
+  .portfolio-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .portfolio-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 1.8vw, 26px);
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .portfolio-client {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 6px;
+    display: block;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s 0.05s, transform 0.4s;
+  }
+  .portfolio-item:hover .portfolio-client {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Sky palette — richer, more varied for a creative portfolio */
+  .cp-1  { background: radial-gradient(ellipse 120% 90% at 20% 70%, #0d1f2d 0%, #1a3a50 45%, #0a2535 100%), radial-gradient(ellipse 50% 40% at 80% 20%, rgba(200,240,96,0.15) 0%, transparent 55%); }
+  .cp-2  { background: radial-gradient(ellipse 100% 80% at 70% 30%, #2d1508 0%, #5a2a10 45%, #3d1c08 100%), radial-gradient(ellipse 60% 50% at 15% 80%, rgba(255,160,60,0.12) 0%, transparent 55%); }
+  .cp-3  { background: radial-gradient(ellipse 110% 85% at 40% 55%, #080d18 0%, #101a30 45%, #0a1525 100%), radial-gradient(ellipse 70% 40% at 85% 15%, rgba(160,180,255,0.12) 0%, transparent 50%); }
+  .cp-4  { background: radial-gradient(ellipse 130% 70% at 50% 60%, #1a0d08 0%, #3d2010 45%, #281408 100%), radial-gradient(ellipse 45% 60% at 10% 25%, rgba(255,140,80,0.10) 0%, transparent 55%); }
+  .cp-5  { background: radial-gradient(ellipse 115% 80% at 25% 45%, #081520 0%, #102a40 40%, #081825 100%), radial-gradient(ellipse 55% 45% at 80% 75%, rgba(100,200,220,0.10) 0%, transparent 55%); }
+  .cp-6  { background: radial-gradient(ellipse 100% 90% at 60% 35%, #200a08 0%, #401510 42%, #2d0d08 100%), radial-gradient(ellipse 50% 55% at 20% 70%, rgba(255,100,60,0.10) 0%, transparent 52%); }
+  .cp-7  { background: radial-gradient(ellipse 120% 75% at 35% 60%, #0a1830 0%, #152840 40%, #0a1828 100%), radial-gradient(ellipse 65% 40% at 75% 20%, rgba(200,240,96,0.10) 0%, transparent 52%); }
+  .cp-8  { background: radial-gradient(ellipse 105% 82% at 55% 45%, #251008 0%, #452010 42%, #301508 100%), radial-gradient(ellipse 48% 55% at 15% 30%, rgba(255,180,80,0.10) 0%, transparent 55%); }
+  .cp-9  { background: radial-gradient(ellipse 110% 78% at 30% 55%, #080f18 0%, #101e30 40%, #080d1e 100%), radial-gradient(ellipse 60% 42% at 82% 18%, rgba(180,160,255,0.10) 0%, transparent 52%); }
+  .cp-10 { background: radial-gradient(ellipse 100% 85% at 65% 40%, #1e0c08 0%, #3c1810 42%, #2a1008 100%), radial-gradient(ellipse 52% 58% at 18% 72%, rgba(255,120,60,0.08) 0%, transparent 52%); }
+
+  /* ── CAPABILITIES DETAIL ── */
+  .capabilities-section {
+    padding: 120px 48px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+  }
+  .cap-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 80px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cap-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 16px;
+  }
+  .cap-title em { font-style: italic; color: var(--accent); }
+  .cap-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .cap-card {
+    background: var(--bg2);
+    padding: 40px 36px;
+    transition: background 0.3s;
+  }
+  .cap-card:hover { background: #161614; }
+  .cap-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .cap-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .cap-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .cap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cap-list-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-left: 12px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .cap-list-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+  .cap-card:hover .cap-list-item { color: rgba(240,235,224,0.6); }
+
+  /* ── PROCESS ── */
+  .process-section {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-header {
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 16px;
+  }
+  .process-title em { font-style: italic; color: var(--accent); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .process-step {
+    background: var(--bg);
+    padding: 40px 32px;
+    position: relative;
+  }
+  .process-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 40px;
+    font-size: 14px;
+    color: var(--muted);
+    z-index: 2;
+  }
+  .process-step:last-child::after { display: none; }
+  .process-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .process-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .process-desc {
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── CLIENTS STRIP ── */
+  .clients-strip {
+    padding: 80px 48px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+  }
+  .clients-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 40px;
+  }
+  .client-strip-item {
+    background: var(--bg2);
+    padding: 32px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+  .client-strip-item:hover { background: #161614; }
+  .client-strip-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+    text-align: center;
+    transition: color 0.3s;
+  }
+  .client-strip-item:hover .client-strip-name { color: var(--cream); }
+
+  /* ── CTA ── */
+  .cta-band {
+    padding: 140px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+  }
+  .cta-headline em { font-style: italic; color: var(--accent); }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .cta-btn-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 16px 28px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+  }
+  .cta-btn:hover .cta-btn-label { background: var(--accent); }
+  .cta-btn-arrow {
+    width: 48px; height: 48px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--bg);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .cta-btn:hover .cta-btn-arrow { background: var(--accent); transform: rotate(45deg); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Mason</a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="/hire-us/" class="nav-cta">
+    <span class="nav-cta-label">Hire Us</span>
+    <span class="nav-cta-arrow">↗</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="cp-hero">
+  <p class="hero-eyebrow reveal">Creative & Production · Mason Interactive</p>
+  <h1 class="hero-headline reveal">We make things<br>people <em>stop</em><br>to look at.</h1>
+  <div class="hero-bottom reveal">
+    <p class="hero-desc">Performance creative built for the real world — where the feed moves fast, attention is scarce, and the best creative wins. We make brand campaigns, performance ads, UGC, video, and photo that work as hard as they look good.</p>
+    <div class="hero-capabilities">
+      <span class="hero-cap">Brand Campaigns</span>
+      <span class="hero-cap">Performance Creative</span>
+      <span class="hero-cap">Video Production</span>
+      <span class="hero-cap">Photography</span>
+      <span class="hero-cap">UGC</span>
+      <span class="hero-cap">Motion Graphics</span>
+      <span class="hero-cap">OOH</span>
+      <span class="hero-cap">CTV Ads</span>
+      <span class="hero-cap">Social Content</span>
+      <span class="hero-cap">Ad Creative</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar reveal">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="video">Video</button>
+  <button class="filter-btn" data-filter="photo">Photography</button>
+  <button class="filter-btn" data-filter="brand">Brand</button>
+  <button class="filter-btn" data-filter="performance">Performance Ads</button>
+  <button class="filter-btn" data-filter="ugc">UGC</button>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio-section reveal">
+  <div class="portfolio-grid" id="portfolio-grid">
+
+    <!-- Row 1: wide hero piece -->
+    <div class="portfolio-item wide" data-category="brand">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-1"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand Campaign · Video</span>
+          <h3 class="portfolio-title">Dagne Dover — Find Your Flow</h3>
+          <span class="portfolio-client">Full brand campaign · TV + Digital + OOH</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: tall + square -->
+    <div class="portfolio-item tall" data-category="photo">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-2"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Editorial Photography</span>
+          <h3 class="portfolio-title">Marimekko — Spring Collection</h3>
+          <span class="portfolio-client">Lifestyle photography · Campaign assets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item tall" data-category="performance">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-3"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Performance Creative · Meta</span>
+          <h3 class="portfolio-title">Needed — Conversion Series</h3>
+          <span class="portfolio-client">Static + video ad creative · 40+ variants</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: landscape + landscape -->
+    <div class="portfolio-item landscape" data-category="video">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-4"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Video Production · CTV</span>
+          <h3 class="portfolio-title">ECSU — Living for Warrior Life</h3>
+          <span class="portfolio-client">Documentary-style · Netflix CTV campaign</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item landscape" data-category="ugc">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-5"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">UGC · TikTok + Reels</span>
+          <h3 class="portfolio-title">RiseWell — Creator Series</h3>
+          <span class="portfolio-client">UGC sourcing + scripting · 60+ clips</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: square + square -->
+    <div class="portfolio-item square" data-category="brand">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-6"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand Identity · OOH</span>
+          <h3 class="portfolio-title">Alexis Bittar — NYC Launch</h3>
+          <span class="portfolio-client">Out-of-home · Digital activations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item square" data-category="performance">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-7"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Performance Creative · Google</span>
+          <h3 class="portfolio-title">Culinary Institute — Enrollment Drive</h3>
+          <span class="portfolio-client">Display + YouTube creative · 30+ assets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: wide cinematic -->
+    <div class="portfolio-item wide" data-category="video">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-8"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand Film · Higher Ed</span>
+          <h3 class="portfolio-title">Drew University — Find Your Path</h3>
+          <span class="portfolio-client">60s brand film · Paid social + CTV</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 6: landscape + landscape -->
+    <div class="portfolio-item landscape" data-category="photo">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-9"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Product Photography</span>
+          <h3 class="portfolio-title">Oars + Alps — Product Launch</h3>
+          <span class="portfolio-client">Studio + lifestyle · E-commerce assets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-item landscape" data-category="ugc">
+      <div class="portfolio-visual">
+        <div class="portfolio-sky cp-10"></div>
+        <div class="portfolio-info">
+          <span class="portfolio-type">UGC · Meta + TikTok</span>
+          <h3 class="portfolio-title">Lushful Aesthetics — Social Series</h3>
+          <span class="portfolio-client">Creator-led content · Hook testing</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities-section">
+  <div class="cap-header reveal">
+    <div>
+      <p class="section-label">What We Make</p>
+      <h2 class="cap-title" style="margin-top:16px;">Creative that<br><em>performs.</em></h2>
+    </div>
+    <p class="cap-body">We're not a production house and we're not a pure performance shop. We're both — which means every asset we make is built to look great and convert. The creative team and the media team sit in the same room, and it shows.</p>
+  </div>
+  <div class="cap-grid reveal">
+    <div class="cap-card">
+      <span class="cap-icon">🎬</span>
+      <h3 class="cap-name">Video Production</h3>
+      <p class="cap-desc">From 6-second hooks to 60-second brand films. On-location, studio, or remote — we produce video that works across every placement.</p>
+      <div class="cap-list">
+        <span class="cap-list-item">Brand Films</span>
+        <span class="cap-list-item">Performance Video Ads</span>
+        <span class="cap-list-item">CTV & OTT</span>
+        <span class="cap-list-item">Documentary Style</span>
+        <span class="cap-list-item">Social-First Video</span>
+      </div>
+    </div>
+    <div class="cap-card">
+      <span class="cap-icon">📸</span>
+      <h3 class="cap-name">Photography</h3>
+      <p class="cap-desc">Lifestyle, editorial, product, and campaign photography. We shoot for every placement — from billboards to feed ads.</p>
+      <div class="cap-list">
+        <span class="cap-list-item">Lifestyle & Editorial</span>
+        <span class="cap-list-item">Product Photography</span>
+        <span class="cap-list-item">Campaign Assets</span>
+        <span class="cap-list-item">E-Commerce Imagery</span>
+        <span class="cap-list-item">OOH Creative</span>
+      </div>
+    </div>
+    <div class="cap-card">
+      <span class="cap-icon">✦</span>
+      <h3 class="cap-name">Performance Creative</h3>
+      <p class="cap-desc">Static ads, motion graphics, carousels, and creative testing frameworks. Built for Meta, Google, TikTok, and beyond.</p>
+      <div class="cap-list">
+        <span class="cap-list-item">Meta Ad Creative</span>
+        <span class="cap-list-item">TikTok Ads</span>
+        <span class="cap-list-item">Google Display</span>
+        <span class="cap-list-item">Motion Graphics</span>
+        <span class="cap-list-item">Creative Testing</span>
+      </div>
+    </div>
+    <div class="cap-card">
+      <span class="cap-icon">📱</span>
+      <h3 class="cap-name">UGC & Influencer</h3>
+      <p class="cap-desc">Creator sourcing, scripting, whitelisting, and management. UGC that looks organic, converts like paid.</p>
+      <div class="cap-list">
+        <span class="cap-list-item">Creator Sourcing</span>
+        <span class="cap-list-item">Script Development</span>
+        <span class="cap-list-item">Whitelisting</span>
+        <span class="cap-list-item">Hook Testing</span>
+        <span class="cap-list-item">Paid Partnership Mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-header reveal">
+    <p class="section-label">How We Work</p>
+    <h2 class="process-title" style="margin-top:16px;">From brief to<br><em>live in weeks.</em></h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <span class="process-num">01</span>
+      <h3 class="process-name">Brief</h3>
+      <p class="process-desc">We start with strategy. Who's the audience, what's the message, what does success look like?</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">02</span>
+      <h3 class="process-name">Concept</h3>
+      <p class="process-desc">Multiple creative directions. We push for the unexpected alongside the dependable.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">03</span>
+      <h3 class="process-name">Produce</h3>
+      <p class="process-desc">On-location or studio. Our team handles everything from casting to final cut.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">04</span>
+      <h3 class="process-name">Adapt</h3>
+      <p class="process-desc">We cut, resize, and optimize every asset for every placement and platform.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">05</span>
+      <h3 class="process-name">Test & Learn</h3>
+      <p class="process-desc">Live creative testing with real data. We iterate fast and kill what doesn't work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-strip">
+  <div class="reveal">
+    <p class="section-label">Brands We've Made For</p>
+    <div class="clients-strip-grid">
+      <div class="client-strip-item"><p class="client-strip-name">Dagne Dover</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Marimekko</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Casio G-Shock</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Oars + Alps</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Needed</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">RiseWell</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Lushful Aesthetics</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Alexis Bittar</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Drew University</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">ECSU</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">Culinary Institute</p></div>
+      <div class="client-strip-item"><p class="client-strip-name">The Chicago School</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band reveal">
+  <h2 class="cta-headline">Let's make<br>something <em>great.</em></h2>
+  <a href="/hire-us/" class="cta-btn">
+    <span class="cta-btn-label">Start a Project</span>
+    <span class="cta-btn-arrow">↗</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="nav-logo">Mason</a>
+  <div class="footer-meta">
+    <p>20 Jay Street, Suite 1115</p>
+    <p>Brooklyn, New York</p>
+    <br>
+    <p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, .portfolio-item, .cap-card, .filter-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+  });
+
+  // Filter — show/hide portfolio items
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

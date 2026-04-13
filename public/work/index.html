@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work | Creative Agency for Luxury Brands & Higher Ed | Mason Interactive</title>
+<meta name="description" content="Case studies and creative work from Mason Interactive. Aman, Laurent Ferrier, Dagne Dover, ECSU, Culinary Institute, and 100+ brands and institutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --border: rgba(240,235,224,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.95) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--cream); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 12px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s, color 0.3s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-cta-arrow {
+    color: #fff;
+    background: #F4632A;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-cta:hover .nav-cta-arrow { transform: rotate(45deg); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  .work-hero {
+    min-height: 55vh;
+    padding: 160px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 80px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .work-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 55% 85%, rgba(100, 180, 120, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .work-hero > * { position: relative; z-index: 1; }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 110px);
+    font-weight: 400;
+    line-height: 0.93;
+    letter-spacing: -0.03em;
+    margin-top: 20px;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-right {
+    padding-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .hero-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { color: var(--cream); }
+  .filter-btn.active { color: var(--cream); border-bottom-color: var(--accent); }
+
+  /* ── FEATURED CASE STUDY ── */
+  .featured-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .featured-case {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-visual {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-sky {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 110% 90% at 20% 70%, #1a2a3a 0%, #2d4a62 40%, #3d6882 100%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,240,96,0.12) 0%, transparent 55%);
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .featured-case:hover .featured-sky { transform: scale(1.04); }
+  .featured-label {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 6px 12px;
+    z-index: 2;
+  }
+  .featured-result-overlay {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    z-index: 2;
+  }
+  .featured-result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    opacity: 0.15;
+  }
+
+  .featured-body {
+    background: var(--bg2);
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .case-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .case-industry {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .case-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .case-services {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .featured-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 48px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .featured-excerpt {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+    flex-grow: 1;
+  }
+  .case-results {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .case-result { display: flex; flex-direction: column; gap: 4px; }
+  .result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .result-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .case-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 36px;
+    transition: color 0.3s;
+  }
+  .featured-case:hover .case-cta { color: var(--accent); }
+  .case-cta-arrow {
+    width: 28px; height: 28px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    transition: transform 0.3s;
+  }
+  .featured-case:hover .case-cta-arrow { transform: rotate(45deg); }
+
+  /* ── CASE STUDY GRID ── */
+  .cases-section {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cases-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cases-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .case-card {
+    background: var(--bg);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+    overflow: hidden;
+  }
+  .case-card:hover { background: var(--bg2); }
+  .case-card-visual {
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card-sky {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+    filter: brightness(0.85);
+  }
+  .case-card:hover .case-card-sky {
+    transform: scale(1.05);
+    filter: brightness(0.6);
+  }
+  .card-industry-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 4px 10px;
+    z-index: 2;
+  }
+  .case-card-body {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .case-card-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .case-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 1.6vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .case-card:hover .case-card-title { color: var(--accent); }
+  .case-card-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+    flex-grow: 1;
+  }
+  .case-card-results {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .card-result { display: flex; flex-direction: column; gap: 2px; }
+  .card-result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .card-result-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* sky gradients */
+  .ws-1 { background: radial-gradient(ellipse 110% 80% at 25% 55%, #1a2d3d 0%, #2d4f6a 45%, #1a3348 100%); }
+  .ws-2 { background: radial-gradient(ellipse 100% 75% at 65% 40%, #3a1e10 0%, #5a3018 45%, #3d2010 100%); }
+  .ws-3 { background: radial-gradient(ellipse 120% 70% at 35% 50%, #1a2838 0%, #2a4258 40%, #182030 100%); }
+  .ws-4 { background: radial-gradient(ellipse 100% 80% at 55% 45%, #2a1a0a 0%, #4a3015 45%, #321e08 100%); }
+  .ws-5 { background: radial-gradient(ellipse 115% 75% at 30% 52%, #0e2230 0%, #1a3848 40%, #0a1a28 100%); }
+  .ws-6 { background: radial-gradient(ellipse 95% 78% at 60% 48%, #301808 0%, #502a10 42%, #3a1e08 100%); }
+  .ws-7 { background: radial-gradient(ellipse 110% 72% at 40% 55%, #182030 0%, #283848 40%, #101828 100%); }
+  .ws-8 { background: radial-gradient(ellipse 100% 80% at 50% 45%, #281408 0%, #482210 42%, #301808 100%); }
+
+  /* ── CTA ── */
+  .cta-band {
+    padding: 140px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+  }
+  .cta-headline em { font-style: italic; color: var(--accent); }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .cta-btn-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cream);
+    padding: 16px 28px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+  }
+  .cta-btn:hover .cta-btn-label { background: var(--accent); }
+  .cta-btn-arrow {
+    width: 48px; height: 48px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--bg);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .cta-btn:hover .cta-btn-arrow { background: var(--accent); transform: rotate(45deg); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 2;
+  }
+
+  /* ── HIGHER ED MODE ── */
+  body.highered-mode { --bg:#ede8df; --bg2:#e4dfd6; --cream:#2a2a28; --muted:#7a7a72; --accent:#2eb87a; --border:rgba(42,42,40,0.10); }
+  body.highered-mode nav::after { background:linear-gradient(to bottom,rgba(237,232,223,0.95) 0%,transparent 100%); }
+  body.highered-mode::after { opacity:0.15; }
+  body.highered-mode .logo-light { display:none !important; }
+  body.highered-mode .logo-dark { display:block !important; }
+  body.highered-mode .toggle-btn.active { background:var(--accent); color:#fff; }
+  .toggle-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 100px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    border: none;
+  }
+  .toggle-btn.active { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px;display:block;"><img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px;display:none;"></a>
+  <ul class="nav-links">
+    <li><a href="/work/" class="active">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><div class="nav-toggle" style="display:flex;gap:2px;background:rgba(240,235,224,0.06);border-radius:100px;padding:3px;"><a href="mason-homepage.html" class="toggle-btn active" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;padding:6px 14px;border-radius:100px;text-decoration:none;">All</a><a href="mason-higher-education.html" class="toggle-btn" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;padding:6px 14px;border-radius:100px;text-decoration:none;">Higher Ed</a></div></li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta">
+    <span class="nav-cta-label">Let's Talk</span>
+    <span class="nav-cta-arrow">↗</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="work-hero">
+  <div>
+    <p class="section-label reveal">Selected Work</p>
+    <h1 class="hero-headline reveal">Results that<br><em>speak.</em></h1>
+  </div>
+  <div class="hero-right reveal">
+    <p class="hero-sub">Seventeen years of campaigns, creative, and strategy — across fashion, CPG, higher ed, and beyond. Here's some of what we've built.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">$1B+</span>
+        <span class="hero-stat-label">Ad spend managed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100+</span>
+        <span class="hero-stat-label">Brands served</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">17yr</span>
+        <span class="hero-stat-label">In business</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar reveal">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+  <button class="filter-btn" data-filter="highered">Higher Ed</button>
+  <button class="filter-btn" data-filter="cpg">CPG</button>
+  <button class="filter-btn" data-filter="luxury">Luxury</button>
+</div>
+
+<!-- FEATURED -->
+<section class="featured-section reveal">
+  <a href="/work/dagne-dover/" class="featured-case" data-category="ecommerce">
+    <div class="featured-visual">
+      <div class="featured-sky"></div>
+      <span class="featured-label">eCommerce</span>
+      <div class="featured-result-overlay">
+        <p class="featured-result-num">30%</p>
+      </div>
+    </div>
+    <div class="featured-body">
+      <div>
+        <div class="case-meta">
+          <span class="case-industry">Fashion / Accessories</span>
+          <span class="case-dot"></span>
+          <span class="case-services">Paid Media · Creative · Lifecycle</span>
+        </div>
+        <h2 class="featured-title">Dagne Dover</h2>
+        <p class="featured-excerpt">How we helped Dagne Dover scale from a DTC darling into a household name — combining performance creative with full-funnel media strategy across Meta, Google, and CTV.</p>
+      </div>
+      <div>
+        <div class="case-results">
+          <div class="case-result">
+            <span class="result-num">30%</span>
+            <span class="result-label">YoY revenue<br>growth</span>
+          </div>
+          <div class="case-result">
+            <span class="result-num">↑ ROAS</span>
+            <span class="result-label">Across all<br>paid channels</span>
+          </div>
+          <div class="case-result">
+            <span class="result-num">CTV</span>
+            <span class="result-label">Netflix campaign<br>launch</span>
+          </div>
+        </div>
+        <span class="case-cta">
+          Read case study
+          <span class="case-cta-arrow">↗</span>
+        </span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- CASE GRID -->
+<section class="cases-section">
+  <div class="cases-header reveal">
+    <div>
+      <p class="section-label">All Work</p>
+      <h2 class="cases-title" style="margin-top:8px;">Every engagement</h2>
+    </div>
+  </div>
+
+  <div class="cases-grid reveal" id="cases-grid">
+
+    <a href="/work/needed/" class="case-card" data-category="cpg">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-1"></div>
+        <span class="card-industry-tag">CPG</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">CPG / Nutrition</span>
+        </div>
+        <h3 class="case-card-title">Needed</h3>
+        <p class="case-card-desc">Scaling a perinatal supplement brand from early traction to a $14M Series A — through efficient paid media and creative testing across Meta, Google, and TikTok.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">$14M</span>
+            <span class="card-result-label">Series A raised</span>
+          </div>
+          <div class="card-result">
+            <span class="card-result-num">↑ MRR</span>
+            <span class="card-result-label">New customer growth</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/marimekko/" class="case-card" data-category="luxury">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-2"></div>
+        <span class="card-industry-tag">Luxury</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Luxury Lifestyle</span>
+        </div>
+        <h3 class="case-card-title">Marimekko</h3>
+        <p class="case-card-desc">Creative-first paid social and strategy for the iconic Finnish design brand — driving 30% YoY revenue growth while maintaining premium brand positioning.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">30%</span>
+            <span class="card-result-label">YoY revenue growth</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/culinary-institute/" class="case-card" data-category="highered">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-3"></div>
+        <span class="card-industry-tag">Higher Ed</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Culinary Arts</span>
+        </div>
+        <h3 class="case-card-title">Culinary Institute of America</h3>
+        <p class="case-card-desc">Full-funnel enrollment marketing for one of the world's most prestigious culinary schools — driving inquiry volume and improving yield across paid search and paid social.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ Inquiries</span>
+            <span class="card-result-label">YoY enrollment lift</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/risewell/" class="case-card" data-category="cpg">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-4"></div>
+        <span class="card-industry-tag">CPG</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">CPG / Wellness</span>
+        </div>
+        <h3 class="case-card-title">RiseWell</h3>
+        <p class="case-card-desc">Scaling a natural oral care brand through performance creative and lifecycle marketing — turning first-time buyers into repeat subscribers.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ LTV</span>
+            <span class="card-result-label">Repeat purchase rate</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/the-chicago-school/" class="case-card" data-category="highered">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-5"></div>
+        <span class="card-industry-tag">Higher Ed</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Graduate Psychology</span>
+        </div>
+        <h3 class="case-card-title">The Chicago School</h3>
+        <p class="case-card-desc">Multi-program enrollment marketing for a national graduate psychology institution — driving qualified applicants across every degree level.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ CPL</span>
+            <span class="card-result-label">Efficiency gains</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/oars-alps/" class="case-card" data-category="ecommerce">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-6"></div>
+        <span class="card-industry-tag">eCommerce</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Men's Grooming / CPG</span>
+        </div>
+        <h3 class="case-card-title">Oars + Alps</h3>
+        <p class="case-card-desc">Building a high-performance paid social engine for a premium men's grooming brand — creative testing at scale, channel diversification, and new customer acquisition.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ ROAS</span>
+            <span class="card-result-label">Paid social efficiency</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/drew-university/" class="case-card" data-category="highered">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-7"></div>
+        <span class="card-industry-tag">Higher Ed</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Liberal Arts</span>
+        </div>
+        <h3 class="case-card-title">Drew University</h3>
+        <p class="case-card-desc">Enrollment marketing and creative for a liberal arts university — building awareness, driving applications, and improving yield through targeted paid and organic strategy.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ Apps</span>
+            <span class="card-result-label">Application volume</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="/work/alexis-bittar/" class="case-card" data-category="luxury">
+      <div class="case-card-visual">
+        <div class="case-card-sky ws-8"></div>
+        <span class="card-industry-tag">Luxury</span>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-industry">Luxury Jewelry</span>
+        </div>
+        <h3 class="case-card-title">Alexis Bittar</h3>
+        <p class="case-card-desc">SEO, content strategy, and paid media for an iconic luxury jewelry brand — driving organic growth and paid efficiency without compromising the brand's premium positioning.</p>
+        <div class="case-card-results">
+          <div class="card-result">
+            <span class="card-result-num">↑ Organic</span>
+            <span class="card-result-label">Search traffic growth</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band reveal">
+  <h2 class="cta-headline">Want results<br>like <em>these?</em></h2>
+  <a href="/lets-talk/" class="cta-btn">
+    <span class="cta-btn-label">Start a Project</span>
+    <span class="cta-btn-arrow">↗</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="nav-logo"><img src="Mason Logo White.png" alt="Mason" class="logo-light" style="height:28px;display:block;"><img src="Mason Logo.png" alt="Mason" class="logo-dark" style="height:28px;display:none;"></a>
+  <div class="footer-meta">
+    <p>20 Jay Street, Suite 1115</p>
+    <p>Brooklyn, New York</p>
+    <br>
+    <p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p>
+  </div>
+</footer>
+
+<script>
+  // Mode persistence
+  const urlMode = new URLSearchParams(window.location.search).get('mode');
+  if (urlMode) localStorage.setItem('mason-mode', urlMode);
+  const mode = localStorage.getItem('mason-mode') || 'default';
+  if (mode === 'highered') {
+    document.body.classList.add('highered-mode');
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    const heBtn = document.querySelector('.toggle-btn[href*="higher"]');
+    if (heBtn) heBtn.classList.add('active');
+  }
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.case-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

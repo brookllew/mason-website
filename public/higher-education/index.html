@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Higher Education Marketing Agency | Enrollment Marketing | Mason Interactive</title>
+<meta name="description" content="Higher education marketing agency with higher creative standards. AI-scaled paid media, video production, and enrollment strategy for 60+ colleges and universities. Brooklyn, NY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ede8df;
+    --bg2: #e4dfd6;
+    --cream: #2a2a28;
+    --muted: #7a7a72;
+    --accent: #2eb87a;
+    --border: rgba(42,42,40,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE — lighter for cream bg */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.15;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .nav-logo img { height: 28px; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+  .nav-cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    padding: 12px 22px;
+    border-radius: 100px 0 0 100px;
+    transition: background 0.3s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-cta-arrow {
+    color: #fff;
+    background: #F4632A;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover .nav-cta-label,
+  .nav-cta:hover .nav-cta-arrow { background: #d94f1e; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 140px 48px 60px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 600px;
+    margin-top: 32px;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    display: flex;
+    gap: 64px;
+    padding: 48px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* CLIENT GRID — same as homepage */
+  .clients-section { padding: 60px 48px 24px; }
+  .client-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+  .client-row { display: contents; }
+  .client-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+  .client-sky {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+  }
+  .client-item:hover .client-sky {
+    transform: scale(1.04);
+    filter: brightness(0.7) saturate(0.9);
+  }
+  .client-item video,
+  .client-item img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+  }
+  .client-item:hover video,
+  .client-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.7) saturate(0.9);
+  }
+  .client-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    z-index: 1;
+  }
+  .client-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .client-industry {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s, transform 0.4s;
+  }
+  .client-item:hover .client-industry {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .client-services {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s 0.05s, transform 0.4s;
+  }
+  .client-item:hover .client-services {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* WHAT WE'RE NOT */
+  .contrast-section {
+    padding: 60px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 32px;
+  }
+  .contrast-item {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--muted);
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+  }
+  .contrast-item em {
+    font-style: normal;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* INTEL SECTION */
+  .intel-section {
+    padding: 60px 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* SERVICES */
+  .services-section {
+    padding: 48px;
+    background: var(--bg2);
+    position: relative;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 32px;
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 32px 28px;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: var(--bg); }
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .service-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .service-card:hover .service-tag {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* CROSS-REFERENCE */
+  .cross-ref {
+    padding: 60px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cross-ref-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.4;
+  }
+  .cross-ref-text em { color: var(--accent); font-style: normal; }
+
+  /* QUOTE */
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--cream);
+  }
+  .quote-text em { color: var(--accent); font-style: normal; }
+  .quote-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .quote-result {
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  /* FOOTER */
+  footer { display: block; }
+  .footer-cta {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 64px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .footer-cta em { font-style: italic; color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="Mason Logo.png" alt="Mason"></a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="/lets-talk/" class="nav-cta"><span class="nav-cta-label">Let's Talk</span><span class="nav-cta-arrow">↗</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:100px; padding-bottom:0;">
+  <p style="font-family:'DM Mono',monospace; font-size:clamp(11px, 1.1vw, 14px); font-weight:400; color:var(--cream); letter-spacing:0.14em; text-transform:uppercase; line-height:1.6; margin-bottom:24px; opacity:0; animation:fadeUp 1s 0.2s forwards;">Creative-Led, AI-Accelerated Full Service Agency <span style="color:var(--muted);">· Since 2008 · Brooklyn, New York</span></p>
+
+  <!-- Hero video module -->
+  <div style="position:relative; width:100%; aspect-ratio:16/8; overflow:hidden; border-radius:16px; margin-top:24px;">
+    <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+      <!-- Replace with Mike's Higher Ed sizzle when ready -->
+      <source src="lacrosse.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, transparent 70%); z-index:1;"></div>
+    <div style="position:absolute; bottom:0; left:0; right:0; padding:48px; z-index:2;">
+      <h1 style="font-family:'Playfair Display',serif; font-size:clamp(40px,5vw,80px); font-weight:400; line-height:1.0; letter-spacing:-0.02em; color:#fff;">
+        Higher education strategies<br>with higher <em style="font-style:italic; color:#2eb87a;">creative<br>standards.</em>
+      </h1>
+      <p style="font-family:'Work Sans',sans-serif; font-size:clamp(14px,1.4vw,18px); font-weight:400; color:rgba(255,255,255,0.75); margin-top:16px; letter-spacing:0.01em;">And a proprietary AI media engine to make them scale.</p>
+    </div>
+  </div>
+
+  <div class="hero-sub" style="margin-top:32px; display:flex; align-items:center; justify-content:space-between;">
+    <div></div>
+    <div style="display:flex; gap:64px;">
+      <div class="stat-item" style="text-align:right;">
+        <span class="stat-num">60+</span>
+        <span class="stat-label">Colleges & Universities</span>
+      </div>
+      <div class="stat-item" style="text-align:right;">
+        <span class="stat-num">17</span>
+        <span class="stat-label">Years in Higher Ed</span>
+      </div>
+      <div class="stat-item" style="text-align:right;">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Brands & Institutions</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; display:flex; align-items:center; gap:20px; opacity:0; animation:fadeUp 1s 1s forwards;">
+    <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Show me</span>
+    <div style="display:flex; gap:2px; background:rgba(42,42,40,0.08); border-radius:100px; padding:4px;">
+      <a href="mason-homepage.html" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:transparent; padding:8px 18px; border-radius:100px; text-decoration:none;">All</a>
+      <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--accent); padding:8px 18px; border-radius:100px;">Higher Education</span>
+      <a href="mason-homepage.html" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:transparent; padding:8px 18px; border-radius:100px; text-decoration:none;">eCommerce & DTC</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT GRID -->
+<section class="clients-section">
+  <div style="padding-bottom:20px; margin-bottom:32px; border-bottom:1px solid var(--border);" class="reveal">
+    <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream);">Institutions We Partner With</p>
+  </div>
+
+  <div class="client-list reveal">
+    <div class="client-row">
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #d4cfc6 0%, #c2b8a8 50%, #afa596 100%);"></div>
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+          <source src="lacrosse.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Public University</span>
+          <span class="client-name">Eastern CT State</span>
+          <span class="client-services">Rebrand · Video · Paid Media · Creative</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c8d5c0 0%, #a8bfa0 50%, #8aaa80 100%);"></div>
+        <img src="https://masoninteractive.com/wp-content/uploads/2024/08/2.cia-bw.jpg" alt="CIA" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+        <div class="client-overlay">
+          <span class="client-industry">Culinary Arts</span>
+          <span class="client-name">Culinary Institute of America</span>
+          <span class="client-services">Enrollment · Paid Media · SEO</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #d0ccc4 0%, #b8b0a4 50%, #a09888 100%);"></div>
+        <img src="international center of photography.png.webp" alt="ICP" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+        <div class="client-overlay">
+          <span class="client-industry">Arts & Culture</span>
+          <span class="client-name">Intl. Center of Photography</span>
+          <span class="client-services">SEO · Paid Media · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c4d0c0 0%, #a4bca0 50%, #88a878 100%);"></div>
+        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+          <source src="lewisuniversity.mp4" type="video/mp4">
+        </video>
+        <div class="client-overlay">
+          <span class="client-industry">Private University</span>
+          <span class="client-name">Lewis University</span>
+          <span class="client-services">Creative Production · Paid Media</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="client-row">
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #d2cec6 0%, #bab2a6 50%, #a49c8c 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Community College</span>
+          <span class="client-name">Rowan College</span>
+          <span class="client-services">Enrollment Marketing · Paid Media</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c6d2c0 0%, #a6bea0 50%, #8caa7c 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Graduate Psychology</span>
+          <span class="client-name">The Chicago School</span>
+          <span class="client-services">Paid Media · SEO · Strategy</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #cec8c0 0%, #b6aea4 50%, #9e968a 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Liberal Arts</span>
+          <span class="client-name">Drew University</span>
+          <span class="client-services">Enrollment · Paid Social · Creative</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c2cec0 0%, #a2baa0 50%, #86a67c 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">French Cultural Institution</span>
+          <span class="client-name">FIAF</span>
+          <span class="client-services">Digital Strategy · Paid Media</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="client-row">
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #d0cbc2 0%, #b8b0a2 50%, #a29888 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Community College</span>
+          <span class="client-name">MiraCosta College</span>
+          <span class="client-services">Enrollment · Paid Search</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c4d0be 0%, #a4bc9e 50%, #88a87a 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Graduate Education</span>
+          <span class="client-name">William James College</span>
+          <span class="client-services">Lead Gen · Paid Media</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #ccc8c0 0%, #b4aca2 50%, #9c948a 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Bilingual Liberal Arts</span>
+          <span class="client-name">St. Augustine College</span>
+          <span class="client-services">Lead Gen · Paid Social · Email</span>
+        </div>
+      </div>
+      <div class="client-item">
+        <div class="client-sky" style="background:linear-gradient(135deg, #c0ccbe 0%, #a0b89e 50%, #84a47a 100%);"></div>
+        <div class="client-overlay">
+          <span class="client-industry">Charter School</span>
+          <span class="client-name">Pioneer Academy</span>
+          <span class="client-services">Digital Marketing · Strategy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE'RE NOT -->
+<section class="contrast-section reveal">
+  <p class="section-label">What Makes Us Different</p>
+  <div class="contrast-grid">
+    <div class="contrast-item"><em>We started in higher ed. Then we built a creative agency the rest of the industry wanted to hire.</em></div>
+    <div class="contrast-item"><em>Senior creatives up front. A proprietary AI media engine underneath.</em></div>
+    <div class="contrast-item"><em>Work that stops the scroll. Strategy that moves applications.</em></div>
+    <div class="contrast-item"><em>Results next quarter, not a research deck next year.</em></div>
+  </div>
+</section>
+
+<!-- MASON INTEL -->
+<section class="intel-section reveal">
+  <p class="section-label">Mason Intel · Proprietary AI</p>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.5vw,40px); font-weight:400; letter-spacing:-0.02em; margin-top:16px; line-height:1.2; max-width:800px;">Our AI. Your <em style="color:var(--accent);">unfair advantage.</em></h2>
+  <p style="font-size:15px; line-height:1.8; color:var(--muted); font-weight:300; margin-top:20px; max-width:700px;">Mason Intel is a proprietary AI engine built in-house, not a third-party dashboard. It ingests data from Meta, Google, TikTok, Klaviyo, Slate, GA4, and your CRM simultaneously, cross-referencing more data points than any human team could process. Every account gets real-time analysis, automated budget recommendations, and creative performance scoring. 24/7, across every channel, at once.</p>
+  <div style="display:flex; gap:48px; margin-top:28px;">
+    <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">Built by Mason</span>
+    <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">7+ Platform Integrations</span>
+    <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">No Other Agency Has This</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="reveal">
+    <p class="section-label">What We Do</p>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.5vw,40px); font-weight:400; margin-top:16px;">Full-service. Creative-first. Always.</h2>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-name">Creative & Production</h3>
+      <div class="service-tags">
+        <span class="service-tag">Brand Film</span>
+        <span class="service-tag">UGC</span>
+        <span class="service-tag">Photography</span>
+        <span class="service-tag">Ad Creative</span>
+        <span class="service-tag">CTV</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-name">Paid Media</h3>
+      <div class="service-tags">
+        <span class="service-tag">Google</span>
+        <span class="service-tag">Meta</span>
+        <span class="service-tag">TikTok</span>
+        <span class="service-tag">Programmatic</span>
+        <span class="service-tag">CTV</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-name">SEO & AIO</h3>
+      <div class="service-tags">
+        <span class="service-tag">Technical SEO</span>
+        <span class="service-tag">AI Search</span>
+        <span class="service-tag">Content Strategy</span>
+        <span class="service-tag">Local SEO</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <h3 class="service-name">Email & SMS</h3>
+      <div class="service-tags">
+        <span class="service-tag">Nurture Flows</span>
+        <span class="service-tag">Campaigns</span>
+        <span class="service-tag">SMS</span>
+        <span class="service-tag">Slate</span>
+        <span class="service-tag">HubSpot</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <h3 class="service-name">Enrollment Strategy</h3>
+      <div class="service-tags">
+        <span class="service-tag">Full Funnel</span>
+        <span class="service-tag">Landing Pages</span>
+        <span class="service-tag">Lead Scoring</span>
+        <span class="service-tag">CRM</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <h3 class="service-name">Strategy & Advisory</h3>
+      <div class="service-tags">
+        <span class="service-tag">Channel Strategy</span>
+        <span class="service-tag">Brand Strategy</span>
+        <span class="service-tag">Audits</span>
+        <span class="service-tag">Advisory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSS-REFERENCE TO ECOMM -->
+<div class="cross-ref reveal">
+  <p class="cross-ref-text">Mason also partners with leading DTC brands, from Aman to Laurent Ferrier to Dagne Dover. <em>Same creative rigor, different stage.</em></p>
+  <a href="/ecommerce/" style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); text-decoration:none; white-space:nowrap;">See eCommerce Work →</a>
+</div>
+
+<!-- QUOTE -->
+<section style="padding:48px;" class="reveal">
+  <div style="max-width:700px;">
+    <p class="section-label">What Clients Say</p>
+    <p class="quote-text" style="margin-top:24px;">"A true partner, helping us navigate the ever-changing landscape of paid digital media and acting like <em>an extension of our own team.</em>"</p>
+    <div style="margin-top:24px;">
+      <span class="quote-brand">Scott Lucente · The Culinary Institute of America</span><br>
+      <span class="quote-result">Director of Digital and Online Media</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:60px 48px; background:var(--bg2);">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+    <div style="display:flex; align-items:center; gap:20px;">
+      <h2 class="footer-cta">Let's <em>talk.</em></h2>
+      <a href="/lets-talk/" style="text-decoration:none;">
+        <span style="width:48px; height:48px; background:#F4632A; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff;">↗</span>
+      </a>
+    </div>
+    <p style="font-family:'DM Mono',monospace; font-size:11px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream); opacity:0.4; text-align:center;">Brooklyn, NY · Google Premier Partner · Meta Partner · © 2026 Mason Interactive</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
