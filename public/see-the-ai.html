@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Let's Talk | Mason Interactive | Creative Agency Brooklyn NY</title>
-<meta name="description" content="Start a project with Mason Interactive. Creative-led, AI-accelerated paid media, creative production, and strategy for eCommerce and higher education.">
+<title>See Our AI Run On Your Business | Mason Interactive</title>
+<meta name="description" content="Plug into Mason Intel and watch how our AI turns your data into creative and media decisions. A free, no-commitment look at the engine behind our clients' growth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -88,16 +88,38 @@
 
   .hero-left {
     flex: 1;
-    max-width: 520px;
+    max-width: 560px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.1s forwards;
   }
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 4.5vw, 64px);
+    font-size: clamp(38px, 5vw, 68px);
     font-weight: 400;
-    line-height: 1.05;
+    line-height: 1.04;
     letter-spacing: -0.02em;
     opacity: 0;
     animation: fadeUp 1s 0.2s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-offer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--cream);
+    margin-top: 28px;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
   }
   .hero-sub {
     font-family: 'DM Mono', monospace;
@@ -108,7 +130,7 @@
     margin-top: 28px;
     line-height: 1.8;
     opacity: 0;
-    animation: fadeUp 1s 0.5s forwards;
+    animation: fadeUp 1s 0.6s forwards;
   }
 
   /* FORM */
@@ -123,6 +145,20 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 40px 36px;
+  }
+  .form-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .form-heading-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
   }
   .form-row {
     display: flex;
@@ -167,7 +203,7 @@
   }
   .form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 90px;
   }
   .form-submit {
     display: inline-block;
@@ -213,8 +249,18 @@
     margin-top: 12px;
     text-align: center;
   }
+  .form-fineprint {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
 
-  /* PROCESS STEPS */
+  /* WHAT YOU'LL SEE */
   .process {
     padding: 100px 48px;
     background: var(--bg2);
@@ -425,14 +471,18 @@
   </a>
 </nav>
 
-<!-- HERO — two column: headline left, form right -->
+<!-- HERO — two column: offer left, form right -->
 <section class="hero">
   <div class="hero-left">
-    <h1 class="hero-headline">We can't wait to work with you.</h1>
-    <p class="hero-sub">Creative-Led, AI-Accelerated<br>Full Service Agency.<br>Since 2008, Brooklyn, New York.</p>
+    <p class="hero-eyebrow">Free · No Commitment</p>
+    <h1 class="hero-headline">See our AI run on <em>your</em> business.</h1>
+    <p class="hero-offer">We'll plug you into Mason Intel and show you how our AI works — reading your performance, scoring your creative, and surfacing the moves your team is missing. The same engine behind our clients' growth, pointed at your account.</p>
+    <p class="hero-sub">Creative-Led, AI-Accelerated Full Service Agency<br>Since 2008 · Brooklyn, New York</p>
   </div>
   <div class="hero-right">
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/REPLACE_LETS_TALK" method="POST">
+    <form class="contact-form" id="analysisForm" action="https://formspree.io/f/REPLACE_SEE_THE_AI" method="POST">
+      <p class="form-heading">Plug me in.</p>
+      <p class="form-heading-sub">Tell us where to look. We'll walk you through Intel on your account — no pitch required.</p>
       <div class="form-row">
         <div class="form-group">
           <label>First Name <span class="req">*</span></label>
@@ -444,8 +494,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Company</label>
-        <input type="text" name="company" placeholder="Your company">
+        <label>Company <span class="req">*</span></label>
+        <input type="text" name="company" required placeholder="Your company">
       </div>
       <div class="form-group">
         <label>Email <span class="req">*</span></label>
@@ -456,37 +506,38 @@
         <input type="url" name="website" placeholder="https://yoursite.com">
       </div>
       <div class="form-group">
-        <label>Your Message</label>
-        <textarea name="message" placeholder="Tell us about your project, goals, or questions..."></textarea>
+        <label>What are you running?</label>
+        <textarea name="message" placeholder="Channels, rough monthly spend, and what you're trying to grow."></textarea>
       </div>
-      <button type="submit" class="form-submit">Let's Talk</button>
+      <button type="submit" class="form-submit">Show Me The AI</button>
+      <p class="form-fineprint">A real walkthrough, not a sales call.</p>
     </form>
   </div>
 </section>
 
-<!-- PROCESS — 4 steps -->
+<!-- WHAT YOU'LL SEE — 4 items -->
 <section class="process reveal">
-  <p class="process-label">How We Work Together</p>
+  <p class="process-label">What You'll See In Mason Intel</p>
   <div class="process-grid">
     <div class="step">
       <span class="step-num">01</span>
-      <p class="step-title">Discovery</p>
-      <p class="step-desc">We take the time to understand your business, goals, and unique pain points.</p>
+      <p class="step-title">Your Creative, Scored</p>
+      <p class="step-desc">How every ad is actually performing — and which creative is quietly winning or dying.</p>
     </div>
     <div class="step">
       <span class="step-num">02</span>
-      <p class="step-title">Audit</p>
-      <p class="step-desc">Develop consensus on your digital universe, uncovering strengths and opportunities.</p>
+      <p class="step-title">Spend vs. Reality</p>
+      <p class="step-desc">Where your budget is pacing against goal, and the dollars working against you right now.</p>
     </div>
     <div class="step">
       <span class="step-num">03</span>
-      <p class="step-title">Strategy</p>
-      <p class="step-desc">We develop tailored solutions that maximize ROI and deliver the best results.</p>
+      <p class="step-title">The Next Moves</p>
+      <p class="step-desc">The specific optimizations our AI would make on your account this week — not next quarter.</p>
     </div>
     <div class="step">
       <span class="step-num">04</span>
-      <p class="step-title">Optimize</p>
-      <p class="step-desc">We monitor, refine, and use data-driven insights to continuously optimize.</p>
+      <p class="step-title">Ask It Anything</p>
+      <p class="step-desc">A live conversation with Intel about your performance. Answers in seconds, not decks.</p>
     </div>
   </div>
 </section>
@@ -577,7 +628,7 @@
         });
     });
   }
-  wireForm('contactForm', '<span>Message sent</span>Thanks — we got it. We’ll be in touch shortly.');
+  wireForm('analysisForm', '<span>You’re in the queue</span>Thanks — we’ll reach out to get you set up in Mason Intel.');
 </script>
 </body>
 </html>

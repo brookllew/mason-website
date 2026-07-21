@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>New Account Launch | Mason Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --border: rgba(240,235,224,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 56px 24px 80px;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+  }
+  .wrap { max-width: 620px; margin: 0 auto; position: relative; z-index: 1; }
+  .brand { margin-bottom: 48px; }
+  .brand img { height: 26px; display: block; }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .intro {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 560px;
+  }
+  form {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+  }
+  .form-row { display: flex; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 22px; flex: 1; }
+  label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  label .req { color: #F4632A; }
+  input, textarea, select {
+    background: rgba(240,235,224,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.5; }
+  input:focus, textarea:focus, select:focus { border-color: rgba(240,235,224,0.25); }
+  textarea { resize: vertical; min-height: 90px; }
+  select[multiple] { min-height: 150px; padding: 10px; }
+  select[multiple] option { padding: 6px 8px; }
+  .hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+  .submit {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #F4632A;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 40px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 16px;
+  }
+  .submit:hover { background: #d94f1e; }
+  .submit:disabled { opacity: 0.6; cursor: default; }
+  .form-success {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--cream);
+    text-align: center;
+    padding: 24px 8px;
+  }
+  .form-success span {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .form-error {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #ff6b6b;
+    margin-top: 12px;
+    text-align: center;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 40px;
+  }
+  @media (max-width: 600px) { .form-row { flex-direction: column; gap: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/"><img src="/Mason Logo White.png" alt="Mason Interactive"></a>
+  <p class="eyebrow">Internal · New Account</p>
+  <h1>Heads up, Masonites — this one's live.</h1>
+  <p class="intro">This form goes to accounting so we know to bill the client for your work. If you don't fill out this form, it's as though your work never existed!</p>
+
+  <form id="accountLaunchForm" action="https://formspree.io/f/REPLACE_NEW_ACCOUNT_LAUNCH" method="POST">
+    <div class="form-group">
+      <label>Your Name <span class="req">*</span></label>
+      <input type="text" name="your_name" required placeholder="First and last name">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Client Name <span class="req">*</span></label>
+        <input type="text" name="client_name" required placeholder="Client">
+      </div>
+      <div class="form-group">
+        <label>Client SOW # <span class="req">*</span></label>
+        <input type="text" name="sow_number" required placeholder="SOW #">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>When was the KickOff Call (to start billing) <span class="req">*</span></label>
+      <input type="date" name="kickoff_date" required>
+    </div>
+    <div class="form-group">
+      <label>If "other" then where?</label>
+      <input type="text" name="kickoff_other" placeholder="Optional">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Expected Launch Date <span class="req">*</span></label>
+        <input type="date" name="launch_date" required>
+      </div>
+      <div class="form-group">
+        <label>Expected End Date</label>
+        <input type="date" name="end_date">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Expected Monthly Spend?</label>
+      <input type="number" name="monthly_spend" step="0.01" min="0" placeholder="0.00">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Who carries the billing?</label>
+        <select name="billing_carrier">
+          <option value="">Select…</option>
+          <option>Mason does</option>
+          <option>The client does</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Payment method</label>
+        <select name="payment_method">
+          <option value="">Select…</option>
+          <option>Invoice</option>
+          <option>CC</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>If CC, last four digits of the card</label>
+      <input type="text" name="cc_last_four" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="1234">
+    </div>
+    <div class="form-group">
+      <label>What is our rate on this media? <span class="req">*</span></label>
+      <input type="text" name="media_rate" required placeholder="e.g. 15%">
+    </div>
+    <div class="form-group">
+      <label>How much do we have to spend to generate more than our minimum fee? <span class="req">*</span></label>
+      <input type="text" name="spend_to_clear_minimum" required placeholder="$">
+    </div>
+    <div class="form-group">
+      <label>Special Notes</label>
+      <textarea name="special_notes" placeholder="Anything accounting should know"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Platform</label>
+      <select name="platform" multiple>
+        <option>Google</option>
+        <option>Facebook/IG</option>
+        <option>Twitter</option>
+        <option>Bing</option>
+        <option>Yahoo</option>
+        <option>Marchex</option>
+        <option>Call Rail</option>
+        <option>Amazon</option>
+        <option>Dataxu</option>
+        <option>TikTok</option>
+        <option>other</option>
+      </select>
+      <span class="hint">Hold ⌘ / Ctrl to select multiple</span>
+    </div>
+    <button type="submit" class="submit">Let's Run Some Ads</button>
+  </form>
+
+  <p class="footer-meta">Private &amp; Confidential to Mason</p>
+</div>
+<script>
+  // Form submit — AJAX to Formspree, inline success/error (no page bounce)
+  function wireForm(formId, successHTML) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var prev = form.querySelector('.form-error');
+      if (prev) prev.remove();
+      if (/REPLACE_|\/placeholder/.test(form.action)) {
+        alert('This form isn’t connected yet. Add the Formspree form ID to go live.');
+        return;
+      }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function(res) {
+          if (!res.ok) throw new Error('bad status');
+          form.innerHTML = '<div class="form-success">' + successHTML + '</div>';
+        })
+        .catch(function() {
+          btn.disabled = false; btn.textContent = label;
+          var err = document.createElement('p');
+          err.className = 'form-error';
+          err.textContent = 'Something went wrong. Please try again.';
+          btn.insertAdjacentElement('afterend', err);
+        });
+    });
+  }
+  wireForm('accountLaunchForm', '<span>Launched</span>Thanks — accounting has what they need to start billing.');
+</script>
+</body>
+</html>
