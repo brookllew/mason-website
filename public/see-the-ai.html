@@ -480,7 +480,8 @@
     <p class="hero-sub">Creative-Led, AI-Accelerated Full Service Agency<br>Since 2008 · Brooklyn, New York</p>
   </div>
   <div class="hero-right">
-    <form class="contact-form" id="analysisForm" action="https://formspree.io/f/REPLACE_SEE_THE_AI" method="POST">
+    <form class="contact-form" id="analysisForm">
+      <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
       <p class="form-heading">Plug me in.</p>
       <p class="form-heading-sub">Tell us where to look. We'll walk you through Intel on your account — no pitch required.</p>
       <div class="form-row">
@@ -599,8 +600,16 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Form submit — AJAX to Formspree, inline success/error (no page bounce)
-  function wireForm(formId, successHTML) {
+  // Form submit — posts to the HubSpot Forms API, inline success/error (no page bounce)
+  var HS_PORTAL = '4076178';
+  var HS_FIELD_MAP = { first_name: 'firstname', last_name: 'lastname', email: 'email', company: 'company', website: 'website', message: 'message' };
+
+  function hsCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+
+  function wireHubSpot(formId, hsFormId, successHTML) {
     var form = document.getElementById(formId);
     if (!form) return;
     form.addEventListener('submit', function(e) {
@@ -608,13 +617,27 @@
       var btn = form.querySelector('[type="submit"]');
       var prev = form.querySelector('.form-error');
       if (prev) prev.remove();
-      if (/REPLACE_|\/placeholder/.test(form.action)) {
-        alert('This form isn’t connected yet. Add the Formspree form ID to go live.');
-        return;
-      }
+      // Honeypot: bots fill hidden fields, humans don't. Fake success, send nothing.
+      var hp = form.querySelector('[name="_hp"]');
+      if (hp && hp.value) { form.innerHTML = '<div class="form-success">' + successHTML + '</div>'; return; }
+
       var label = btn.textContent;
       btn.disabled = true; btn.textContent = 'Sending…';
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+
+      var fields = [];
+      Object.keys(HS_FIELD_MAP).forEach(function(name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        if (el && el.value.trim()) fields.push({ name: HS_FIELD_MAP[name], value: el.value.trim() });
+      });
+      var context = { pageUri: location.href, pageName: document.title };
+      var hutk = hsCookie('hubspotutk');
+      if (hutk) context.hutk = hutk;
+
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + hsFormId, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: fields, context: context })
+      })
         .then(function(res) {
           if (!res.ok) throw new Error('bad status');
           form.innerHTML = '<div class="form-success">' + successHTML + '</div>';
@@ -628,7 +651,7 @@
         });
     });
   }
-  wireForm('analysisForm', '<span>You’re in the queue</span>Thanks — we’ll reach out to get you set up in Mason Intel.');
+  wireHubSpot('analysisForm', '54bfdd4c-1fa5-465f-a35f-9a77970fb77c', '<span>You’re in the queue</span>Thanks — we’ll reach out to get you set up in Mason Intel.');
 </script>
 </body>
 </html>
