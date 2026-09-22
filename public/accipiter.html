@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHG83S3');</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accipiter | The Operating Layer for Modern Advertising | Mason Interactive</title>
+<meta name="description" content="Accipiter is the operating layer Mason built to run modern advertising across Meta, Google, TikTok and The Trade Desk — with a human in charge of every action. Now open to a limited number of institutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a08;
+    --bg2: #111110;
+    --cream: #f0ebe0;
+    --muted: #6b6b60;
+    --accent: #c8f060;
+    --orange: #F4632A;
+    --border: rgba(240,235,224,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9998; opacity: 0.4;
+  }
+  a { color: inherit; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 48px; position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,8,0.72); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 28px; display: block; }
+  .nav-links { list-style: none; display: flex; gap: 34px; align-items: center; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--cream); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--orange); color: #fff; border-radius: 100px; padding: 11px 22px;
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background .25s;
+  }
+  .nav-cta:hover { background: #d94f1e; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+
+  /* HERO */
+  .hero { padding: 110px 0 90px; border-bottom: 1px solid var(--border); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-weight: 400;
+    font-size: clamp(40px, 6.5vw, 88px); line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(17px, 2vw, 22px); color: var(--cream); max-width: 640px; margin-bottom: 40px; line-height: 1.55;
+  }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 14px; }
+  .chip {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--border); border-radius: 100px; padding: 8px 16px;
+  }
+
+  /* SECTIONS */
+  section.block { padding: 84px 0; border-bottom: 1px solid var(--border); }
+  .block h2 {
+    font-family: 'Playfair Display', serif; font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 46px); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 26px; max-width: 780px;
+  }
+  .block p.lead { font-size: clamp(17px, 1.7vw, 20px); color: var(--cream); max-width: 720px; margin-bottom: 20px; }
+  .block p { font-size: 16px; color: var(--muted); max-width: 720px; margin-bottom: 18px; }
+  .block p strong { color: var(--cream); font-weight: 500; }
+
+  /* STEP LIST */
+  .steps { display: grid; gap: 2px; margin-top: 40px; border-top: 1px solid var(--border); }
+  .step { display: grid; grid-template-columns: 60px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .step-num { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent); padding-top: 4px; }
+  .step h3 { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 19px; color: var(--cream); margin-bottom: 8px; }
+  .step p { margin: 0; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
+  .stat .num { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 52px); color: var(--accent); line-height: 1; margin-bottom: 10px; }
+  .stat .lbl { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* GUARDRAILS */
+  .guards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 36px; border: 1px solid var(--border); }
+  .guard { padding: 30px; border: 1px solid var(--border); }
+  .guard h3 { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 17px; color: var(--cream); margin-bottom: 8px; }
+  .guard p { margin: 0; font-size: 15px; }
+
+  /* APPLY */
+  .apply { padding: 96px 0; background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .apply-flag {
+    display: inline-block; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange);
+    border-radius: 100px; padding: 8px 18px; margin-bottom: 22px;
+  }
+  .apply h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(30px, 4vw, 52px); line-height: 1.05; margin-bottom: 18px; }
+  .apply-intro { color: var(--muted); max-width: 620px; margin-bottom: 44px; font-size: 17px; }
+  .apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .apply-points { list-style: none; display: grid; gap: 20px; }
+  .apply-points li { display: grid; grid-template-columns: 22px 1fr; gap: 14px; color: var(--cream); font-size: 16px; }
+  .apply-points .tick { color: var(--accent); font-family: 'DM Mono', monospace; }
+
+  form { display: block; }
+  .form-row { display: flex; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 20px; flex: 1; }
+  label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  label .req { color: var(--orange); }
+  input, textarea {
+    background: rgba(240,235,224,0.04); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300;
+    color: var(--cream); outline: none; transition: border-color .3s; width: 100%;
+  }
+  input::placeholder, textarea::placeholder { color: var(--muted); opacity: .5; }
+  input:focus, textarea:focus { border-color: rgba(240,235,224,0.25); }
+  textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #fff; background: var(--orange); border: none; border-radius: 100px; padding: 16px 40px;
+    cursor: pointer; transition: background .3s; width: 100%; margin-top: 8px;
+  }
+  .form-submit:hover { background: #d94f1e; }
+  .form-submit:disabled { opacity: .6; cursor: default; }
+  .form-success { font-family: 'Playfair Display', serif; font-size: clamp(20px,2vw,26px); line-height: 1.4; text-align: center; padding: 24px 8px; }
+  .form-success span { display: block; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .form-error { font-family: 'DM Mono', monospace; font-size: 11px; color: #ff6b6b; margin-top: 12px; text-align: center; }
+
+  /* FOOTER */
+  footer { padding: 60px 48px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 30px; }
+  footer .nav-logo img { height: 28px; }
+  .footer-meta { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--muted); text-align: right; }
+
+  @media (max-width: 860px) {
+    nav { padding: 18px 20px; }
+    .nav-links { display: none; }
+    .wrap { padding: 0 20px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .guards { grid-template-columns: 1fr; }
+    .apply-grid { grid-template-columns: 1fr; gap: 36px; }
+    footer { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHG83S3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="/Mason Logo White.png" alt="Mason"></a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/accipiter/" class="active">Accipiter</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta"><span>Apply</span><span>↗</span></a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Accipiter — by Mason</p>
+    <h1>Every platform. Every campaign. <em>One place to run them</em> — with a person in charge.</h1>
+    <p class="hero-sub">Accipiter is the operating layer Mason built to run modern advertising. It watches every account all night, finds what broke, explains why, and drafts the fix — then puts it in front of a human before anything goes live.</p>
+    <div class="hero-meta">
+      <span class="chip">Meta</span>
+      <span class="chip">Google</span>
+      <span class="chip">TikTok</span>
+      <span class="chip">The Trade Desk</span>
+      <span class="chip">Klaviyo</span>
+      <span class="chip">Salesforce</span>
+      <span class="chip">GA4</span>
+      <span class="chip">Creative</span>
+      <span class="chip">+ more</span>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The 7 a.m. problem</p>
+    <h2>Advertising was supposed to help. Now it's as complicated as the problem it solves.</h2>
+    <p class="lead">You run marketing for a mission-driven institution. Enrollment targets went up this year. The budget didn't. Every stakeholder has a priority, and they don't all agree. That part is normal. That's the job.</p>
+    <p>But you probably have four major ad platforms — plus email, a CRM, analytics, and creative — with dozens of campaigns across them, all producing data around the clock, and none of them telling you which part matters. So at seven in the morning, someone on your team opens a stack of dashboards and starts looking for the thing that went wrong overnight. Because somewhere in there, something did.</p>
+  </div>
+</section>
+
+<!-- SOLUTION / HOW IT WORKS -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The solution</p>
+    <h2>Accipiter is the operating layer we built to run it all — in one place.</h2>
+    <p class="lead">It's connected to the four platforms where your budget actually lives — <strong>Meta, Google, TikTok, and The Trade Desk</strong> — plus the systems around them: <strong>Klaviyo, Salesforce, GA4, your creative, and more.</strong> It has been watching every account and every campaign all night. Back to that Tuesday morning — here's what it does with it.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><h3>It finds the problem</h3><p>A campaign that's still spending, but stopped converting three days ago. Accipiter surfaces it before your team opens the first dashboard.</p></div></div>
+      <div class="step"><div class="step-num">02</div><div><h3>It explains why</h3><p>Not just a flag. Maybe the creative has worn out; maybe the same people have seen the same ad too many times. It tells you the reason.</p></div></div>
+      <div class="step"><div class="step-num">03</div><div><h3>It drafts the fix</h3><p>Pause that ad set, move the budget to one that's still working, and cue a fresh creative — written up and ready to review.</p></div></div>
+      <div class="step"><div class="step-num">04</div><div><h3>It puts it in front of a person</h3><p>The most important part. Nothing goes live until someone on your team says yes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT BY OPERATORS -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Built by operators, not a software company</p>
+    <h2>We spent 18 years running advertising, then built the software we wished existed.</h2>
+    <p class="lead">We're not white-labeling someone else's system. We built our own. For eighteen years Mason has run advertising for institutions like yours — land-grant universities, for-profit and charter schools, public and private high schools, and nonprofit universities.</p>
+    <p>The workflows, the rules, the guardrails, the approval gates — all of it was designed by people who run advertising for a living, and used every day by Mason's own operators on real accounts. Every workflow in Accipiter started as something a Mason strategist did by hand, hundreds of times, for a real client on a real deadline. That order matters.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">All</div><div class="lbl">Your platforms &amp; data, connected</div></div>
+      <div class="stat"><div class="num">18 yrs</div><div class="lbl">Of pattern data</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lbl">Watching every account</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Human-approved actions</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERN DATA -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The advantage</p>
+    <h2>Your campaign data tells you what happened in your account. Accipiter knows the pattern.</h2>
+    <p class="lead">It knows what has happened across these platforms over eighteen years — which interventions generally work, which generally don't, and what the numbers tend to look like right before something needs to change.</p>
+    <p><strong>No client's results are ever visible to another</strong>, and it runs on ad-platform data, not student records. So when Accipiter recommends a move, it isn't guessing from one account — it's recognizing a pattern Mason has seen before.</p>
+  </div>
+</section>
+
+<!-- GUARDRAILS -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">A person in charge</p>
+    <h2>Accipiter uses AI to read and sort faster than any team could. What it does not do is decide on its own.</h2>
+    <div class="guards">
+      <div class="guard"><h3>Human approval on every action</h3><p>Every recommendation goes to a person before it goes live. The operator reads it, checks the reasoning, and says yes or no.</p></div>
+      <div class="guard"><h3>Hard limits</h3><p>Every automated action has a limit it can't cross without a human approving it. No surprises, no runaway spend.</p></div>
+      <div class="guard"><h3>A kill switch</h3><p>One control stops everything instantly, across every account and platform.</p></div>
+      <div class="guard"><h3>It doesn't replace the operator</h3><p>It lets someone who knows advertising review more, notice more, respond faster, and hold on to what they've learned.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply" id="apply">
+  <div class="wrap">
+    <div class="apply-grid">
+      <div>
+        <span class="apply-flag">Limited seats available</span>
+        <h2>Be one of our early partners.</h2>
+        <p class="apply-intro">Every institution you compete with for students is buying on the same four platforms — same audiences, same auctions, same rising costs. Most are still doing it by hand. That won't last. We're bringing Accipiter to a limited number of institutions first, so our operators can stay close to every account.</p>
+        <ul class="apply-points">
+          <li><span class="tick">→</span><span>Bring your accounts. We'll show you what Accipiter sees in your campaigns and your numbers.</span></li>
+          <li><span class="tick">→</span><span>Run it with our operators, or have us train your own team to use it.</span></li>
+          <li><span class="tick">→</span><span>The advantage is real, and it's early. That's the window. It's open now.</span></li>
+        </ul>
+      </div>
+      <div>
+        <form id="applyForm">
+          <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" name="first_name" required placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" name="last_name" required placeholder="Last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Institution <span class="req">*</span></label>
+            <input type="text" name="company" required placeholder="Your institution">
+          </div>
+          <div class="form-group">
+            <label>Work Email <span class="req">*</span></label>
+            <input type="email" name="email" required placeholder="you@institution.edu">
+          </div>
+          <div class="form-group">
+            <label>Website <span class="req">*</span></label>
+            <input type="url" name="website" required placeholder="https://yourinstitution.edu">
+          </div>
+          <div class="form-group">
+            <label>What are you trying to move? </label>
+            <textarea name="message" placeholder="Enrollment goals, current platforms, what's not working..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Apply for Early Access</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="nav-logo"><img src="/Mason Logo White.png" alt="Mason"></a>
+  <div class="footer-meta">
+    <p>20 Jay Street, Suite 1115</p>
+    <p>Brooklyn, New York</p>
+    <br>
+    <p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p>
+  </div>
+</footer>
+
+<script>
+  // Apply form -> HubSpot Forms API (reuses the contact form; tagged as an Accipiter application)
+  var HS_PORTAL = '4076178';
+  var HS_FORM = '8cecce32-2436-4e25-a9ec-4ca7075adbe9';
+  var HS_FIELD_MAP = { first_name: 'firstname', last_name: 'lastname', email: 'email', company: 'company', website: 'website' };
+
+  function hsCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+
+  var form = document.getElementById('applyForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('[type="submit"]');
+    var prev = form.querySelector('.form-error');
+    if (prev) prev.remove();
+    var hp = form.querySelector('[name="_hp"]');
+    if (hp && hp.value) { form.innerHTML = '<div class="form-success"><span>Application received</span>Thanks — we’ll be in touch.</div>'; return; }
+
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    var fields = [];
+    Object.keys(HS_FIELD_MAP).forEach(function(name) {
+      var el = form.querySelector('[name="' + name + '"]');
+      if (el && el.value.trim()) fields.push({ name: HS_FIELD_MAP[name], value: el.value.trim() });
+    });
+    // Tag as an Accipiter application in the message field so it's filterable in HubSpot
+    var msgEl = form.querySelector('[name="message"]');
+    var msg = '[ACCIPITER APPLICATION] ' + (msgEl && msgEl.value.trim() ? msgEl.value.trim() : '(no message)');
+    fields.push({ name: 'message', value: msg });
+
+    var context = { pageUri: location.href, pageName: 'Accipiter — Apply' };
+    var hutk = hsCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL + '/' + HS_FORM, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: fields, context: context })
+    })
+      .then(function(res) {
+        if (!res.ok) throw new Error('bad status');
+        form.innerHTML = '<div class="form-success"><span>Application received</span>Thanks — we’ll reach out to show you what Accipiter sees in your accounts.</div>';
+      })
+      .catch(function() {
+        btn.disabled = false; btn.textContent = label;
+        var err = document.createElement('p');
+        err.className = 'form-error';
+        err.textContent = 'Something went wrong. Please try again.';
+        btn.insertAdjacentElement('afterend', err);
+      });
+  });
+</script>
+</body>
+</html>
