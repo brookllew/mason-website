@@ -364,6 +364,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --accent: #2eb87a;
     --border: rgba(42,42,40,0.10);
   }
+  body.highered-mode .hero-headline { color: #f0ebe0; }
+  body.highered-mode .hero-video-module .hero-eyebrow { color: #f0ebe0; }
+
   body.highered-mode nav::after {
     background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%);
   }
@@ -771,6 +774,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ---- MOBILE (added) ---- */
+  @media (max-width: 768px) {
+    nav { padding: 18px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 76px 20px 0; }
+    .hero-video-module { aspect-ratio: 4/5; }
+    .hero-video-overlay { padding: 22px; }
+    .hero-video-overlay > div:first-child { flex-direction: column; align-items: flex-start !important; gap: 18px; }
+    .hero-headline { font-size: clamp(32px, 8.5vw, 48px); line-height: 1.04; }
+    .hero-sub { margin-top: 28px !important; }
+    .hero-stats { gap: 20px; width: 100%; justify-content: space-between; }
+    .stat-item { text-align: left; }
+    .stat-num { font-size: 26px; }
+    .stat-label { font-size: 9px; }
+    .clients-toggle { flex-wrap: wrap; }
+  }
 </style>
 </head>
 <body>
@@ -789,6 +809,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <ul class="nav-links">
     <li><a href="/work/">Work</a></li>
     <li><a href="/services/">Services</a></li>
+    <li><a href="/higher-education/">Higher Ed</a></li>
+    <li><a href="/ecommerce/">eCommerce</a></li>
+    <li><a href="/creative-portfolio/">Creative Portfolio</a></li>
     <li><a href="/accipiter/">Accipiter</a></li>
     <li><a href="/about/">About</a></li>
     <li><a href="/blog/">Blog</a></li>
@@ -846,6 +869,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- CLIENT GRID — way up front, Within-style -->
+<!-- 18 YEARS STATEMENT BAND -->
+<section style="padding:84px 48px; border-bottom:2px solid rgba(240,235,224,0.12);" class="reveal">
+  <p class="section-label" style="color:var(--accent);">Why Accipiter</p>
+  <h2 style="font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(28px,4.2vw,56px); line-height:1.08; letter-spacing:-0.02em; max-width:1000px; margin-top:16px;">We spent 18 years running advertising, then built the software we wished existed.</h2>
+  <p style="font-size:16px; line-height:1.8; color:var(--muted); max-width:700px; margin-top:22px;">That order matters. Accipiter is the AI operating layer behind our work — watching every account across Meta, Google, TikTok and The Trade Desk, drafting the fix, and putting it in front of a human before anything goes live. <a href="/accipiter/" style="color:var(--accent); text-decoration:none;">See how it works →</a></p>
+</section>
+
 <section class="clients-section" style="padding-top:80px;">
   <div style="border-bottom:1px solid rgba(240,235,224,0.08); padding-bottom:20px; margin-bottom:32px;" class="reveal">
     <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream);">Creative that scales.</p>
@@ -1041,9 +1071,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CREATIVE INTEL CALLOUT -->
 <section style="padding:48px 48px; border-bottom:2px solid rgba(240,235,224,0.12);" class="reveal">
   <div>
-    <p class="section-label">Mason Intel · Proprietary AI</p>
+    <p class="section-label">Accipiter · Proprietary AI</p>
     <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.5vw,40px); font-weight:400; letter-spacing:-0.02em; margin-top:16px; line-height:1.2; max-width:800px;">Our AI. Your <em style="color:var(--accent);">unfair advantage.</em></h2>
-    <p style="font-size:15px; line-height:1.8; color:var(--muted); font-weight:300; margin-top:20px; max-width:700px;">Mason Intel is a proprietary AI engine built in-house — not a third-party dashboard, not a reskinned report. It ingests data from Meta, Google, TikTok, Klaviyo, Shopify, GA4, and your CRM simultaneously, cross-referencing more data points than any human team could process. Every account gets real-time analysis, automated budget recommendations, and creative performance scoring. 24/7, across every channel, at once.</p>
+    <p style="font-size:15px; line-height:1.8; color:var(--muted); font-weight:300; margin-top:20px; max-width:700px;">Accipiter is a proprietary AI engine built in-house — not a third-party dashboard, not a reskinned report. It ingests data from Meta, Google, TikTok, Klaviyo, Shopify, GA4, and your CRM simultaneously, cross-referencing more data points than any human team could process. Every account gets real-time analysis, automated budget recommendations, and creative performance scoring. 24/7, across every channel, at once.</p>
     <div style="display:flex; gap:48px; margin-top:28px;">
       <div>
         <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);">Built by Mason</span>
@@ -1188,6 +1218,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
+  // Mode persistence — apply saved Higher-Ed theme + honor ?mode= param (added)
+  try {
+    const urlMode = new URLSearchParams(window.location.search).get('mode');
+    if (urlMode) localStorage.setItem('mason-mode', urlMode);
+    const mode = localStorage.getItem('mason-mode') || 'default';
+    if (mode === 'highered') {
+      document.body.classList.add('highered-mode');
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      const heBtn = document.querySelector('.toggle-btn[href*="higher"]');
+      if (heBtn) heBtn.classList.add('active');
+    }
+  } catch(e) {}
+
   // Client filter
   function filterClients(filter) {
     document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
