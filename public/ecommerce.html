@@ -426,6 +426,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ---- MOBILE (added) ---- */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px !important; }
+    .nav-links { display: none !important; }
+    .nav-cta { padding: 10px 16px !important; white-space: nowrap !important; }
+    section, header, footer { padding-left: 20px !important; padding-right: 20px !important; }
+    .hero { display: block !important; flex-direction: column !important; padding-left: 20px !important; padding-right: 20px !important; gap: 28px !important; }
+    [class*="grid"] { grid-template-columns: 1fr !important; }
+    [class*="stats"], [class*="-toggle"] { flex-wrap: wrap !important; }
+    img, video { max-width: 100%; height: auto; }
+    html, body { overflow-x: hidden !important; }
+  }
+
+  /* ---- MOBILE grid stack (added) ---- */
+  @media (max-width: 768px) {
+    .work-hero, .featured-case, .cta-band, .approach-header, .approach-steps,
+    .cap-grid, .cap-header, .cases-grid, .client-list, .clients-strip-grid,
+    .contrast-grid, .featured-post, .hero-bottom, .pillar-capabilities,
+    .portfolio-grid, .posts-grid, .process-steps, .services-grid, .story-section,
+    .values-grid, .verticals-grid, .team-grid { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
