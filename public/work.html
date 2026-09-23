@@ -578,6 +578,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border: none;
   }
   .toggle-btn.active { background: var(--accent); color: var(--bg); }
+  .case-card-img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s; filter: brightness(0.85);
+  }
+  .case-card:hover .case-card-img { transform: scale(1.05); filter: brightness(0.6); }
+  .featured-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+  .case-card-visual { background: var(--bg2); }
 </style>
 </head>
 <body>
@@ -632,17 +639,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FILTER -->
 <div class="filter-bar reveal">
   <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
-  <button class="filter-btn" data-filter="highered">Higher Ed</button>
-  <button class="filter-btn" data-filter="cpg">CPG</button>
-  <button class="filter-btn" data-filter="luxury">Luxury</button>
+  <button class="filter-btn" data-filter="ecomm">Ecomm</button>
+  <button class="filter-btn" data-filter="lead-gen">Lead Gen</button>
 </div>
 
 <!-- FEATURED -->
 <section class="featured-section reveal">
   <a href="/work/dagne-dover/" class="featured-case" data-category="ecommerce">
     <div class="featured-visual">
-      <div class="featured-sky"></div>
+      <img class="featured-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Dagne_Dover_3.jpeg" alt="Dagne Dover">
       <span class="featured-label">eCommerce</span>
       <div class="featured-result-overlay">
         <p class="featured-result-num">30%</p>
@@ -687,173 +692,324 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="cases-header reveal">
     <div>
       <p class="section-label">All Work</p>
-      <h2 class="cases-title" style="margin-top:8px;">Every engagement</h2>
+      <h2 class="cases-title" style="margin-top:8px;">A selection of our work</h2>
     </div>
   </div>
 
   <div class="cases-grid reveal" id="cases-grid">
 
-    <a href="/work/needed/" class="case-card" data-category="cpg">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-1"></div>
-        <span class="card-industry-tag">CPG</span>
-      </div>
+    <a href="/work/pioneer-academy/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Pioneer_Academy-1920x1152.png" alt="Pioneer Academy" loading="lazy"><span class="card-industry-tag">Education</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">CPG / Nutrition</span>
-        </div>
+        <h3 class="case-card-title">Pioneer Academy</h3>
+        <p class="case-card-desc">Pioneer Academy, an independent college-prep school for grades Pre-K through 12, increased student enrollments and brand awareness through Google Search.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">125%</span><span class="card-result-label">YoY Growth in Inquiries</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/b2b-printing-company/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/bank-phrom-Tzm3Oyu_6sk-unsplash-1920x1282.jpg" alt="B2B Printing Company" loading="lazy"><span class="card-industry-tag">B2B</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">B2B Printing Company</h3>
+        <p class="case-card-desc">This client grew their omnichannel sales viaSEO and saw a 134% increase in organic traffic, resulting in increased leads and sales.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">134%</span><span class="card-result-label">increase in organic traffic</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/strong-roots/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Strong_Roots-1920x1080.jpeg" alt="Strong Roots" loading="lazy"><span class="card-industry-tag">CPG, Omnichannel</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Strong Roots</h3>
+        <p class="case-card-desc">Plant-based food brand Strong Roots partnered with Mason Interactive to drive in-store purchases and brand awareness in the new market.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">70%</span><span class="card-result-label">target audience reached</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/hampden-clothing/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/07/Hampden_Boutique.png" alt="Hampden Clothing" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Hampden Clothing</h3>
+        <p class="case-card-desc">Hampden, a designer fashion boutique, achieved a 5.8X increase in revenue with Meta Shops.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">5X</span><span class="card-result-label">Increase in Purchases</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/dagne-dover/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Dagne_Dover_3.jpeg" alt="Dagne Dover" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Dagne Dover</h3>
+        <p class="case-card-desc">Dagne Dover, an online bag company, achieved 4X ROAS with Google Smart Shopping campaigns.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">4X</span><span class="card-result-label">ROAS</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/needed/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/02/HP-RBN-hires.webp" alt="Needed" loading="lazy"><span class="card-industry-tag">CPG, Lifestyle</span></div>
+      <div class="case-card-body">
         <h3 class="case-card-title">Needed</h3>
-        <p class="case-card-desc">Scaling a perinatal supplement brand from early traction to a $14M Series A — through efficient paid media and creative testing across Meta, Google, and TikTok.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">$14M</span>
-            <span class="card-result-label">Series A raised</span>
-          </div>
-          <div class="card-result">
-            <span class="card-result-num">↑ MRR</span>
-            <span class="card-result-label">New customer growth</span>
-          </div>
-        </div>
+        <p class="case-card-desc">By optimizing spend across platforms, testing creative, and prioritizing data-driven insights, Mason helped Needed drive profitable Meta Platform ROAS and overa…</p>
+        
       </div>
     </a>
 
-    <a href="/work/marimekko/" class="case-card" data-category="luxury">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-2"></div>
-        <span class="card-industry-tag">Luxury</span>
-      </div>
+    <a href="/work/amazon-tech-subscription-growth/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/07/toa-heftiba-eqf6cKmrzeM-unsplash-1920x1280.jpg" alt="Amazon Subscription Growth" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Luxury Lifestyle</span>
-        </div>
-        <h3 class="case-card-title">Marimekko</h3>
-        <p class="case-card-desc">Creative-first paid social and strategy for the iconic Finnish design brand — driving 30% YoY revenue growth while maintaining premium brand positioning.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">30%</span>
-            <span class="card-result-label">YoY revenue growth</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">Amazon Subscription Growth</h3>
+        <p class="case-card-desc">A growing technology subscription business faced a significant challenge: the need to lower its Customer Acquisition Cost (CAC) while simultaneously increasing…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">50%</span><span class="card-result-label">reduction in the cost of acquiring each </span></div></div>
       </div>
     </a>
 
-    <a href="/work/culinary-institute/" class="case-card" data-category="highered">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-3"></div>
-        <span class="card-industry-tag">Higher Ed</span>
-      </div>
+    <a href="/work/cusa-tea/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/CusaTea-10_1.webp" alt="Cusa Tea" loading="lazy"><span class="card-industry-tag">CPG, Lifestyle</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Culinary Arts</span>
-        </div>
-        <h3 class="case-card-title">Culinary Institute of America</h3>
-        <p class="case-card-desc">Full-funnel enrollment marketing for one of the world's most prestigious culinary schools — driving inquiry volume and improving yield across paid search and paid social.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ Inquiries</span>
-            <span class="card-result-label">YoY enrollment lift</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">Cusa Tea</h3>
+        <p class="case-card-desc">By implementing strategic changes including bundling options, a website rebuild, and full funnel optimizations, Cusa Tea successfully increased conversion rates…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">30%</span><span class="card-result-label">increase in conversion rate (CVR)</span></div></div>
       </div>
     </a>
 
-    <a href="/work/risewell/" class="case-card" data-category="cpg">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-4"></div>
-        <span class="card-industry-tag">CPG</span>
-      </div>
+    <a href="/work/omnichannel-cpg/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/07/this-life-s-illusions-7P7MMWs8bT4-unsplash-1920x1920.jpg" alt="Omnichannel CPG" loading="lazy"><span class="card-industry-tag">CPG</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">CPG / Wellness</span>
-        </div>
+        <h3 class="case-card-title">Omnichannel CPG</h3>
+        <p class="case-card-desc">Mason Interactive worked closely with the CPG company to develop a unique strategy that would allow them to measure the impact of their online advertising effor…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">70%</span><span class="card-result-label">of Shoppers Crossed the Product Off Thei</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/fig-1/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/Group-Lifestyle2.webp" alt="Fig.1" loading="lazy"><span class="card-industry-tag">CPG, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Fig.1</h3>
+        <p class="case-card-desc">Through strategic Meta Ads campaigns and website design consultations, Fig.1 achieved over 100% year-over-year growth and executed a highly successful launch in…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">100+%</span><span class="card-result-label">YoY growth</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/else-nutrition/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/Else-Nutrition-1920x1280.jpg" alt="Else Nutrition" loading="lazy"><span class="card-industry-tag">CPG, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Else Nutrition</h3>
+        <p class="case-card-desc">By implementing CRO strategies across their website, automating educational content flows, and testing creative and offer variations, Else Nutrition successfull…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">500%</span><span class="card-result-label">increase in online revenue over 18 month</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/portland-leather-goods/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/6463ecf8729280754d5007df_portRectangle-1.webp" alt="Portland Leather Goods" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Portland Leather Goods</h3>
+        <p class="case-card-desc">By implementing A/B testing for their primary email flows and executing highly segmented Electronic Direct Mail (EDM) campaigns, the brand successfully supporte…</p>
+        
+      </div>
+    </a>
+
+    <a href="/work/woolly-clothing/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/image-3.png" alt="Woolly Clothing" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Woolly Clothing</h3>
+        <p class="case-card-desc">By rebuilding the website, launching a new Meta ad funnel, and aligning messaging around their underwear line, Woolly Clothing achieved over 135% year-over-year…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">135%+</span><span class="card-result-label">YoY growth in consecutive years</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/indosole/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/slide_seasalt1_1800x.webp" alt="Indosole" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Indosole</h3>
+        <p class="case-card-desc">By launching targeted Meta and Google ad campaigns, rebuilding their website, and introducing email marketing campaigns, Indosole achieved a 150% improvement in…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">150%</span><span class="card-result-label">improvement in ROAS and MER</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/sweat-tent/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/sweat_tent_2.webp" alt="Sweat Tent" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Sweat Tent</h3>
+        <p class="case-card-desc">Sweat Tent, a brand offering innovative portable saunas, had never run ads to acquire new customers.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">1400</span><span class="card-result-label">Average Order Value (AOV)</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/floof/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/6463ecf8729280754d5007df_portRectangle-1-1024x528.webp" alt="FLOOF" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">FLOOF</h3>
+        <p class="case-card-desc">FLOOF, a family-owned luxury pillow brand, partnered with Mason to scale their revenue through Meta advertising.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">6X</span><span class="card-result-label">ROAS across top performing ad variations</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/tayst-coffee-roasters/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><div class="case-card-sky ws-1"></div><span class="card-industry-tag">CPG, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Tayst Coffee Roasters</h3>
+        <p class="case-card-desc">Mason quadrupled Tayst Coffee Roasters’s bottom-of-the-funnel sales at no increase in cost, with our rigorous, methodical, ad-testing strategy.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">5%</span><span class="card-result-label">Starting CTR</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/accelerating-growth-with-programmatic/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/10/dd.jpg" alt="Accelerating Growth with Programmatic" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Accelerating Growth with Programmatic</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">13X</span><span class="card-result-label">Return on Ad Spend (ROAS)</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/5xing-an-apparel-business/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/6463ecf8729280754d5007df_portRectangle-1-1024x528.webp" alt="5X’ing an Apparel Business" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">5X’ing an Apparel Business</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">133%</span><span class="card-result-label">increase in total sales growth from Year</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/lushful-aesthetics/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/Group-Lifestyle2-1024x576.webp" alt="Lushful Aesthetics" loading="lazy"><span class="card-industry-tag">Health &amp; Wellness,</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Lushful Aesthetics</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">298%</span><span class="card-result-label">increase in Google conversions (YoY)</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/rowan-college-enrollment-growth/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/6463ecf8729280754d5007df_portRectangle-1-1024x528.webp" alt="Cracking the Code on Winter Classes for 3X Enrollment Growth" loading="lazy"><span class="card-industry-tag">Education</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Cracking the Code on Winter Classes for 3X Enrollment Growth</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">300%</span><span class="card-result-label">Winter enrollments</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/eastern-connecticut-state-university/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/The_Chicago_School-1024x576.png" alt="Rebranding a Public University Drove a 10% Application Increase" loading="lazy"><span class="card-industry-tag">Education</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Rebranding a Public University Drove a 10% Application Increase</h3>
+        <p class="case-card-desc">Eastern Connecticut State University partnered with Mason Interactive to modernize its brand, attract Gen Z applicants, and increase applications in a highly co…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">12%</span><span class="card-result-label">increase in admitted students</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/cia/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Culinary_Institute_of_America.jpeg" alt="CIA" loading="lazy"><span class="card-industry-tag">Education</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">CIA</h3>
+        <p class="case-card-desc">Leveraging Facebook Cross-publisher Conversion Lift study CIA saw an 11X lift in incremental leads driven by Facebook ads plus search.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">11X</span><span class="card-result-label">lift incremental leads from combination </span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/tcs-education-system/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/The_Chicago_School.png" alt="TCS Education System" loading="lazy"><span class="card-industry-tag">Education</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">TCS Education System</h3>
+        <p class="case-card-desc">Restructuring AdWords helped TCS Education System, a nonprofit system for colleges, increase college enrollments at a lower cost.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">216%</span><span class="card-result-label">increase on leads YoY</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/building-a-scalable-growth-engine-for-mission-driven-organizations/" class="case-card" data-category="lead-gen">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/The_Chicago_School-1024x576.png" alt="Building a Scalable Growth Engine for Mission-Driven Organizations" loading="lazy"><span class="card-industry-tag">Education, Non-Profit</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Building a Scalable Growth Engine for Mission-Driven Organizations</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">60%</span><span class="card-result-label">increase in monthly lead volume</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/zamzows/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Zamzows.jpeg" alt="Zamzows" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Zamzows</h3>
+        <p class="case-card-desc">Lawn, Garden and Pet Superstore, Zamzows, partnered with Mason Interactive to update their website, improve their eCommerce capabilities, and revamp their brand…</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">1880%</span><span class="card-result-label">increase in revenue MoM</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/hella-cocktail/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Hella_Cocktail.jpg" alt="Hella Cocktail" loading="lazy"><span class="card-industry-tag">CPG</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Hella Cocktail</h3>
+        <p class="case-card-desc">A mixology company, Hella Cocktail Co., partnered with Mason Interactive to expand its eCommerce sales and introduce its newest beverage to market.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">36%</span><span class="card-result-label">increase in total revenue</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/g-shock/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/ezgif-3-2688a964ef.jpg" alt="G-SHOCK" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">G-SHOCK</h3>
+        <p class="case-card-desc">Mason Interactive was tasked to build a performance-driven email marketing program that would better leverage Casio’s existing subscriber database and nurture p…</p>
+        
+      </div>
+    </a>
+
+    <a href="/work/risewell/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Risewell.jpeg" alt="RiseWell" loading="lazy"><span class="card-industry-tag">CPG, Health &amp; Well</span></div>
+      <div class="case-card-body">
         <h3 class="case-card-title">RiseWell</h3>
-        <p class="case-card-desc">Scaling a natural oral care brand through performance creative and lifecycle marketing — turning first-time buyers into repeat subscribers.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ LTV</span>
-            <span class="card-result-label">Repeat purchase rate</span>
-          </div>
-        </div>
+        <p class="case-card-desc">RiseWell, a leader in natural oral care, saw a 5.5X increase in sales within 6 months, while significantly reducing the advertising cost.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">2X</span><span class="card-result-label">ROAS</span></div></div>
       </div>
     </a>
 
-    <a href="/work/the-chicago-school/" class="case-card" data-category="highered">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-5"></div>
-        <span class="card-industry-tag">Higher Ed</span>
-      </div>
+    <a href="/work/joy-creative-shop/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Joy_Creative_Shop_2.jpeg" alt="Joy Creative Shop" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Graduate Psychology</span>
-        </div>
-        <h3 class="case-card-title">The Chicago School</h3>
-        <p class="case-card-desc">Multi-program enrollment marketing for a national graduate psychology institution — driving qualified applicants across every degree level.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ CPL</span>
-            <span class="card-result-label">Efficiency gains</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">Joy Creative Shop</h3>
+        <p class="case-card-desc">Personalized stationery and gift company, Joy Creative Shop, partnered with Mason Interactive to boost customer acquisition and retention.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">504%</span><span class="card-result-label">ROI YTD</span></div></div>
       </div>
     </a>
 
-    <a href="/work/oars-alps/" class="case-card" data-category="ecommerce">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-6"></div>
-        <span class="card-industry-tag">eCommerce</span>
-      </div>
+    <a href="/work/wander-beauty/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Wander_Beauty-1920x1237.png" alt="Wander Beauty" loading="lazy"><span class="card-industry-tag">Beauty</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Men's Grooming / CPG</span>
-        </div>
-        <h3 class="case-card-title">Oars + Alps</h3>
-        <p class="case-card-desc">Building a high-performance paid social engine for a premium men's grooming brand — creative testing at scale, channel diversification, and new customer acquisition.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ ROAS</span>
-            <span class="card-result-label">Paid social efficiency</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">Wander Beauty</h3>
+        <p class="case-card-desc">Wander Beauty, the travel-inspired cosmetics brand, tested Facebook video ads against photo ads, to increase brand awareness and drive digital sales.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">4X</span><span class="card-result-label">increase in sales</span></div></div>
       </div>
     </a>
 
-    <a href="/work/drew-university/" class="case-card" data-category="highered">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-7"></div>
-        <span class="card-industry-tag">Higher Ed</span>
-      </div>
+    <a href="/work/dagne-dover-mntn-collab/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Dagne_Dover_2-1920x1008.jpeg" alt="Dagne Dover (MNTN Collab)" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Liberal Arts</span>
-        </div>
-        <h3 class="case-card-title">Drew University</h3>
-        <p class="case-card-desc">Enrollment marketing and creative for a liberal arts university — building awareness, driving applications, and improving yield through targeted paid and organic strategy.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ Apps</span>
-            <span class="card-result-label">Application volume</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">Dagne Dover (MNTN Collab)</h3>
+        <p class="case-card-desc">Dagne Dover needed campaign performance that would get the most out of their budget.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">9X</span><span class="card-result-label">ROAS</span></div></div>
       </div>
     </a>
 
-    <a href="/work/alexis-bittar/" class="case-card" data-category="luxury">
-      <div class="case-card-visual">
-        <div class="case-card-sky ws-8"></div>
-        <span class="card-industry-tag">Luxury</span>
-      </div>
+    <a href="/work/truffle/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/06/Truffle_Co.jpeg" alt="TRUFFLE" loading="lazy"><span class="card-industry-tag">Fashion, Lifestyle</span></div>
       <div class="case-card-body">
-        <div class="case-card-meta">
-          <span class="case-industry">Luxury Jewelry</span>
-        </div>
-        <h3 class="case-card-title">Alexis Bittar</h3>
-        <p class="case-card-desc">SEO, content strategy, and paid media for an iconic luxury jewelry brand — driving organic growth and paid efficiency without compromising the brand's premium positioning.</p>
-        <div class="case-card-results">
-          <div class="card-result">
-            <span class="card-result-num">↑ Organic</span>
-            <span class="card-result-label">Search traffic growth</span>
-          </div>
-        </div>
+        <h3 class="case-card-title">TRUFFLE</h3>
+        <p class="case-card-desc">The tote bag retailer TRUFFLE ran a multi-part Facebook campaign to reach new audiences and increase sales, resulting in 2.5X return on ad spend.</p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">2X</span><span class="card-result-label">return on ad spend during Q4 2018</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/meta-andromeda-framework-increased-conversion-case-study/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2024/08/image-3-1024x679.png" alt="Premium Launch Campaign using META’s Andromeda Update Increased Conversion 190% and Tripled CTR" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Premium Launch Campaign using META’s Andromeda Update Increased Conversion 190% and Tripled CTR</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">190%</span><span class="card-result-label">increase in conversions</span></div></div>
+      </div>
+    </a>
+
+    <a href="/work/seo-optimization-drove-a-156-increase-in-purchases-across-key-product-categories/" class="case-card" data-category="ecomm">
+      <div class="case-card-visual"><img class="case-card-img" src="https://masoninteractive.com/wp-content/uploads/2023/07/Hampden_Boutique-1024x683.png" alt="Google Shopping SEO Optimization Drove a 156% Increase in Purchases Across Key Product Categories" loading="lazy"><span class="card-industry-tag">Lifestyle</span></div>
+      <div class="case-card-body">
+        <h3 class="case-card-title">Google Shopping SEO Optimization Drove a 156% Increase in Purchases Across Key Product Categories</h3>
+        <p class="case-card-desc"></p>
+        <div class="case-card-results"><div class="card-result"><span class="card-result-num">156%</span><span class="card-result-label">increase in purchases for optimized cate</span></div></div>
       </div>
     </a>
 
