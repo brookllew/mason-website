@@ -155,6 +155,13 @@ http.createServer((req, res) => {
     });
   }
 
+  // 3b. Safety net: an unmatched /work/<slug> (retired case-study URL) 301s to the
+  //     Work grid instead of falling through to a WordPress 404.
+  if (/^\/work\/.+/.test(url)) {
+    res.writeHead(301, { Location: '/work/' });
+    return res.end();
+  }
+
   // 4. Everything else is still WordPress's: root-level blog posts, old pages,
   //    anything we forgot. WP answers it (or serves its own 404).
   if (WP_ORIGIN_HOST) {

@@ -1,0 +1,19 @@
+# Mason Interactive
+
+> Creative-led, AI-accelerated full-service advertising agency. Since 2008, Brooklyn, NY. $1B+ in managed ad spend across 100+ brands and institutions. Paid media, creative production, and strategy for eCommerce/DTC and higher education — powered by Accipiter, our proprietary AI operating layer.
+
+## Core pages
+- [Home](https://www.masoninteractive.com/): Overview — where data, design & strategy work together.
+- [Work](https://www.masoninteractive.com/work/): Case studies across eCommerce and higher education.
+- [Services](https://www.masoninteractive.com/services/): Paid media, creative, lifecycle, SEO, strategy.
+- [Accipiter](https://www.masoninteractive.com/accipiter/): Mason's proprietary AI operating layer for modern advertising — connected to Meta, Google, TikTok, The Trade Desk, Klaviyo, Salesforce, GA4 and more, with a human approving every action.
+- [Higher Education](https://www.masoninteractive.com/higher-education/): Enrollment marketing for colleges, universities, and schools.
+- [eCommerce & DTC](https://www.masoninteractive.com/ecommerce/): Growth marketing for consumer brands.
+- [Creative Portfolio](https://www.masoninteractive.com/creative-portfolio/): Brand films, performance creative, UGC, photography, video.
+- [About](https://www.masoninteractive.com/about/): Who we are.
+- [Blog](https://www.masoninteractive.com/blog/): Insights on paid media, creative, and AI.
+- [Let's Talk](https://www.masoninteractive.com/lets-talk/): Start a project.
+
+## Notes
+- Accipiter is Mason's productized AI (formerly referred to internally as "Intel").
+- Blog posts live at root-level slugs (e.g. /roas-is-killing-your-growth/).
