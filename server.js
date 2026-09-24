@@ -102,21 +102,54 @@ function resolveStatic(p) {
   }
 }
 
+// WordPress's Site Address is the apex (masoninteractive.com), so it stamps every
+// URL it emits — canonicals, menu/post links, redirect Locations — as apex. But the
+// apex only forwards its ROOT (GoDaddy forwarding), so every apex deep path 404s.
+// We can't ask WP as www instead (it 301s www->apex, causing a redirect loop), so we
+// keep asking as apex and rewrite apex -> www on the way out. The match is on
+// `//masoninteractive.com`, which never touches an already-correct `//www.masoninteractive.com`.
+function rewriteApexToWww(s) {
+  return s.replace(/\/\/masoninteractive\.com/g, '//www.masoninteractive.com');
+}
+
 function proxyToWordPress(req, res) {
+  const headers = Object.assign({}, req.headers, {
+    host: PUBLIC_HOST,
+    'x-forwarded-host': PUBLIC_HOST,
+    'x-forwarded-proto': 'https',
+  });
+  delete headers['accept-encoding']; // force identity so we can rewrite the body
+
   const upstream = https.request({
     hostname: WP_ORIGIN_HOST,
     servername: WP_ORIGIN_HOST,
     port: 443,
     method: req.method,
     path: req.url, // preserve full path + query string
-    headers: Object.assign({}, req.headers, {
-      host: PUBLIC_HOST,
-      'x-forwarded-host': PUBLIC_HOST,
-      'x-forwarded-proto': 'https',
-    }),
+    headers,
   }, (up) => {
-    res.writeHead(up.statusCode, up.headers);
-    up.pipe(res);
+    const outHeaders = Object.assign({}, up.headers);
+    // A redirect to an apex deep path would 404 — send the browser to www instead.
+    if (outHeaders.location) outHeaders.location = rewriteApexToWww(String(outHeaders.location));
+
+    const ctype = String(up.headers['content-type'] || '');
+    const isText = /text\/html|text\/css|javascript|application\/json|\bxml\b|text\/plain/i.test(ctype);
+    if (!isText) {
+      res.writeHead(up.statusCode, outHeaders); // stream binary (images, video) untouched
+      return up.pipe(res);
+    }
+
+    // Buffer text so we can rewrite every apex link WordPress emitted, then resize.
+    const chunks = [];
+    up.on('data', (c) => chunks.push(c));
+    up.on('end', () => {
+      const body = Buffer.from(rewriteApexToWww(Buffer.concat(chunks).toString('utf8')), 'utf8');
+      delete outHeaders['content-encoding'];
+      delete outHeaders['transfer-encoding'];
+      outHeaders['content-length'] = Buffer.byteLength(body);
+      res.writeHead(up.statusCode, outHeaders);
+      res.end(body);
+    });
   });
   upstream.on('error', () => {
     res.writeHead(502, { 'Content-Type': 'text/html' });
