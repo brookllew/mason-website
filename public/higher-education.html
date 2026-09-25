@@ -452,6 +452,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     [class*="stats"], [class*="-toggle"] { flex-wrap: wrap !important; }
     img, video { max-width: 100%; height: auto; }
     html, body { overflow-x: hidden !important; }
+    /* Higher-Ed hero: give the overlaid headline room, and let stats/toggle wrap */
+    .he-hero-media { aspect-ratio: 4 / 5 !important; }
+    .he-hero-media video { height: 100% !important; }
+    .he-hero-overlay { padding: 24px !important; }
+    .he-hero-h1 { font-size: 30px !important; line-height: 1.06 !important; }
+    .hero-sub { flex-direction: column !important; align-items: flex-start !important; }
+    .he-hero-stats { gap: 28px 32px !important; flex-wrap: wrap !important; justify-content: flex-start !important; }
+    .he-hero-stats .stat-item { text-align: left !important; }
+    .he-toggle { flex-wrap: wrap !important; }
   }
 
   /* ---- MOBILE grid stack (added) ---- */
@@ -492,13 +501,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p style="font-family:'DM Mono',monospace; font-size:clamp(11px, 1.1vw, 14px); font-weight:400; color:var(--cream); letter-spacing:0.14em; text-transform:uppercase; line-height:1.6; margin-bottom:24px; opacity:0; animation:fadeUp 1s 0.2s forwards;">Creative-Led, AI-Accelerated Full Service Agency <span style="color:var(--muted);">· Since 2008 · Brooklyn, New York</span></p>
 
   <!-- Hero video module -->
-  <div style="position:relative; width:100%; aspect-ratio:16/8; overflow:hidden; border-radius:16px; margin-top:24px;">
-    <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+  <div class="he-hero-media" style="position:relative; width:100%; aspect-ratio:16/8; overflow:hidden; border-radius:16px; margin-top:24px;">
+    <video autoplay muted loop playsinline preload="auto" poster="/highered-poster.jpg" style="width:100%; height:100%; object-fit:cover;">
       <source src="/highered-reel.mp4" type="video/mp4">
     </video>
     <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, transparent 70%); z-index:1;"></div>
-    <div style="position:absolute; bottom:0; left:0; right:0; padding:48px; z-index:2;">
-      <h1 style="font-family:'Playfair Display',serif; font-size:clamp(40px,5vw,80px); font-weight:400; line-height:1.0; letter-spacing:-0.02em; color:#fff;">
+    <div class="he-hero-overlay" style="position:absolute; bottom:0; left:0; right:0; padding:48px; z-index:2;">
+      <h1 class="he-hero-h1" style="font-family:'Playfair Display',serif; font-size:clamp(40px,5vw,80px); font-weight:400; line-height:1.0; letter-spacing:-0.02em; color:#fff;">
         Higher education strategies<br>with higher <em style="font-style:italic; color:#2eb87a;">creative<br>standards.</em>
       </h1>
       <p style="font-family:'Work Sans',sans-serif; font-size:clamp(14px,1.4vw,18px); font-weight:400; color:rgba(255,255,255,0.75); margin-top:16px; letter-spacing:0.01em;">And a proprietary AI media engine to make them scale.</p>
@@ -507,7 +516,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="hero-sub" style="margin-top:32px; display:flex; align-items:center; justify-content:space-between;">
     <div></div>
-    <div style="display:flex; gap:64px;">
+    <div class="he-hero-stats" style="display:flex; gap:64px;">
       <div class="stat-item" style="text-align:right;">
         <span class="stat-num">60+</span>
         <span class="stat-label">Colleges & Universities</span>
@@ -525,7 +534,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div style="margin-top:32px; display:flex; align-items:center; gap:20px; opacity:0; animation:fadeUp 1s 1s forwards;">
     <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Show me</span>
-    <div style="display:flex; gap:2px; background:rgba(42,42,40,0.08); border-radius:100px; padding:4px;">
+    <div class="he-toggle" style="display:flex; gap:2px; background:rgba(42,42,40,0.08); border-radius:100px; padding:4px;">
       <a href="/" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:transparent; padding:8px 18px; border-radius:100px; text-decoration:none;">All</a>
       <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--accent); padding:8px 18px; border-radius:100px;">Higher Education</span>
       <a href="/" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); background:transparent; padding:8px 18px; border-radius:100px; text-decoration:none;">eCommerce & DTC</a>
@@ -765,5 +774,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 <script>try{localStorage.setItem("mason-mode","highered");}catch(e){}</script>
+<script>
+  // iOS Safari sometimes blocks muted-autoplay (Low Power / data saver). The poster
+  // keeps the box from going black; this nudges playback on load and first tap.
+  (function () {
+    var v = document.querySelector('.he-hero-media video');
+    if (!v) return;
+    var go = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    go();
+    document.addEventListener('touchstart', go, { once: true });
+  })();
+</script>
 </body>
 </html>
