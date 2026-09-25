@@ -415,7 +415,47 @@
     </li>
   </ul>
   <a href="/lets-talk/" class="nav-cta"><span class="nav-cta-label">Let's Talk</span><span class="nav-cta-arrow">↗</span></a>
+<button class="mnav-burger" aria-label="Open menu" aria-expanded="false" onclick="document.body.classList.add('mnav-open');this.setAttribute('aria-expanded','true');"><span></span><span></span><span></span></button>
 </nav>
+<div class="mnav-overlay" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mnav-close" aria-label="Close menu" onclick="document.body.classList.remove('mnav-open');">&times;</button>
+  <a href="/work/">Work</a>
+  <a href="/services/">Services</a>
+  <a href="/higher-education/">Higher Ed</a>
+  <a href="/ecommerce/">eCommerce</a>
+  <a href="/creative-portfolio/">Creative Portfolio</a>
+  <a href="/accipiter/">Accipiter</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blog</a>
+  <a href="/lets-talk/" class="mnav-cta-link">Let's Talk &#8599;</a>
+</div>
+<style>
+  .mnav-burger{display:none;}
+  .mnav-overlay{display:none;}
+  @media (max-width:768px){
+    .nav-links{display:none !important;}
+    .nav-cta{display:none !important;}
+    nav .mnav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;
+      width:40px;height:40px;padding:0;margin-left:auto;background:none;border:0;cursor:pointer;
+      color:inherit;}
+    .mnav-burger span{display:block;width:26px;height:2px;background:currentColor;border-radius:2px;}
+    .mnav-overlay{position:fixed;inset:0;z-index:9999;background:#1a1714;
+      flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:32px 30px;}
+    body.mnav-open{overflow:hidden;}
+    body.mnav-open .mnav-overlay{display:flex;}
+    .mnav-overlay a{font-family:'Playfair Display',serif;font-weight:400;font-size:32px;
+      line-height:1.15;color:#f0ebe0;text-decoration:none;padding:6px 0;letter-spacing:-0.01em;}
+    .mnav-overlay a.mnav-cta-link{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.12em;
+      text-transform:uppercase;color:#231F20;background:#FF6119;padding:15px 26px;border-radius:100px;
+      margin-top:22px;}
+    .mnav-close{position:absolute;top:16px;right:20px;background:none;border:0;color:#f0ebe0;
+      font-size:42px;line-height:1;cursor:pointer;padding:0;}
+  }
+</style>
+<script>
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('mnav-open');});
+</script>
+
 
 <!-- HERO -->
 <section class="hero">
