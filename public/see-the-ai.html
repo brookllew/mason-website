@@ -640,7 +640,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var fields = [];
       Object.keys(HS_FIELD_MAP).forEach(function(name) {
         var el = form.querySelector('[name="' + name + '"]');
-        if (el && el.value.trim()) { var v = el.value.trim(); if (name === "website" && !/^https?:///i.test(v)) v = "https://" + v; fields.push({ name: HS_FIELD_MAP[name], value: v }); }
+        if (el && el.value.trim()) { var v = el.value.trim(); if (name === "website" && !/^https?:\/\//i.test(v)) v = "https://" + v; fields.push({ name: HS_FIELD_MAP[name], value: v }); }
       });
       var context = { pageUri: location.href, pageName: document.title };
       var hutk = hsCookie('hubspotutk');
@@ -653,6 +653,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       })
         .then(function(res) {
           if (!res.ok) throw new Error('bad status');
+          // Google Ads/GTM conversion signal — fires only on a real, successful lead.
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'lead_submit', form_id: formId });
           form.innerHTML = '<div class="form-success">' + successHTML + '</div>';
         })
         .catch(function() {

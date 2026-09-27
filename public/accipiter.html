@@ -403,7 +403,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var fields = [];
     Object.keys(HS_FIELD_MAP).forEach(function(name) {
       var el = form.querySelector('[name="' + name + '"]');
-      if (el && el.value.trim()) { var v = el.value.trim(); if (name === "website" && !/^https?:///i.test(v)) v = "https://" + v; fields.push({ name: HS_FIELD_MAP[name], value: v }); }
+      if (el && el.value.trim()) { var v = el.value.trim(); if (name === "website" && !/^https?:\/\//i.test(v)) v = "https://" + v; fields.push({ name: HS_FIELD_MAP[name], value: v }); }
     });
     // Tag as an Accipiter application in the message field so it's filterable in HubSpot
     var msgEl = form.querySelector('[name="message"]');
@@ -421,6 +421,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })
       .then(function(res) {
         if (!res.ok) throw new Error('bad status');
+        // Google Ads/GTM conversion signal — fires only on a real, successful lead.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'lead_submit', form_id: 'accipiterApply' });
         form.innerHTML = '<div class="form-success"><span>Application received</span>Thanks — we’ll reach out to show you what Accipiter sees in your accounts.</div>';
       })
       .catch(function() {
