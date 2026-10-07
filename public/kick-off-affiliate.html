@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MHG83S3');</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Affiliate Kick-Off | Mason Interactive</title>
+<meta name="description" content="Affiliate engagement kick-off form for new Mason Interactive partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a08; --bg2: #111110; --cream: #f0ebe0; --muted: #6b6b60;
+    --accent: #c8f060; --border: rgba(240,235,224,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden;
+    transition: background 0.6s ease, color 0.6s ease; min-height: 100vh;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9998; opacity: 0.4;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 52px 28px 48px;
+  }
+  nav::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.9) 0%, transparent 100%);
+    z-index: -1; pointer-events: none;
+  }
+  .hero {
+    min-height: 100vh; display: flex; align-items: flex-start;
+    padding: 140px 48px 80px; gap: 64px; position: relative;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 60%, rgba(180, 220, 60, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 20%, rgba(255, 140, 60, 0.10) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-left { flex: 1; max-width: 460px; position: sticky; top: 140px; }
+  .hero-headline {
+    font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    opacity: 0; animation: fadeUp 1s 0.2s forwards;
+  }
+  .hero-sub {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-top: 28px;
+    line-height: 1.9; opacity: 0; animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-right { flex: 1; max-width: 560px; opacity: 0; animation: fadeUp 1s 0.4s forwards; }
+
+  /* HubSpot form on a legible light card */
+  .form-card {
+    background: #f6f2ea; border: 1px solid rgba(42,42,40,0.08);
+    border-radius: 16px; padding: 36px 32px;
+  }
+  .form-card fieldset { max-width: 100% !important; border: none; }
+  .form-card .hs-form-field { margin-bottom: 18px; }
+  .form-card label {
+    display: block; font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #5d6678; margin-bottom: 7px;
+  }
+  .form-card .hs-form-required { color: #F4632A; }
+  .form-card .hs-input,
+  .form-card input[type=text], .form-card input[type=email],
+  .form-card input[type=tel], .form-card input[type=number],
+  .form-card textarea, .form-card select {
+    width: 100%; box-sizing: border-box; background: #fff; border: 1px solid #d7d2c7;
+    border-radius: 8px; padding: 12px 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; color: #231f20;
+  }
+  .form-card textarea { min-height: 110px; resize: vertical; }
+  .form-card ul, .form-card .inputs-list { list-style: none; padding: 0; margin: 0; }
+  .form-card .hs-button, .form-card input[type=submit] {
+    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #fff; background: #F4632A; border: none;
+    border-radius: 14px; padding: 15px 36px; cursor: pointer; margin-top: 6px;
+  }
+  .form-card .hs-button:hover { background: #d94f1e; }
+  .form-card .hs-error-msg, .form-card .hs-error-msgs label { color: #c0392b; text-transform: none; letter-spacing: 0; font-family: 'DM Sans', sans-serif; font-size: 13px; }
+  .form-card .submitted-message { font-family: 'Playfair Display', serif; font-size: 20px; color: #231f20; text-align: center; padding: 20px 8px; }
+
+  footer { padding: 48px; text-align: center; }
+  .footer-meta { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); line-height: 2; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+
+  body.highered-mode {
+    --bg: #ede8df; --bg2: #e4dfd6; --cream: #2a2a28; --muted: #7a7a72;
+    --accent: #2eb87a; --border: rgba(42,42,40,0.10);
+  }
+  body.highered-mode nav::after { background: linear-gradient(to bottom, rgba(237,232,223,0.95) 0%, transparent 100%); }
+  body.highered-mode .logo-light { display: none !important; }
+  body.highered-mode .logo-dark { display: block !important; }
+  body.highered-mode::after { opacity: 0.15; }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .hero { flex-direction: column; align-items: flex-start; padding: 120px 24px 60px; gap: 36px; }
+    .hero-left, .hero-right { max-width: 100%; width: 100%; position: static; }
+    .form-card { padding: 28px 22px; }
+    footer { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHG83S3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <a href="/" style="text-decoration:none;">
+    <img src="/Mason Logo White.png" alt="Mason Interactive" class="logo-light" style="height:28px; display:block;">
+    <img src="/Mason Logo.png" alt="Mason Interactive" class="logo-dark" style="height:28px; display:none;">
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-headline">Affiliate<br>Kick-Off.</h1>
+    <p class="hero-sub">Welcome aboard.<br>A few details to launch<br>your affiliate engagement.</p>
+  </div>
+  <div class="hero-right">
+    <div class="form-card"><div id="hsform"></div></div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-meta">Brooklyn, NY &middot; &copy; 2026 Mason Interactive</p>
+</footer>
+
+<script>
+  (function() {
+    if (localStorage.getItem('mason-mode') === 'highered') {
+      document.body.classList.add('highered-mode');
+    }
+  })();
+</script>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    portalId: "4076178",
+    formId: "70769524-9d1a-4fd0-b3b4-df757f6fd597",
+    region: "na1",
+    target: "#hsform"
+  });
+</script>
+</body>
+</html>
