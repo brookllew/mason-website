@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Accipiter — mockup | Mason Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root { --bg:#0a0a08; --bg2:#111110; --cream:#f0ebe0; --muted:#6b6b60; --accent:#c8f060; --orange:#F4632A; --border:rgba(240,235,224,0.08); }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; line-height:1.6; }
+  body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9998; opacity:.4; }
+  a { color:inherit; }
+
+  nav { display:flex; align-items:center; justify-content:space-between; padding:22px 48px; position:sticky; top:0; z-index:100; background:rgba(10,10,8,0.72); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+  .nav-logo img { height:28px; display:block; }
+  .nav-links { list-style:none; display:flex; gap:34px; align-items:center; }
+  .nav-links a { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; }
+  .nav-links a:hover, .nav-links a.active { color:var(--cream); }
+  .nav-cta { display:inline-flex; align-items:center; gap:10px; text-decoration:none; background:var(--orange); color:#fff; border-radius:100px; padding:11px 22px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; }
+
+  .wrap { max-width:1160px; margin:0 auto; padding:0 48px; position:relative; z-index:1; }
+  .eyebrow { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; }
+
+  /* HERO */
+  .hero { padding:84px 0 70px; border-bottom:1px solid var(--border); }
+  .hero h1 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(40px,6vw,82px); line-height:1.02; letter-spacing:-0.02em; margin-bottom:24px; max-width:900px; }
+  .hero h1 em { font-style:italic; color:var(--accent); }
+  .hero-sub { font-size:clamp(17px,1.5vw,21px); color:var(--cream); max-width:620px; margin-bottom:32px; line-height:1.55; }
+  .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .btn-primary { display:inline-flex; align-items:center; gap:10px; text-decoration:none; background:var(--orange); color:#fff; border-radius:100px; padding:14px 26px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; }
+  .btn-ghost { display:inline-flex; align-items:center; gap:9px; text-decoration:none; color:var(--cream); font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--border); border-radius:100px; padding:14px 22px; }
+  .btn-ghost .play { width:20px; height:20px; border-radius:50%; background:var(--accent); color:#0a0a08; display:inline-flex; align-items:center; justify-content:center; font-size:9px; }
+
+  section.block { padding:80px 0; border-bottom:1px solid var(--border); }
+  .block h2 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(28px,3.6vw,46px); line-height:1.1; letter-spacing:-0.01em; margin-bottom:22px; max-width:820px; }
+  .block p.lead { font-size:clamp(17px,1.6vw,20px); color:var(--cream); max-width:760px; margin-bottom:18px; }
+  .block p { font-size:16px; color:var(--muted); max-width:760px; margin-bottom:18px; }
+  .block p strong { color:var(--cream); font-weight:500; }
+
+  /* ---- Shared product-UI surface (stays dark in both themes) ---- */
+  .ui { background:linear-gradient(180deg,#141410 0%, #0d0d0a 100%); border:1px solid rgba(240,235,224,0.10); border-radius:16px; box-shadow:0 30px 80px -46px rgba(0,0,0,.9); overflow:hidden; }
+  .ui-bar { display:flex; align-items:center; justify-content:space-between; padding:13px 16px; border-bottom:1px solid rgba(240,235,224,0.08); }
+  .ui-bar .t { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#8a8a7e; }
+  .ui-bar .t b { color:#f0ebe0; font-weight:400; }
+  .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; vertical-align:middle; margin-right:7px; box-shadow:0 0 0 0 rgba(200,240,96,.6); animation:pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(200,240,96,.45)} 70%{box-shadow:0 0 0 7px rgba(200,240,96,0)} 100%{box-shadow:0 0 0 0 rgba(200,240,96,0)} }
+  .ui-tabs { display:flex; gap:6px; flex-wrap:wrap; padding:12px 16px 2px; }
+  .ui-tabs .tab { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:#8a8a7e; border:1px solid rgba(240,235,224,0.10); border-radius:100px; padding:5px 11px; }
+  .ui-tabs .tab.on { color:#0a0a08; background:var(--accent); border-color:var(--accent); }
+
+  /* STEP LAYOUT */
+  .flow { display:grid; gap:64px; margin-top:52px; }
+  .flowstep { display:grid; grid-template-columns:0.82fr 1.18fr; gap:48px; align-items:center; }
+  .flowstep.rev { grid-template-columns:1.18fr 0.82fr; }
+  .flowstep.rev .flowcopy { order:2; }
+  .fnum { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent); display:block; margin-bottom:14px; }
+  .flowcopy h3 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(24px,2.6vw,34px); line-height:1.12; margin-bottom:14px; }
+  .flowcopy p { color:var(--muted); font-size:16px; max-width:420px; }
+  .flowcopy p strong { color:var(--cream); font-weight:500; }
+  .anim-step { align-items:center; }
+  .anim-frame { position:relative; width:100%; aspect-ratio:1000/660; border:1px solid rgba(240,235,224,.10); border-radius:16px; overflow:hidden; box-shadow:0 30px 80px -46px rgba(0,0,0,.9); background:#0a0a08; }
+  .anim-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+  /* FATIGUE SCATTER */
+  .scatwrap { padding:16px; }
+  .scat { width:100%; height:200px; display:block; }
+  .scat-grid line { stroke:rgba(240,235,224,0.06); }
+  .scat-trend { fill:none; stroke:#f0ebe0; stroke-width:2; opacity:.85; }
+  .scat-axis { font-family:'DM Mono',monospace; font-size:9px; fill:#6b6b60; }
+  .legend { display:flex; gap:16px; padding:0 16px 14px; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:#8a8a7e; }
+  .legend i { width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:6px; vertical-align:middle; }
+
+  /* FATIGUE COLUMNS */
+  .revcols { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(240,235,224,0.08); border-top:1px solid rgba(240,235,224,0.08); }
+  .revcol { background:#0d0d0a; padding:14px; }
+  .revcol h4 { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px; }
+  .revcol.win h4 { color:var(--accent); } .revcol.fat h4 { color:#e07a5a; } .revcol.rep h4 { color:#7fd4e0; }
+  .rrow { display:flex; align-items:center; gap:9px; margin-bottom:11px; }
+  .thumb { width:30px; height:30px; border-radius:5px; flex-shrink:0; background:#20201a center/cover no-repeat; }
+  .rrow .meta { min-width:0; }
+  .rrow .nm { font-size:11px; color:#d8d3c6; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .rrow .sub { font-family:'DM Mono',monospace; font-size:9px; color:#6b6b60; }
+  .rrow .val { margin-left:auto; font-family:'DM Mono',monospace; font-size:10px; white-space:nowrap; }
+  .val.up { color:var(--accent); } .val.down { color:#e07a5a; } .val.neu { color:#7fd4e0; }
+
+  /* CREATIVE GRID (elucidate step) */
+  .cgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(240,235,224,0.08); }
+  .ccell { background:#0d0d0a; padding:0; }
+  .ccell .cimg { aspect-ratio:4/3; background:#1c1c16 center/cover no-repeat; position:relative; }
+  .ccell .cmeta { padding:9px 10px; }
+  .ccell .cnm { font-family:'DM Mono',monospace; font-size:8.5px; color:#8a8a7e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ccell .cstat { display:flex; justify-content:space-between; margin-top:5px; font-family:'DM Mono',monospace; font-size:10px; }
+  .ccell .cstat .sp { color:var(--accent); } .ccell .cstat .ro { color:#d8d3c6; }
+
+  /* ELUCIDATE modal */
+  .elu { padding:30px 22px; text-align:center; }
+  .elu-btn { display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#0a0a08; border:none; border-radius:100px; padding:16px 42px; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; box-shadow:0 0 44px -6px rgba(200,240,96,.55); }
+  .elu-rec { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:#8a8a7e; margin-top:14px; }
+  .elu-or { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; color:#5a5a50; margin:18px 0 14px; }
+  .elu-ask { display:flex; align-items:center; gap:8px; max-width:420px; margin:0 auto; }
+  .elu-ask .inp { flex:1; text-align:left; border:1px solid rgba(240,235,224,0.12); border-radius:8px; padding:10px 12px; font-size:12px; color:#6b6b60; }
+  .elu-ask .go { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a7e; border:1px solid rgba(240,235,224,0.12); border-radius:8px; padding:10px 14px; }
+  .elu-chips { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+  .elu-chips span { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.04em; color:#8a8a7e; border:1px solid rgba(240,235,224,0.10); border-radius:100px; padding:6px 11px; }
+
+  /* ANSWER panel */
+  .ans { padding:18px 20px; max-height:420px; overflow:hidden; position:relative; }
+  .ans::after { content:''; position:absolute; left:0; right:0; bottom:0; height:60px; background:linear-gradient(180deg,transparent,#0d0d0a); }
+  .ans .ahead { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin:16px 0 9px; }
+  .ans .ahead:first-child { margin-top:0; }
+  .ans p { font-size:13px; color:#b8b3a6; line-height:1.55; margin-bottom:9px; max-width:none; }
+  .ans p b { color:#f0ebe0; font-weight:500; }
+  .ans .adtag { color:var(--accent); font-family:'DM Mono',monospace; font-size:11px; }
+  .ans-acts { display:flex; gap:8px; padding:0 20px 16px; flex-wrap:wrap; }
+  .ans-acts .a1 { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:#0a0a08; background:var(--accent); border-radius:100px; padding:8px 14px; }
+  .ans-acts .a2 { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a7e; border:1px solid rgba(240,235,224,0.12); border-radius:100px; padding:8px 14px; }
+
+  /* COMMERCIAL */
+  .reel { padding:80px 0; border-bottom:1px solid var(--border); background:var(--bg2); }
+  .reel-grid { display:grid; grid-template-columns:1fr 320px; gap:56px; align-items:center; }
+  .reel h2 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(28px,3.4vw,44px); line-height:1.08; margin-bottom:16px; }
+  .reel p { color:var(--muted); max-width:460px; font-size:16px; }
+  .vframe { position:relative; width:100%; max-width:300px; aspect-ratio:9/16; border-radius:22px; overflow:hidden; border:1px solid var(--border); background:#000; box-shadow:0 30px 80px -40px rgba(0,0,0,.9); justify-self:end; }
+  .vframe iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:28px; }
+  .stat { border-top:2px solid var(--border); padding-top:20px; }
+  .stat .num { font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,52px); color:var(--accent); line-height:1; margin-bottom:10px; }
+  .stat .lbl { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+
+  .guards { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; margin-top:36px; border:1px solid var(--border); }
+  .guard { padding:28px; border:1px solid var(--border); }
+  .guard h3 { font-family:'Work Sans',sans-serif; font-weight:600; font-size:17px; color:var(--cream); margin-bottom:8px; }
+  .guard p { margin:0; font-size:15px; color:var(--muted); }
+
+  .apply { padding:92px 0; background:var(--bg2); }
+  .apply-flag { display:inline-block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange); border:1px solid var(--orange); border-radius:100px; padding:8px 18px; margin-bottom:22px; }
+  .apply h2 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(30px,4vw,52px); line-height:1.05; margin-bottom:18px; }
+  .apply-intro { color:var(--muted); max-width:620px; margin-bottom:40px; font-size:17px; }
+  .apply-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  .apply-points { list-style:none; display:grid; gap:18px; }
+  .apply-points li { display:grid; grid-template-columns:22px 1fr; gap:14px; color:var(--cream); font-size:16px; }
+  .apply-points .tick { color:var(--accent); font-family:'DM Mono',monospace; }
+  .form-group { display:flex; flex-direction:column; margin-bottom:18px; flex:1; }
+  .form-row { display:flex; gap:16px; }
+  label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  label .req { color:var(--orange); }
+  input, textarea { background:rgba(240,235,224,0.04); border:1px solid var(--border); border-radius:8px; padding:14px 16px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--cream); outline:none; width:100%; }
+  textarea { resize:vertical; min-height:88px; }
+  .form-submit { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--orange); border:none; border-radius:100px; padding:16px 40px; cursor:pointer; width:100%; margin-top:8px; }
+
+  footer { padding:58px 48px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:30px; }
+  footer .nav-logo img { height:28px; }
+  .footer-meta { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.06em; color:var(--muted); text-align:right; }
+
+  /* Video lightbox */
+  .reel-modal { position:fixed; inset:0; z-index:10000; background:rgba(5,5,4,0.93); display:none; align-items:center; justify-content:center; padding:28px; }
+  .reel-modal.open { display:flex; }
+  .reel-modal-inner { position:relative; height:min(86vh,760px); aspect-ratio:9/16; max-width:94vw; border-radius:18px; overflow:hidden; background:#000; box-shadow:0 40px 120px -40px #000; }
+  .reel-modal-inner iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .reel-close { position:absolute; top:16px; right:22px; background:none; border:0; color:#f0ebe0; font-size:42px; line-height:1; cursor:pointer; z-index:1; }
+
+  /* Higher-Ed reskin (colors only) */
+  .nav-logo .logo-dark { display:none; }
+  body.highered-mode { --bg:#ede8df; --bg2:#e4dfd6; --cream:#2a2a28; --muted:#7a7a72; --accent:#2eb87a; --border:rgba(42,42,40,0.10); }
+  body.highered-mode nav { background:rgba(237,232,223,0.72); }
+  body.highered-mode::after { opacity:0.15; }
+  body.highered-mode .logo-light { display:none !important; }
+  body.highered-mode .logo-dark { display:block !important; }
+
+  @media (max-width:900px) {
+    nav { padding:18px 20px; } .nav-links { display:none; } .wrap { padding:0 20px; }
+    .flowstep, .flowstep.rev { grid-template-columns:1fr; gap:26px; }
+    .flowstep.rev .flowcopy { order:0; }
+    .cgrid { grid-template-columns:repeat(2,1fr); }
+    .reel-grid { grid-template-columns:1fr; gap:34px; } .vframe { justify-self:center; }
+    .stats { grid-template-columns:repeat(2,1fr); } .guards { grid-template-columns:1fr; }
+    .apply-grid { grid-template-columns:1fr; gap:34px; } footer { padding:40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="/Mason Logo White.png" alt="Mason" class="logo-light"><img src="/Mason Logo.png" alt="Mason" class="logo-dark"></a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/higher-education/">Higher Ed</a></li>
+    <li><a href="/ecommerce/">eCommerce</a></li>
+    <li><a href="/creative-portfolio/">Creative Portfolio</a></li>
+    <li><a href="/accipiter/" class="active">Accipiter</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta"><span>Apply</span><span>↗</span></a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><svg viewBox="0 0 56 40" width="28" height="20" aria-hidden="true" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-4px; margin-right:9px;"><path d="M8 24 C6 11 22 6 33 13 L45 13 C51 13 51 20 44 20 L36 17"/><circle cx="20" cy="16" r="1.4" fill="var(--accent)" stroke="none"/></svg>Accipiter — by Mason</p>
+    <h1>Every platform. Every campaign. <em>One place to run them</em> — with a person in charge.</h1>
+    <p class="hero-sub">The operating layer Mason built to run modern advertising. It watches every account all night, reads the creative, finds what's working — and tells you what to do about it.</p>
+    <div class="hero-ctas">
+      <a href="#apply" class="btn-primary"><span>Apply for early access</span><span>↗</span></a>
+      <a href="#reel" class="btn-ghost" onclick="openReel(event)"><span class="play">▶</span>Watch the 30-sec spot</a>
+    </div>
+  </div>
+</header>
+
+<!-- SEE IT WORK -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">See it work</p>
+    <h2>From a wall of dashboards to one answer — in three steps.</h2>
+    <p class="lead">This is Accipiter running a real ad account. (Brand and numbers below are a demo — client data is never shown.)</p>
+
+    <div class="flow">
+
+      <!-- STEP 1 -->
+      <div class="flowstep">
+        <div class="flowcopy">
+          <span class="fnum">01 — LOG IN</span>
+          <h3>It's already watching.</h3>
+          <p>Every account, every platform, every ad across its whole lifecycle. <strong>Creative Review</strong> surfaces which ads are fatiguing — CTR falling off its peak — and which winners are ready to scale, before anyone opens a dashboard.</p>
+        </div>
+        <div class="flowui ui">
+          <div class="ui-bar"><span class="t"><span class="dot"></span>Creative Review — Fatigue · <b>Ashford Supply Co.</b></span><span class="t">128 ads · D0–D120</span></div>
+          <div class="ui-tabs"><span class="tab on">Meta</span><span class="tab">Google</span><span class="tab">Bing</span><span class="tab">TikTok</span><span class="tab">The Trade Desk</span></div>
+          <div class="scatwrap"><svg class="scat" id="scat" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+            <g class="scat-grid"><line x1="0" y1="50" x2="1000" y2="50"/><line x1="0" y1="100" x2="1000" y2="100"/><line x1="0" y1="150" x2="1000" y2="150"/></g>
+            <path class="scat-trend" id="trend" d=""/>
+          </svg></div>
+          <div class="legend"><span><i style="background:var(--accent)"></i>Image</span><span><i style="background:#7fd4e0"></i>Video</span><span><i style="background:#f0ebe0"></i>Trend</span></div>
+          <div class="revcols">
+            <div class="revcol win"><h4>▲ Winners</h4>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/weekender-studio.jpg')"></div><div class="meta"><div class="nm">Studio_Weekender</div><div class="sub">D59 · Image · $3,100</div></div><div class="val up">+64%</div></div>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/carryall-studio.jpg')"></div><div class="meta"><div class="nm">Field_Carryall</div><div class="sub">D119 · Image · $1,240</div></div><div class="val up">+29%</div></div>
+            </div>
+            <div class="revcol fat"><h4>▼ Fatigued</h4>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/suede-studio.jpg')"></div><div class="meta"><div class="nm">Range_Campaign_I</div><div class="sub">D118 · Image · $560</div></div><div class="val down">−100%</div></div>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/weekender-car.jpg')"></div><div class="meta"><div class="nm">Cargo_Range_II</div><div class="sub">D119 · Image · $490</div></div><div class="val down">−100%</div></div>
+            </div>
+            <div class="revcol rep"><h4>◆ Replace</h4>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/holdall-coast.jpg')"></div><div class="meta"><div class="nm">Field_Holdall_UK</div><div class="sub">D3 · Image</div></div><div class="val neu">3.9% · $49</div></div>
+              <div class="rrow"><div class="thumb" style="background-image:url('/mock-creatives/suede-studio.jpg')"></div><div class="meta"><div class="nm">Holdall_ROW</div><div class="sub">D18 · Image</div></div><div class="val neu">3.0% · $71</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Elucidate flow (animated) -->
+      <div class="flowstep anim-step">
+        <div class="flowcopy">
+          <span class="fnum">02 — ONE BUTTON</span>
+          <h3>Hit Elucidate — and get an answer you can act on.</h3>
+          <p>One button runs a full read of the view. Accipiter <strong>reads the actual creative</strong> — names the personas, the winning formulas, the money-losers — writes the recommendations, and <strong>cross-checks your own meeting notes.</strong> A human approves before anything ships.</p>
+        </div>
+        <div class="flowui">
+          <div class="anim-frame"><iframe src="/elucidate-anim.html" title="Accipiter Elucidate flow" loading="lazy" scrolling="no"></iframe></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMMERCIAL -->
+<section class="reel" id="reel">
+  <div class="wrap reel-grid">
+    <div>
+      <p class="eyebrow">Meet Accipiter</p>
+      <h2>Thirty seconds on what it actually does.</h2>
+      <p>The short version of the operating layer behind our clients' growth — watching every account, reading the creative, keeping a human in charge.</p>
+    </div>
+    <div class="vframe"><iframe src="https://www.youtube.com/embed/gzo_gDvkAho" title="Accipiter Commercial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+</section>
+
+<!-- BUILT BY OPERATORS -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Built by operators, not a software company</p>
+    <h2>We spent 18 years running advertising, then built the software we wished existed.</h2>
+    <p class="lead">Every workflow in Accipiter started as something a Mason strategist did by hand, hundreds of times, for a real client on a real deadline. That order matters.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">6</div><div class="lbl">Platforms connected</div></div>
+      <div class="stat"><div class="num">18 yrs</div><div class="lbl">Of pattern data</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lbl">Watching every account</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Human-approved actions</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARDRAILS -->
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">A person in charge</p>
+    <h2>Accipiter reads and sorts faster than any team could. What it does not do is decide on its own.</h2>
+    <div class="guards">
+      <div class="guard"><h3>Human approval on every action</h3><p>Every recommendation goes to a person before it goes live. They read it, check the reasoning, say yes or no.</p></div>
+      <div class="guard"><h3>Hard limits</h3><p>Every automated action has a limit it can't cross without a human approving it. No surprises, no runaway spend.</p></div>
+      <div class="guard"><h3>A kill switch</h3><p>One control stops everything instantly, across every account and platform.</p></div>
+      <div class="guard"><h3>It doesn't replace the operator</h3><p>It lets someone who knows advertising review more, notice more, and respond faster.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply" id="apply">
+  <div class="wrap">
+    <div class="apply-grid">
+      <div>
+        <span class="apply-flag">Limited seats available</span>
+        <h2>Be one of our early partners.</h2>
+        <p class="apply-intro">Every institution you compete with is buying on the same platforms — same audiences, same auctions, same rising costs. Most are still doing it by hand. We're bringing Accipiter to a limited number of partners first.</p>
+        <ul class="apply-points">
+          <li><span class="tick">→</span><span>Bring your accounts. We'll show you what Accipiter sees in your campaigns and your numbers.</span></li>
+          <li><span class="tick">→</span><span>Run it with our operators, or have us train your own team to use it.</span></li>
+          <li><span class="tick">→</span><span>The advantage is real, and it's early. That's the window.</span></li>
+        </ul>
+      </div>
+      <div>
+        <form id="applyForm">
+          <div class="form-row">
+            <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="first_name" required placeholder="First name"></div>
+            <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" required placeholder="Last name"></div>
+          </div>
+          <div class="form-group"><label>Company <span class="req">*</span></label><input type="text" name="company" required placeholder="Your company or institution"></div>
+          <div class="form-group"><label>Work Email <span class="req">*</span></label><input type="email" name="email" required placeholder="you@company.com"></div>
+          <div class="form-group"><label>Website <span class="req">*</span></label><input type="text" name="website" required placeholder="https://yoursite.com"></div>
+          <div class="form-group"><label>What are you trying to move?</label><textarea name="message" placeholder="Goals, current platforms, what's not working..."></textarea></div>
+          <button type="submit" class="form-submit">Apply for Early Access</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="nav-logo"><img src="/Mason Logo White.png" alt="Mason" class="logo-light"><img src="/Mason Logo.png" alt="Mason" class="logo-dark"></a>
+  <div class="footer-meta"><p>20 Jay Street, Suite 1115</p><p>Brooklyn, New York</p><br><p style="color:var(--border);">© 2026 Mason Interactive, Inc.</p></div>
+</footer>
+
+<div id="reelModal" class="reel-modal" onclick="if(event.target===this)closeReel()">
+  <button class="reel-close" onclick="closeReel()" aria-label="Close">&times;</button>
+  <div class="reel-modal-inner"><iframe id="reelFrame" src="" title="Accipiter Commercial" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div>
+
+<script>
+  // Video lightbox — plays the spot on click (autoplay), stops on close.
+  function openReel(e){ if(e) e.preventDefault(); document.getElementById('reelFrame').src='https://www.youtube.com/embed/gzo_gDvkAho?autoplay=1&playsinline=1'; document.getElementById('reelModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeReel(){ document.getElementById('reelModal').classList.remove('open'); document.getElementById('reelFrame').src=''; document.body.style.overflow=''; }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeReel(); });
+
+  // Higher-Ed reskin (colors only): honor ?mode=highered, else saved mason-mode.
+  try {
+    var urlMode = new URLSearchParams(window.location.search).get('mode');
+    if (urlMode) localStorage.setItem('mason-mode', urlMode);
+    if ((localStorage.getItem('mason-mode') || 'default') === 'highered') document.body.classList.add('highered-mode');
+  } catch (e) {}
+
+  // Fatigue scatter — illustrative dots + trend (deterministic, no real data)
+  (function () {
+    var svg = document.getElementById('scat'); if (!svg) return;
+    var W = 1000, H = 200, n = 95, seed = 11, NS = 'http://www.w3.org/2000/svg';
+    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    function env(x) { return 60 + 108 * (1 - Math.exp(-x / 300)); } // CTR high (top) early, declines + flattens
+    for (var i = 0; i < n; i++) {
+      var x = rnd() * W;
+      var y = env(x) + (rnd() - 0.5) * 110; y = Math.max(6, Math.min(H - 6, y));
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1));
+      c.setAttribute('r', (2 + rnd() * 5).toFixed(1));
+      c.style.fill = rnd() > 0.78 ? '#7fd4e0' : 'var(--accent)';
+      c.style.opacity = (0.22 + rnd() * 0.5).toFixed(2);
+      svg.insertBefore(c, svg.querySelector('#trend'));
+    }
+    var d = 'M0 ' + env(0).toFixed(1);
+    for (var x2 = 20; x2 <= W; x2 += 20) d += ' L' + x2 + ' ' + env(x2).toFixed(1);
+    svg.querySelector('#trend').setAttribute('d', d);
+  })();
+</script>
+</body>
+</html>

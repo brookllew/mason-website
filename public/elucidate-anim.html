@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Elucidate — animation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Mono:wght@400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--accent:#c8f060;}
+  html,body{background:#060605;overflow:hidden;}
+  body{height:66vw;}
+  /* 1000x660 stage, scaled to fill the iframe/viewport width */
+  .stage{position:relative;width:1000px;height:660px;overflow:hidden;transform-origin:top left;transform:scale(calc(100vw / 1000));
+    font-family:'DM Sans',sans-serif;color:#f0ebe0;
+    background:radial-gradient(ellipse 70% 60% at 30% 10%, rgba(200,240,96,.06), transparent 60%), #0a0a08;}
+  .ui{position:absolute;inset:40px;background:linear-gradient(180deg,#141410,#0d0d0a);
+    border:1px solid rgba(240,235,224,.10);border-radius:16px;box-shadow:0 40px 90px -50px #000;overflow:hidden;}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(240,235,224,.08);}
+  .bar .t{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a7e;}
+  .bar .t b{color:#f0ebe0;font-weight:400;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:8px;vertical-align:middle;}
+  .body{position:relative;height:calc(100% - 49px);}
+
+  /* layers */
+  .layer{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
+  .layer.show{opacity:1;}
+
+  /* GRID layer */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,235,224,.08);}
+  .cell{background:#0d0d0a;}
+  .cell .img{aspect-ratio:4/3;background:#1c1c16 center/cover no-repeat;}
+  .cell .m{padding:11px 12px;}
+  .cell .nm{font-family:'DM Mono',monospace;font-size:10px;color:#8a8a7e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cell .st{display:flex;justify-content:space-between;margin-top:6px;font-family:'DM Mono',monospace;font-size:12px;}
+  .cell .st .sp{color:var(--accent);}.cell .st .ro{color:#d8d3c6;}
+  .elu-wrap{text-align:center;padding:40px 0 10px;}
+  .elu{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#0a0a08;border-radius:100px;
+    padding:18px 48px;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+    box-shadow:0 0 0 0 rgba(200,240,96,.5);transition:transform .18s ease, box-shadow .4s ease;}
+  .elu-sub{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a7e;margin-top:16px;}
+  /* button press pulse (phase 2) */
+  .p2 .elu{transform:scale(.94);box-shadow:0 0 50px 4px rgba(200,240,96,.6);}
+
+  /* fake cursor */
+  .cursor{position:absolute;right:120px;bottom:150px;width:26px;height:26px;z-index:20;
+    transition:left 1s cubic-bezier(.5,0,.3,1), top 1s cubic-bezier(.5,0,.3,1), right 1s, bottom 1s, transform .15s;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.6));}
+  .p1 .cursor,.p2 .cursor{right:auto;bottom:auto;left:452px;top:300px;}
+  .p2 .cursor{transform:scale(.82);}
+
+  /* LOADING layer */
+  .load{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:18px;}
+  .spin{width:34px;height:34px;border-radius:50%;border:3px solid rgba(240,235,224,.14);border-top-color:var(--accent);animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .load .lab{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .load .quip{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#8a8a7e;}
+
+  /* ANSWER layer */
+  .ans{position:absolute;inset:0;padding:22px 26px;overflow:hidden;}
+  .ans .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:16px 0 9px;}
+  .ans .h:first-child{margin-top:0;}
+  .ans p{font-size:14px;color:#b8b3a6;line-height:1.55;margin-bottom:9px;}
+  .ans p b{color:#f0ebe0;font-weight:500;} .ans .tag{color:var(--accent);font-family:'DM Mono',monospace;font-size:12px;}
+  .ans .kc{margin-top:14px;border-left:2px solid var(--accent);background:rgba(200,240,96,.05);padding:11px 14px;border-radius:5px;font-size:13px;color:#d8d3c6;}
+  .ans .kc b{color:var(--accent);}
+  /* reveal: the answer content slides up as it "writes" */
+  .ans .roll{position:absolute;left:26px;right:26px;top:22px;transition:transform 3.4s linear;}
+  .p3 .ans .roll{transform:translateY(-120px);}
+  .ans::after{content:'';position:absolute;left:0;right:0;bottom:0;height:54px;background:linear-gradient(180deg,transparent,#0d0d0a);}
+  .ans::before{content:'';position:absolute;left:0;right:0;top:0;height:30px;background:linear-gradient(180deg,#0d0d0a,transparent);z-index:2;}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="ui">
+    <div class="bar"><span class="t"><span class="dot"></span>✦ Accipiter — <b>Ashford Supply Co.</b> · Meta</span><span class="t">36 ads · selected range</span></div>
+    <div class="body">
+
+      <!-- GRID + button + cursor -->
+      <div class="layer layer-grid show" id="lg">
+        <div class="grid">
+          <div class="cell"><div class="img" style="background-image:url('/mock-creatives/weekender-studio.jpg')"></div><div class="m"><div class="nm">Studio_Weekender</div><div class="st"><span class="sp">$284</span><span class="ro">24.9x</span></div></div></div>
+          <div class="cell"><div class="img" style="background-image:url('/mock-creatives/carryall-studio.jpg')"></div><div class="m"><div class="nm">Field_Range</div><div class="st"><span class="sp">$331</span><span class="ro">11.1x</span></div></div></div>
+          <div class="cell"><div class="img" style="background-image:url('/mock-creatives/weekender-car.jpg')"></div><div class="m"><div class="nm">Heritage_Car</div><div class="st"><span class="sp">$487</span><span class="ro">0.7x</span></div></div></div>
+          <div class="cell"><div class="img" style="background-image:url('/mock-creatives/holdall-coast.jpg')"></div><div class="m"><div class="nm">Shoreline_Holdall</div><div class="st"><span class="sp">$177</span><span class="ro">24.5x</span></div></div></div>
+        </div>
+        <div class="elu-wrap"><span class="elu">✦ Elucidate</span><div class="elu-sub">Recommended — full analysis of this view</div></div>
+      </div>
+
+      <!-- LOADING -->
+      <div class="layer load" id="ll"><div class="spin"></div><div class="lab">✦ Elucidating…</div><div class="quip">"Lou Reed approves"</div></div>
+
+      <!-- ANSWER -->
+      <div class="layer ans" id="la">
+        <div class="roll">
+          <div class="h">Visual patterns — what's working</div>
+          <p>Top performers lean into <b>clean, solo-product studio shots</b>:</p>
+          <p><span class="tag">[Ad 18]</span> Weekender on pure white, product-only. <b>$76 / 37.1x ROAS.</b></p>
+          <p><span class="tag">[Ad 3]</span> Suede weekender, serif framing. <b>$284 / 24.9x</b> — strongest scaled winner.</p>
+          <div class="h">Personas being targeted</div>
+          <p><b>1 — the weekend traveler.</b> <b>2 — the outdoors buyer</b> (dominant, 9 of 20 ads). <b>3 — the craft purist.</b></p>
+          <div class="h">Creative recommendations</div>
+          <p><b>1.</b> Retire the car-interior shot — absorbed <b>$1,176 at sub-1.7x.</b> <b>2.</b> Scale the white-background format.</p>
+          <div class="kc">↳ Cross-referenced <b>1 meeting</b> in your Knowledge Center — <i>"we've got action shots… the product shots, moving around."</i></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  var stage = document.getElementById('stage');
+  var lg = document.getElementById('lg'), ll = document.getElementById('ll'), la = document.getElementById('la');
+  function set(cls){ stage.className = 'stage ' + cls; }
+  function show(el){ [lg,ll,la].forEach(function(e){ e.classList.remove('show'); }); el.classList.add('show'); }
+  function cycle(){
+    // phase 0 — grid at rest
+    set('p0'); show(lg); la.querySelector('.roll').style.transition='none'; la.querySelector('.roll').style.transform='translateY(0)';
+    // phase 1 — cursor travels to button
+    setTimeout(function(){ set('p1'); }, 900);
+    // phase 2 — click/press
+    setTimeout(function(){ set('p2'); }, 2000);
+    // loading
+    setTimeout(function(){ set('p2'); show(ll); }, 2450);
+    // answer in + roll
+    setTimeout(function(){ set('p3'); show(la); void la.offsetWidth; la.querySelector('.roll').style.transition=''; }, 4300);
+    // hold, then restart
+    setTimeout(cycle, 9200);
+  }
+  cycle();
+</script>
+</body>
+</html>
