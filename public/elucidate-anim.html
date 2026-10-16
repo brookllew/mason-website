@@ -12,8 +12,8 @@
   :root{--accent:#c8f060;}
   html,body{background:#060605;overflow:hidden;}
   body{height:66vw;}
-  /* 1000x660 stage, scaled to fill the iframe/viewport width */
-  .stage{position:relative;width:1000px;height:660px;overflow:hidden;transform-origin:top left;transform:scale(calc(100vw / 1000));
+  /* 1000x660 stage, scaled by JS (fit()) to exactly fill the iframe width */
+  .stage{position:relative;width:1000px;height:660px;overflow:hidden;transform-origin:top left;transform:scale(1);
     font-family:'DM Sans',sans-serif;color:#f0ebe0;
     background:radial-gradient(ellipse 70% 60% at 30% 10%, rgba(200,240,96,.06), transparent 60%), #0a0a08;}
   .ui{position:absolute;inset:40px;background:linear-gradient(180deg,#141410,#0d0d0a);
@@ -115,6 +115,9 @@
 <script>
   var stage = document.getElementById('stage');
   var lg = document.getElementById('lg'), ll = document.getElementById('ll'), la = document.getElementById('la');
+  // Scale the fixed 1000x660 stage to exactly fill the iframe/viewport width.
+  function fit(){ var s = window.innerWidth / 1000; stage.style.transform = 'scale(' + s + ')'; document.body.style.height = (660 * s) + 'px'; }
+  fit(); window.addEventListener('resize', fit);
   function set(cls){ stage.className = 'stage ' + cls; }
   function show(el){ [lg,ll,la].forEach(function(e){ e.classList.remove('show'); }); el.classList.add('show'); }
   function cycle(){
