@@ -160,8 +160,8 @@
   /* Video lightbox */
   .reel-modal { position:fixed; inset:0; z-index:10000; background:rgba(5,5,4,0.93); display:none; align-items:center; justify-content:center; padding:28px; }
   .reel-modal.open { display:flex; }
-  .reel-modal-inner { position:relative; height:min(86vh,760px); aspect-ratio:9/16; max-width:94vw; border-radius:18px; overflow:hidden; background:#000; box-shadow:0 40px 120px -40px #000; }
-  .reel-modal-inner iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .reel-modal-inner { position:relative; height:min(86vh,720px); aspect-ratio:1/1; max-width:94vw; border-radius:18px; overflow:hidden; background:#000; box-shadow:0 40px 120px -40px #000; }
+  .reel-modal-inner video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border:0; background:#000; }
   .reel-close { position:absolute; top:16px; right:22px; background:none; border:0; color:#f0ebe0; font-size:42px; line-height:1; cursor:pointer; z-index:1; }
 
   /* Higher-Ed reskin (colors only) */
@@ -337,13 +337,13 @@
 
 <div id="reelModal" class="reel-modal" onclick="if(event.target===this)closeReel()">
   <button class="reel-close" onclick="closeReel()" aria-label="Close">&times;</button>
-  <div class="reel-modal-inner"><iframe id="reelFrame" src="" title="Accipiter Commercial" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <div class="reel-modal-inner"><video id="reelVideo" src="/accipiter-commercial.mp4" poster="/accipiter-commercial-poster.jpg" playsinline controls preload="none"></video></div>
 </div>
 
 <script>
   // Video lightbox — plays the spot on click (autoplay), stops on close.
-  function openReel(e){ if(e) e.preventDefault(); document.getElementById('reelFrame').src='https://www.youtube.com/embed/gzo_gDvkAho?autoplay=1&playsinline=1'; document.getElementById('reelModal').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeReel(){ document.getElementById('reelModal').classList.remove('open'); document.getElementById('reelFrame').src=''; document.body.style.overflow=''; }
+  function openReel(e){ if(e) e.preventDefault(); var v=document.getElementById('reelVideo'); document.getElementById('reelModal').classList.add('open'); document.body.style.overflow='hidden'; try{ v.currentTime=0; v.play(); }catch(_){} }
+  function closeReel(){ var v=document.getElementById('reelVideo'); try{ v.pause(); }catch(_){} document.getElementById('reelModal').classList.remove('open'); document.body.style.overflow=''; }
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeReel(); });
 
   // Higher-Ed reskin (colors only): honor ?mode=highered, else saved mason-mode.
