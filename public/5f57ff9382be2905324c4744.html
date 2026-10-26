@@ -214,7 +214,7 @@ function progLine(p){
   if(ps)s+=' That includes the new Performance Max campaign: '+m0(ps)+' and '+r0(pc)+' conversion'+(r0(pc)==='1'?'':'s')+(cur.wk<='2026-10-07'?' since it launched Oct. 7.':(cur.forecast?' so far this week.':' for the week.'));}
  return s;}
 function summaryTable(){
- let h='<div class="tablewrap"><table class="sum"><thead><tr><th>Program</th><th>Week of</th><th>Spend</th><th>Inquiries</th><th>Per inquiry</th><th>Week before</th><th>Change</th></tr></thead><tbody>';
+ let h='<div class="tablewrap"><table class="sum"><thead><tr><th>Program</th><th>Week of</th><th>Spend</th><th>Inquiries</th><th>Per inquiry</th><th>Week before<br><span class="dim">spend / inquiries</span></th><th>Inquiries<br><span class="dim">vs. week before</span></th></tr></thead><tbody>';
  let school='';
  for(const p of PROGS){
   if(p.school!==school){school=p.school;h+='<tr class="grp"><td colspan="7">'+esc(school)+'</td></tr>';}
