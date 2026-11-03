@@ -23,7 +23,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
 .cr h2{font-size:1.4rem;line-height:1.25;margin:44px 0 6px;padding-top:24px;border-top:2px solid var(--rule)}
 .cr h3{font-size:1.1rem;margin:0 0 6px}
 .updated{color:var(--muted);font-size:.9rem;margin:0 0 14px}
-.cr .lede{max-width:78ch;font-size:1.05rem;margin:10px 0 18px}
+.cr .lede{font-size:1.05rem;margin:10px 0 18px;text-align:justify;hyphens:auto}
 .cr .lede b{font-weight:700}
 .cr .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:6px 0 4px}
 .cr .tile{border-left:3px solid var(--accent);padding:6px 12px;min-width:0}
@@ -46,7 +46,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
 .cr th.n,.cr td.n{text-align:right}
 .cr td:first-child{font-weight:600}
 .cr .bad{color:var(--bad)}
-.cr ul.find{margin:0;padding-left:1.1rem;line-height:1.6;max-width:85ch}
+.cr a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
+.cr ul.find{margin:0;padding-left:1.1rem;line-height:1.6;text-align:justify;hyphens:auto}
 .cr ul.find li{margin:0 0 6px}
 .cr ul.find b{color:var(--ink)}
 .cr h2.appx{margin-top:64px;border-top:3px solid var(--brand)}
@@ -64,7 +65,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
   <h1 id="top">The Chicago School: Phone Calls as Leads</h1>
   <p class="updated">Prepared Nov. 2, 2026 · CallRail data through Oct. 31, 2026</p>
   <p class="lede">Phone calls are the one lead source that never reaches Salesforce. Mason has tracked calls from paid search since 2013, first in Marchex and since 2020 in CallRail, and has now matched a decade of callers to Salesforce leads. The pattern is clear: callers who stayed on the line <b>5 minutes or more applied at 22%</b>, more than double the 9% of shorter calls. In 2026 about 95 calls a month run that long, and none of them are counted as leads or attributed to the campaign that drove them.</p>
-  <p class="lede">Call volume is flat year over year (<b data-draw="yoy-change">—</b>), but call quality has slipped since mid-2026. In October, <b data-draw="oct-aband">—</b> of callers hung up before reaching anyone, and <b data-draw="oct-short">—</b> of answered calls ended within a minute. Only The Chicago School's paid-search visitors are tracked; Saybrook, Pacific Oaks and Colleges of Law have no tracking numbers in CallRail.</p>
+  <p class="lede">Call volume is flat year over year (<b data-draw="yoy-change">—</b>), but call quality has changed. In October, <b data-draw="oct-aband">—</b> of callers hung up before reaching anyone, and <b data-draw="oct-short">—</b> of answered calls ended within a minute. Only The Chicago School's paid-search visitors are tracked; Saybrook, Pacific Oaks and Colleges of Law have no tracking numbers in CallRail.</p>
 
   <div class="tiles">
     <div class="tile">
@@ -120,7 +121,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
         <tr><td>2014 – 2017</td><td>Salesforce lead export for The Chicago School shared with Mason (about 190,000 leads with home phone, application and start flags). Matching callers to it began in 2018; the results are on this page.</td></tr>
         <tr><td>Feb 2020</td><td>Tracking moves from Marchex to CallRail.</td></tr>
         <tr><td>Apr – May 2022</td><td>TCS Ed System Inbound Call Log sent to Tiffani: a review of recorded calls across The Chicago School, Pacific Oaks, Saybrook and Colleges of Law. It found long calls that were callers stuck in the phone menu (7 of 39 Chicago School calls over 10 minutes).</td></tr>
-        <tr><td>Oct 2024 – Oct 2026</td><td>CallRail: 8,373 tracked calls, shown below.</td></tr>
+        <tr><td>Oct 2024 – Oct 2026</td><td><a href="#trend">CallRail: 8,373 tracked calls, shown below.</a></td></tr>
       </tbody>
     </table></div>
   </div>
