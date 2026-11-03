@@ -113,6 +113,19 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
     </div>
   </div>
 
+  <h2 id="example-call">One 5-minute call, in detail</h2>
+  <div class="card">
+    <p class="note">An answered call from Oct 5, 2026, 12.6 minutes long, summarized from CallRail's transcript. The caller's details are left out. Caller ID showed a government office line, a reminder that caller ID names describe the phone line, not the person calling.</p>
+    <ul class="find">
+      <li><b>Who called.</b> A practicing, master's-level psychologist who had finished all coursework, internships and comprehensive exams for a doctorate elsewhere, but not the dissertation. The caller lives in Virginia, near Washington, D.C., and works full time.</li>
+      <li><b>What they wanted.</b> The caller saw a paid ad for the Psy.D. and called about the 3-year Applied Clinical Psychology program, hoping earlier credits would transfer.</li>
+      <li><b>What they heard.</b> The distance format is open only to residents of California, Texas and West Virginia, so the only option would be the 5-year on-campus Psy.D. Tuition was quoted at $1,879 per credit hour.</li>
+      <li><b>How it ended.</b> The rep tried to transfer the call to admissions, but no one was available. After about four minutes on hold, the rep took a name and number for a callback "within about 10 minutes."</li>
+      <li><b>What happened next.</b> Three days later the caller returned to the website and read the tuition and fees page. Whether admissions ever called back isn't recorded anywhere we can see, because calls don't reach Salesforce.</li>
+      <li><b>Why it matters.</b> This is the kind of caller the 5-minute line is meant to catch: a qualified, high-intent prospect driven by paid media, who today is counted nowhere as a lead and whose follow-up can't be tracked.</li>
+    </ul>
+  </div>
+
   <h2 id="history">More than a decade of call tracking</h2>
   <div class="card">
     <p class="note">Mason holds the only continuous record of Chicago School phone demand: Marchex call logs, a Salesforce lead export, and CallRail.</p>
@@ -136,6 +149,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);li
       <li><b>Matching is by phone number only.</b> We compare the number a caller dialed from with the home phone on the Salesforce record. If someone calls from a spouse's, family or work phone, or from a number that isn't on their record, the call won't match. Every rate here is a floor.</li>
       <li><b>Applications, not enrollments.</b> "Started Class" is filled in for only 641 students in the export, nearly all 2014 terms, too few to measure. Enrollment data from Salesforce would finish the picture.</li>
       <li><b>Call length includes hold and menu time.</b> The 2022 call review found callers stuck in a menu loop for about 13 minutes. Long calls should be checked against recordings, and talk time used where available.</li>
+      <li><b>Not every long call is a prospective student.</b> A few 5+ minute calls come from employers or agencies. On Oct 27, 2026, a 17-minute call came from the human resources office of a California county mental health department, checking whether two Psy.D. programs qualify job candidates for a California psychologist license. The rep confirmed one from the school's licensure disclosures but couldn't answer the other and took contact details for a callback. Calls like this aren't leads, which is another reason to match calls against a fresh Salesforce export. They still matter: an employer that hires these graduates had a licensing question no one on the phone could answer.</li>
       <li><b>Paid search only.</b> Tracking numbers show to paid-search visitors. Callers from organic search, email or direct visits dial the main admissions number and aren't counted.</li>
       <li><b>Order isn't tested.</b> A match means the caller also applied at some point, before or after the call.</li>
     </ul>
