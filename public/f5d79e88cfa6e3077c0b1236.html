@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mason Lead Gen: What We Found and What We Changed</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#ffffff;--ink:#1d2433;--muted:#5d6678;--rule:#dfe3ea;--grid:#eef0f4;
+--brand:#3A3588;--c-backup:#3A3588;--c-enh:#489DB9;--c-tcspp:#E28C2F;--c-subs:#9CC8E4;--c-spend:#1d2433;--shade:rgba(226,140,47,.14);}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161a22;--ink:#e8ebf1;--muted:#9aa3b5;--rule:#2c3340;--grid:#232937;--brand:#9CC8E4;--c-backup:#8F93D6;--c-enh:#6FB6CF;--c-tcspp:#E28C2F;--c-subs:#4a5263;--c-spend:#f4f6fa;--shade:rgba(240,189,98,.12);}}
+:root[data-theme="dark"]{--bg:#161a22;--ink:#e8ebf1;--muted:#9aa3b5;--rule:#2c3340;--grid:#232937;--brand:#9CC8E4;--c-backup:#8F93D6;--c-enh:#6FB6CF;--c-tcspp:#E28C2F;--c-subs:#4a5263;--c-spend:#f4f6fa;--shade:rgba(240,189,98,.12);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next",Avenir,"Segoe UI",Arial,sans-serif;line-height:1.5}
+main{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+h1{font-size:1.6rem;line-height:1.25;margin:0 0 6px;font-weight:700}
+.sub{color:var(--muted);margin:0 0 20px;max-width:70ch}
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:0 0 12px;font-size:.95rem}
+.controls label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.controls input{width:18px;height:18px;accent-color:var(--c-backup)}
+.chartwrap{position:relative;height:460px;width:100%;overflow-x:auto}
+.chartwrap canvas{min-width:720px}
+.notes{margin-top:24px;border-top:1px solid var(--rule);padding-top:16px;color:var(--muted);font-size:.95rem;max-width:80ch}
+.notes p{margin:0 0 10px}
+.notes strong{color:var(--ink);font-weight:600}
+@media (max-width:600px){.chartwrap{height:380px}h1{font-size:1.3rem}}
+.slide2{margin-top:56px;padding-top:32px;border-top:2px solid var(--rule)}
+h2{font-size:1.4rem;line-height:1.25;margin:0 0 6px;font-weight:700}
+.tablewrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:right;padding:8px 10px;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+tr.hl td{font-weight:700}
+table.timeline td{text-align:left;vertical-align:top}table.timeline td:first-child{white-space:nowrap}table.timeline th{text-align:left}
+table.timeline td.src{color:var(--muted);font-size:.88rem;white-space:nowrap}
+.exec{margin:0 0 40px;padding-bottom:28px;border-bottom:2px solid var(--rule)}
+.exec h1{font-size:1.8rem}
+.lede{max-width:78ch;font-size:1.05rem;margin:10px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 18px}
+.kpis div{border-left:3px solid var(--c-tcspp);padding:6px 12px}
+.kpis b{display:block;font-size:1.15rem}
+.kpis span{color:var(--muted);font-size:.9rem}
+h1,h2,h3{font-family:Gazpacho,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;color:var(--brand)}
+.band{background:#3A3588;border-radius:6px;padding:22px 24px;margin:0 0 28px}
+.band img{display:block;width:320px;max-width:100%;height:auto}
+.kpis div{border-left-color:#E26627}
+
+:root{--c-mbm:#A9A6DC;--c-ct:#B4551F;--c-line2:#489DB9;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-mbm:#5a5f9e;--c-ct:#F0BD62;--c-line2:#6FB6CF;}}
+:root[data-theme="dark"]{--c-mbm:#5a5f9e;--c-ct:#F0BD62;--c-line2:#6FB6CF;}
+h3{font-size:1.15rem;margin:0 0 6px}
+td strong{font-weight:700}
+table.timeline.wrap td:first-child{white-space:normal;min-width:200px}
+table.timeline.wrap td{min-width:120px}
+</style>
+<style>
+ul.tight{margin:6px 0 0;padding-left:20px;max-width:80ch}
+ul.tight li{margin:0 0 6px}
+.callout{border-left:3px solid #E26627;padding:10px 14px;margin:16px 0;max-width:80ch;background:rgba(226,102,39,.06)}
+.tag{display:inline-block;font-size:.78rem;padding:1px 7px;border-radius:10px;border:1px solid var(--rule);color:var(--muted);margin-left:6px;vertical-align:middle}
+td.l,th.l{text-align:left}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule);padding-top:14px}
+</style>
+</head>
+<body><main>
+<div class="band"><img src="/Mason%20Logo%20White.png" alt="Mason Interactive" width="320" height="63"></div>
+<header class="exec">
+<h1>Mason Lead Gen: What We Found and What We Changed</h1>
+<p class="sub">Mason's own paid media, tracking and landing pages, Oct 1 – Nov 3, 2026, with changes made Nov 4, 2026. Internal.</p>
+<p class="lede">We looked into why traffic looks big but real leads are rare. The short version: <strong>since the new site launched on Sept 21, none of our ad platforms could see a lead.</strong> With no lead signal, every platform optimized for cheap clicks, and that is what we bought. About 86% of our October site traffic was paid, and <strong>none of the 4 real prospects came from paid media</strong>.</p>
+<div class="kpis">
+<div><b>~$10.7K</b><span>paid spend, Oct 1 – Nov 3 (Meta, Google Ads, YouTube)</span></div>
+<div><b>~42K → 34K</b><span>paid clicks and visits bought → GA4 sessions recorded</span></div>
+<div><b>30 → 4</b><span>form fills since launch → real prospects (3 Organic, 1 Tradeshow)</span></div>
+<div><b>0</b><span>lead conversions recorded by Google Ads, GA4 or Meta since launch</span></div>
+</div>
+<p class="lede"><strong>What we did on Nov 4:</strong> fixed lead tracking on every platform, paused the junk spend, cut Audience Network on Meta, and fixed 9 broken sitelinks. Next: point search ads at the <code>/go/</code> landing pages.</p>
+</header>
+
+<section class="slide2" style="margin-top:0;padding-top:0;border-top:0">
+<h2>Where the Traffic Went</h2>
+<p class="sub">Oct 1 – Nov 3, 2026. Platform numbers come from each ad platform; sessions come from GA4 (property 391010253).</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Channel</th><th>Spend</th><th>Clicks / visits reported</th><th>GA4 sessions</th><th>Avg. time on site</th><th>Prospects</th></tr></thead>
+<tbody>
+<tr><td>Meta (one ad set, "Leads_September2026_BroadAudience")</td><td>$5,130</td><td>24,967</td><td>19,543</td><td>2s</td><td>0</td></tr>
+<tr><td>Google Ads (Search + Demand Gen)</td><td>$5,308</td><td>2,471</td><td rowspan="2">9,915</td><td rowspan="2">6s</td><td>0</td></tr>
+<tr><td>YouTube promotions</td><td>~$270</td><td>14,736 visits</td><td>0</td></tr>
+<tr><td>Organic search</td><td>—</td><td>—</td><td>1,127</td><td>19s</td><td>3</td></tr>
+<tr><td>ChatGPT referrals</td><td>—</td><td>—</td><td>49</td><td>37s</td><td>0</td></tr>
+<tr class="hl"><td>Total</td><td>~$10.7K</td><td>~42K</td><td>33,982</td><td></td><td>4 (+1 tradeshow)</td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>Meta bought accidental taps.</strong> Audience Network (in-app banners and rewarded video) took $1,329 for 19,763 clicks at $0.07 each. On Nov 3 one ad hit a 35% click-through rate, which isn't people choosing to click. Spend never changed; on Oct 8 Meta moved delivery to $5–8 CPM inventory by itself, because it had no lead signal to steer by.</p>
+<p><strong>Google's Demand Gen behaved the same way.</strong> $2,721 for 1,533 clicks, 0 conversions, and a 0.0–0.2% conversion rate in every quarter since Q2 2025.</p>
+<p><strong>The YouTube promo bought foreign traffic.</strong> 14,736 "website visits" for $66, including 676 sessions from Turkey.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>The Leads: Then and Now</h2>
+<p class="sub">Every HubSpot form submission classified by hand: prospect, vendor, junk, student or test.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Period</th><th>Form fills</th><th>Real prospects</th><th>Per month</th><th class="l">Where they came from</th></tr></thead>
+<tbody>
+<tr><td>Jun – Sep 2025</td><td>97</td><td>34</td><td>~8.5</td><td class="l">All via learn.masoninteractive.com/work-with-us/ (GST search)</td></tr>
+<tr><td>Oct – Dec 2025</td><td>80</td><td>21</td><td>~7</td><td class="l">All via the same page</td></tr>
+<tr class="hl"><td>Sept 21 – Nov 4, 2026</td><td>30</td><td>4</td><td>~2.7</td><td class="l">3 Organic, 1 Tradeshow (Denver), 0 Paid</td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>The formula that worked in 2025:</strong> non-brand search (the GST ad groups Marketing &amp; Awareness, Advertising Agency, Core Services) sending people to one page with the form on it.</p>
+<p><strong>Current prospects:</strong> 3ZRO ($3K, Solutions, meeting Nov 5), Dazbog ($3.5K, Analysis), Luxorro (Lost), College of the Atlantic (going another direction; should be marked Lost).</p>
+<p><strong>Follow-up gap:</strong> in Q4 2025, only 3 of 21 prospects show any reply from Mason.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>Root Causes</h2>
+<ul class="tight">
+<li><strong>Google Ads counted a page nobody reaches.</strong> The only lead conversion fired on <code>learn.masoninteractive.com/thank-you</code>. The new site's forms show an inline thank-you message and never go there, so there were 0 conversions from Sept 21 on. YouTube subscriptions and views were also Primary goals, so Google optimized toward them.</li>
+<li><strong>GA4 had no lead event</strong>: 0 key events.</li>
+<li><strong>Meta's Lead event wasn't added until Oct 29.</strong> The campaign was "Learning limited" from launch day, so Meta drifted into Audience Network and Reels overlays.</li>
+<li><strong>No ad points at a landing page with a form.</strong> 173 of 176 Google search clicks went to the homepage; Meta goes to /services/ and the homepage. The <code>/go/</code> pages are built and tracked but get no traffic.</li>
+<li><strong>Broken links.</strong> 9 sitelinks went to 404s or the old Unbounce site, and any link to <code>masoninteractive.com/&lt;page&gt;</code> without the www still 404s.</li>
+</ul>
+</section>
+
+<section class="slide2">
+<h2>What We Changed on Nov 4</h2>
+<div class="tablewrap"><table class="timeline">
+<thead><tr><th>Area</th><th>Change</th><th>Expected effect</th></tr></thead>
+<tbody>
+<tr><td>Tracking</td><td>New Google Ads conversion "Lead – Form Submit (www)", Primary. GTM version 55 fires it, plus GA4 <code>generate_lead</code>, on every real form submit (/go/*, /lets-talk/, /accipiter/, /see-the-ai/). Tested end to end.</td><td>Platforms finally see leads and can optimize toward them.</td></tr>
+<tr><td>Google Ads</td><td>YouTube subscriptions and follow-on views set to Secondary.</td><td>Google stops treating views as leads.</td></tr>
+<tr><td>Google Ads</td><td>Paused "Demand Gen – Legacy Build" ($90/day).</td><td>About $2,700 a month of zero-conversion spend stops.</td></tr>
+<tr><td>Google Ads</td><td>Fixed 9 broken sitelinks (now /work/, /about/, /see-the-ai/, individual case studies); paused the stale 2023 "Join us at GROW" sitelink.</td><td>No more 404s or old Unbounce pages from ads.</td></tr>
+<tr><td>Meta</td><td>Excluded Audience Network for the whole Mason ad account; moved budget to the ad set (same $150/day).</td><td>Clicks down about 70–80%, real engagement up, CPM up.</td></tr>
+<tr><td>YouTube</td><td>Promo limited to NYC, Chicago, LA and London (Brook).</td><td>No more foreign junk inventory.</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>Ignore the test lead.</strong> "TEST Claude Tracking" / test@masoninteractive.com was submitted on /go/creative-agency to verify tracking.</div>
+<p class="sub"><strong>Nov 7 check:</strong> Meta clicks drop and engagement rises; Google Ads shows "Recording conversions"; GA4 shows <code>generate_lead</code>.</p>
+</section>
+
+<section class="slide2">
+<h2>Landing Pages: Then, Now, Next</h2>
+<div class="tablewrap"><table class="timeline">
+<thead><tr><th>Ad group / ad</th><th>Lands on now</th><th>Should land on</th></tr></thead>
+<tbody>
+<tr><td>MOF 2026 "DTC Paid Media" (only live non-brand search)</td><td>Homepage</td><td>/go/paid-media-agency <span class="tag">new page</span></td></tr>
+<tr><td>GST "Marketing &amp; Awareness" (best 2025 performer)</td><td>Paused</td><td>/go/digital-marketing-agency</td></tr>
+<tr><td>GST "Advertising Agency"</td><td>Paused</td><td>/go/ad-agency-nyc</td></tr>
+<tr><td>GST "Core Services" / "Creative Services"</td><td>Paused / homepage</td><td>/go/digital-marketing-agency, /go/creative-agency</td></tr>
+<tr><td>"Paid Media Audit" + Meta "Get an Outside Read" ads</td><td>/services/</td><td>/go/paid-media-audit <span class="tag">new page</span></td></tr>
+<tr><td>"Q4 / BFCM" + Meta Q4 ads</td><td>Homepage</td><td>/go/q4-roadmap <span class="tag">new page</span></td></tr>
+<tr><td>GST "Higher Ed"</td><td>Paused</td><td>/go/higher-ed-marketing <span class="tag">new page</span></td></tr>
+<tr><td>Beauty keywords</td><td>—</td><td>/go/beauty-marketing-agency (needs an ad group)</td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>Accipiter has two pages.</strong> <code>/accipiter/</code> is live and tracked. <code>/accipiter-mock/</code> is the newer design but has no tracking, and its apply form doesn't submit anywhere. Wire it up before sending anyone there.</p>
+<p><strong>Duplicates:</strong> the Nov 1 pages (/creative-agency, /digital-agency, /ad-agency-nyc) duplicate /go/ without a form. Redirect them to /go/.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>Next Steps</h2>
+<div class="tablewrap"><table class="timeline">
+<thead><tr><th>#</th><th>Step</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Point "DTC Paid Media" at a /go/ page.</td><td>It's the only non-brand search spending now, and it lands on the homepage.</td></tr>
+<tr><td>2</td><td>Rebuild the GST ad groups on their /go/ pages.</td><td>That's what produced every 2025 prospect.</td></tr>
+<tr><td>3</td><td>Build /go/paid-media-audit, /go/paid-media-agency, /go/q4-roadmap and /go/higher-ed-marketing.</td><td>Each ad's offer needs to match its page.</td></tr>
+<tr><td>4</td><td>Rebuild the Meta ad set without Advantage+: tighter audience, no Reels overlays.</td><td>Reels overlays (~$2K/month) can't be excluded while it's Advantage+; the audience is every US adult.</td></tr>
+<tr><td>5</td><td>Redirect the Nov 1 duplicate pages and learn.…/work-with-us/ to /go/.</td><td>One landing-page family, no vendor-only inbox.</td></tr>
+<tr><td>6</td><td>Fix the bare-domain forwarding in GoDaddy so links without www keep their path.</td><td>Old links, YouTube descriptions and blog URLs 404 today.</td></tr>
+<tr><td>7</td><td>Wire up /accipiter-mock/ (GTM + form) if it's the page we want to use.</td><td>Applications there are lost today.</td></tr>
+<tr><td>8</td><td>Follow up on every prospect within a day; mark College of the Atlantic Lost.</td><td>Q4 2025 had 18 prospects with no recorded reply.</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>New rule:</strong> every site or campaign launch gets one test lead per platform before it goes live, so nothing runs blind again.</div>
+<footer>Prepared Nov 4, 2026. Sources: Google Ads, Meta Ads Manager, GA4, YouTube Studio, HubSpot, GTM-MHG83S3. The full change log with expected effects is in docs/mason-leadgen-action-log.md (mason-creative-intel).</footer>
+</section>
+</main></body></html>
