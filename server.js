@@ -108,8 +108,9 @@ function resolveStatic(p) {
 // We can't ask WP as www instead (it 301s www->apex, causing a redirect loop), so we
 // keep asking as apex and rewrite apex -> www on the way out. The match is on
 // `//masoninteractive.com`, which never touches an already-correct `//www.masoninteractive.com`.
+// JSON responses (e.g. the Ajax Load More blog list) escape the slashes as `\/\/`, so match both.
 function rewriteApexToWww(s) {
-  return s.replace(/\/\/masoninteractive\.com/g, '//www.masoninteractive.com');
+  return s.replace(/(\\?\/\\?\/)masoninteractive\.com/g, '$1www.masoninteractive.com');
 }
 
 function proxyToWordPress(req, res) {
