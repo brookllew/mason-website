@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mason 2027 Sales Plan</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#ffffff;--ink:#1d2433;--muted:#5d6678;--rule:#dfe3ea;--grid:#eef0f4;
+--brand:#3A3588;--c-backup:#3A3588;--c-enh:#489DB9;--c-tcspp:#E28C2F;--c-subs:#9CC8E4;--c-spend:#1d2433;--shade:rgba(226,140,47,.14);}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161a22;--ink:#e8ebf1;--muted:#9aa3b5;--rule:#2c3340;--grid:#232937;--brand:#9CC8E4;--c-backup:#8F93D6;--c-enh:#6FB6CF;--c-tcspp:#E28C2F;--c-subs:#4a5263;--c-spend:#f4f6fa;--shade:rgba(240,189,98,.12);}}
+:root[data-theme="dark"]{--bg:#161a22;--ink:#e8ebf1;--muted:#9aa3b5;--rule:#2c3340;--grid:#232937;--brand:#9CC8E4;--c-backup:#8F93D6;--c-enh:#6FB6CF;--c-tcspp:#E28C2F;--c-subs:#4a5263;--c-spend:#f4f6fa;--shade:rgba(240,189,98,.12);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next",Avenir,"Segoe UI",Arial,sans-serif;line-height:1.5}
+main{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+h1{font-size:1.6rem;line-height:1.25;margin:0 0 6px;font-weight:700}
+.sub{color:var(--muted);margin:0 0 20px;max-width:70ch}
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:0 0 12px;font-size:.95rem}
+.controls label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.controls input{width:18px;height:18px;accent-color:var(--c-backup)}
+.chartwrap{position:relative;height:460px;width:100%;overflow-x:auto}
+.chartwrap canvas{min-width:720px}
+.notes{margin-top:24px;border-top:1px solid var(--rule);padding-top:16px;color:var(--muted);font-size:.95rem;max-width:80ch}
+.notes p{margin:0 0 10px}
+.notes strong{color:var(--ink);font-weight:600}
+@media (max-width:600px){.chartwrap{height:380px}h1{font-size:1.3rem}}
+.slide2{margin-top:56px;padding-top:32px;border-top:2px solid var(--rule)}
+h2{font-size:1.4rem;line-height:1.25;margin:0 0 6px;font-weight:700}
+.tablewrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:right;padding:8px 10px;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+tr.hl td{font-weight:700}
+table.timeline td{text-align:left;vertical-align:top}table.timeline td:first-child{white-space:nowrap}table.timeline th{text-align:left}
+table.timeline td.src{color:var(--muted);font-size:.88rem;white-space:nowrap}
+.exec{margin:0 0 40px;padding-bottom:28px;border-bottom:2px solid var(--rule)}
+.exec h1{font-size:1.8rem}
+.lede{max-width:78ch;font-size:1.05rem;margin:10px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 18px}
+.kpis div{border-left:3px solid var(--c-tcspp);padding:6px 12px}
+.kpis b{display:block;font-size:1.15rem}
+.kpis span{color:var(--muted);font-size:.9rem}
+h1,h2,h3{font-family:Gazpacho,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;color:var(--brand)}
+.band{background:#3A3588;border-radius:6px;padding:22px 24px;margin:0 0 28px}
+.band img{display:block;width:320px;max-width:100%;height:auto}
+.kpis div{border-left-color:#E26627}
+
+:root{--c-mbm:#A9A6DC;--c-ct:#B4551F;--c-line2:#489DB9;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-mbm:#5a5f9e;--c-ct:#F0BD62;--c-line2:#6FB6CF;}}
+:root[data-theme="dark"]{--c-mbm:#5a5f9e;--c-ct:#F0BD62;--c-line2:#6FB6CF;}
+h3{font-size:1.15rem;margin:0 0 6px}
+td strong{font-weight:700}
+table.timeline.wrap td:first-child{white-space:normal;min-width:200px}
+table.timeline.wrap td{min-width:120px}
+</style>
+<style>
+ul.tight{margin:6px 0 0;padding-left:20px;max-width:80ch}
+ul.tight li{margin:0 0 6px}
+.callout{border-left:3px solid #E26627;padding:10px 14px;margin:16px 0;max-width:80ch;background:rgba(226,102,39,.06)}
+.tag{display:inline-block;font-size:.78rem;padding:1px 7px;border-radius:10px;border:1px solid var(--rule);color:var(--muted);margin-left:6px;vertical-align:middle}
+td.l,th.l{text-align:left}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule);padding-top:14px}
+</style>
+</head>
+<body><main>
+<div class="band"><img src="/Mason%20Logo%20White.png" alt="Mason Interactive" width="320" height="63"></div>
+<header class="exec">
+<h1>Mason 2027 Sales Plan</h1>
+<p class="sub">Working draft, Nov 5, 2026, for review with the sales team. Every number here can change. Internal.</p>
+<p class="lede">The goal is <strong>$1M in new business in 2027</strong>, counted as money clients actually pay us. That takes <strong>21 deals: 15 retainers and 6 production projects.</strong> It does not take more deals than we already close. It takes bigger deals, and clients who stay.</p>
+<div class="kpis">
+<div><b>21 deals</b><span>one every two to three weeks; the team closed 63 in 2025 counting cross-sells</span></div>
+<div><b>~$1.04M</b><span>$738K retainers after early losses + $300K production</span></div>
+<div><b>$82K</b><span>new monthly fees to sign across the 15 retainers</span></div>
+<div><b>33 / 1.5M+</b><span>real prospects / impressions needed for the 8 deals that come from market reach</span></div>
+</div>
+<p class="lede"><strong>What has to change:</strong> production has to more than double, from $123K sold in 2026 to $300K, and existing clients carry the biggest share of it. Client budget growth and overall churn stay with operations and are not in this plan.</p>
+</header>
+
+<section class="slide2" style="margin-top:0;padding-top:0;border-top:0">
+<h2>The Rules</h2>
+<p class="sub">How we count, so everyone reads the same number.</p>
+<div class="tablewrap"><table class="timeline wrap">
+<thead><tr><th>Rule</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>One goal, two lines</td><td>Recurring and one-time production both count toward the $1M, tracked separately.</td></tr>
+<tr><td>Real money only</td><td>A client who leaves counts only for what they paid.</td></tr>
+<tr><td>Early losses are assumed</td><td>We plan on a third of new retainers leaving at day 90, whatever the contract says. If the newer contracts hold, we beat the plan.</td></tr>
+<tr><td>Cross-sells count</td><td>A new service sold to a current client counts. <span class="tag">proposed</span> A client's ad budget growing stays with operations.</td></tr>
+<tr><td>January deals count</td><td>Deals are valued over 12 months from signing. A July deal pays only half of that inside calendar 2027, so early deals matter most.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="slide2">
+<h2>The 21 Deals</h2>
+<p class="sub">Each dollar of monthly fee is worth 9 months, not 12: 10 of the 15 retainers stay the full year, and 5 pay for 3 months.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Line</th><th>Deals</th><th>Price</th><th>Monthly fees signed</th><th>Worth over 12 months</th></tr></thead>
+<tbody>
+<tr><td>Full clients (strategy, media, creative)</td><td>7</td><td>$6K/mo</td><td>$42K</td><td>$378K</td></tr>
+<tr><td>AIO</td><td>4</td><td>$5K/mo (placeholder)</td><td>$20K</td><td>$180K</td></tr>
+<tr><td>Accipiter</td><td>4</td><td>$5K/mo + 1%</td><td>$20K</td><td>$180K</td></tr>
+<tr class="hl"><td>Retainers</td><td>15</td><td></td><td>$82K</td><td>$738K</td></tr>
+<tr><td>Production (commercials, web dev/design)</td><td>6</td><td>~$50K one-time</td><td></td><td>$300K</td></tr>
+<tr class="hl"><td>Total</td><td>21</td><td></td><td></td><td>~$1.04M</td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>What's in a full client:</strong> $2K strategy + the greater of $2K or 3% of ad spend for media + $2K creative. The 3% takes over at about $67K a month in spend, so a $100K-a-month client is $7K a month. Bigger spenders mean bigger deals with no extra selling.</p>
+<p><strong>Creative on its own</strong> gets its own line: $2K a month inside a full client, and $5K or $8.5K a month as a standalone retainer on the March rate card, which may be out of date. A standalone creative client would be a separate deal.</p>
+<p><strong>Affiliate</strong> is sold as a $5K setup plus commission. Setups count as one-time money. The commission rate isn't set, so commission is left out of the $1M.</p>
+<p><strong>Accipiter's 1%</strong> isn't counted, because we haven't settled what it's charged on.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>What We've Actually Won</h2>
+<p class="sub">HubSpot won deals, Nov 5, 2024 – Nov 5, 2026: 102 deals. Amount is the monthly fee on retainers and the full price on one-time work, so these totals mix the two.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Source</th><th>Deals won</th><th>Total amount</th><th>Average</th></tr></thead>
+<tbody>
+<tr><td>Existing clients (cross-sell)</td><td>40</td><td>$279.1K</td><td>$7K</td></tr>
+<tr><td>Advertising</td><td>17</td><td>$110.5K</td><td>$6.5K</td></tr>
+<tr><td>Referrals</td><td>12</td><td>$61.5K</td><td>$5.1K</td></tr>
+<tr><td>Website</td><td>4</td><td>$44K</td><td>$11K</td></tr>
+<tr><td>Relationships</td><td>7</td><td>$32K</td><td>$4.6K</td></tr>
+<tr><td>Sponsored Partner</td><td>4</td><td>$29K</td><td>$7.3K</td></tr>
+<tr><td>Email Outreach</td><td>4</td><td>$25K</td><td>$6.3K</td></tr>
+<tr><td>Partners</td><td>3</td><td>$19.2K</td><td>$6.4K</td></tr>
+<tr><td>RFP</td><td>1</td><td>$15K</td><td>$15K</td></tr>
+<tr><td>Social and Manual Outreach</td><td>2</td><td>$7.5K</td><td>$3.8K</td></tr>
+<tr><td>No source entered</td><td>3</td><td>$10K</td><td>$3.3K</td></tr>
+<tr><td>Upsells with no amount</td><td>5</td><td>—</td><td>—</td></tr>
+<tr class="hl"><td>New business only (excludes cross-sell and upsells)</td><td>57</td><td>$353.7K</td><td>$6.2K</td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>Big deals mostly come from current clients.</strong> Lewis ($90K), Lushful ($36.3K) and DV KAP ($17.9K) were all cross-sells. The exception is Pacific Cotton ($33K), a new client from the website, and the largest new-client deal in two years.</p>
+<p><strong>New wins are slowing.</strong> 35 new-client deals in 2025, 20 so far in 2026. Advertising fell from 13 to 4; referrals rose from 5 to 7.</p>
+<p><strong>Trade shows have no recorded wins.</strong> Some may sit under Partners or Sponsored Partner.</p>
+<p><strong>HubSpot needs a cleanup.</strong> Pacific Cotton is entered at $3,000; the contract is $33,040. This table uses the contract figure, and other amounts may be off too.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>Where the 21 Deals Come From</h2>
+<p class="sub">First draft by judgment, built from what each source has won and who's likely to buy each line.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Source</th><th>Production</th><th>Full clients</th><th>AIO</th><th>Accipiter</th><th>Total</th><th>Worth</th><th>Won per year, last two</th></tr></thead>
+<tbody>
+<tr><td>Existing clients</td><td>3</td><td></td><td>3</td><td></td><td>6</td><td>$285K</td><td>~20</td></tr>
+<tr><td>Referrals, relationships, partners</td><td>1</td><td>2</td><td>1</td><td>1</td><td>5</td><td>$248K</td><td>~13</td></tr>
+<tr><td>Advertising</td><td></td><td>3</td><td></td><td></td><td>3</td><td>$162K</td><td>~8</td></tr>
+<tr><td>Trade shows</td><td>1</td><td></td><td></td><td>2</td><td>3</td><td>$140K</td><td>0 recorded</td></tr>
+<tr><td>Website direct</td><td>1</td><td>1</td><td></td><td></td><td>2</td><td>$104K</td><td>~2</td></tr>
+<tr><td>Outbound email</td><td></td><td>1</td><td></td><td>1</td><td>2</td><td>$99K</td><td>~2</td></tr>
+<tr class="hl"><td>Total</td><td>6</td><td>7</td><td>4</td><td>4</td><td>21</td><td>$1.04M</td><td></td></tr>
+</tbody></table></div>
+<div class="callout"><strong>Most targets sit below past pace on purpose.</strong> These need to be bigger, longer-lasting deals, which are harder to win than the average past deal. Trade shows are the biggest unknown and the first target to test.</div>
+</section>
+
+<section class="slide2">
+<h2>From Impressions to Closes</h2>
+<p class="sub">Only 8 of the 21 deals depend on reaching new people. One of the 3 advertising deals is assigned to YouTube and Meta so that channel has a number.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Source</th><th>Impressions</th><th>Sessions</th><th>Forms from real prospects</th><th>Real prospects</th><th>Closes</th></tr></thead>
+<tbody>
+<tr><td>Google search ads</td><td>25K</td><td>1,200</td><td>32</td><td>8</td><td>2</td></tr>
+<tr><td>YouTube Shorts and Meta</td><td>1.5M</td><td>15,400</td><td>16</td><td>4</td><td>1</td></tr>
+<tr><td>Organic and direct</td><td>Not measured</td><td>3,100</td><td>32</td><td>8</td><td>2</td></tr>
+<tr><td>Trade shows</td><td>—</td><td>—</td><td>—</td><td>13 conversations</td><td>3</td></tr>
+<tr class="hl"><td>Total</td><td>1.5M+</td><td>~20K</td><td>~80</td><td>33</td><td>8</td></tr>
+</tbody></table></div>
+<h3 style="margin-top:28px">Rates Used</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Step</th><th>Rate</th><th class="l">Where it comes from</th><th class="l">How solid</th></tr></thead>
+<tbody>
+<tr><td>Prospect to close</td><td>24%</td><td class="l">HubSpot, summer 2025: 8 advertising wins, 34 prospects</td><td class="l">Could be half that</td></tr>
+<tr><td>Form to real prospect</td><td>26%</td><td class="l">Q4 2025: 21 of 80 (today it's 13%)</td><td class="l">Measured</td></tr>
+<tr><td>Google click to form</td><td>2.6%</td><td class="l">Low end of 2025 search</td><td class="l">Measured</td></tr>
+<tr><td>Google impression to click</td><td>5%</td><td class="l">Q3 2026 search campaign</td><td class="l">Measured</td></tr>
+<tr><td>Organic session to prospect</td><td>0.27%</td><td class="l">3 prospects from 1,127 sessions, Oct 1 – Nov 3</td><td class="l">Tiny sample</td></tr>
+<tr><td>YouTube and Meta</td><td>1% click rate; 0.027% session to prospect</td><td class="l">Assumed: one-tenth of organic</td><td class="l"><strong>Unproven</strong></td></tr>
+</tbody></table></div>
+<div class="notes">
+<p><strong>If the close rate is 12%, double everything:</strong> 66 prospects and 3M impressions.</p>
+<p><strong>Google is the one channel we can roughly price:</strong> about $5,500 in clicks for 2 deals at $4.50 each. It probably won't scale that cleanly.</p>
+<p><strong>Prospect volume is close to today's pace</strong> of about 2.7 a month. What has to change is who those prospects are and how many close.</p>
+<p><strong>YouTube and Meta have no track record.</strong> Paid traffic produced no prospects this fall, mostly because it was junk and tracking was broken. Treat this line as an awareness budget until the new tracking gives real data.</p>
+<p><strong>Organic impressions</strong> live in Search Console and haven't been pulled yet.</p>
+</div>
+</section>
+
+<section class="slide2">
+<h2>Questions for the Team</h2>
+<p class="sub">The plan isn't final until these are answered.</p>
+<div class="tablewrap"><table class="timeline wrap">
+<thead><tr><th>#</th><th>Question</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Who owns existing-client asks, trade shows and Accipiter?</td><td>Existing clients are the biggest line, and someone has to ask every client about production and AIO.</td></tr>
+<tr><td>2</td><td>Do we still take small deals, or turn them down?</td><td>Half of new deals are $5K or under, and today's open deals are $3K to $3.5K.</td></tr>
+<tr><td>3</td><td>Which trade shows in 2027, and what does each cost?</td><td>We need 13 real conversations with buyers to reach 3 deals.</td></tr>
+<tr><td>4</td><td>What budget goes to Google, YouTube, Meta and trade shows?</td><td>Only Google has even a rough price.</td></tr>
+<tr><td>5</td><td>What can each of us sell into the mix?</td><td>The deal split is a draft, and the people closing these deals should test it.</td></tr>
+<tr><td>6</td><td>What really happened to past clients?</td><td>The 33% is an assumption. First-and-last-paid dates from billing would replace it with a real number.</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>Still being checked:</strong> sorting the 102 won deals into retainers and one-time work, and confirming contract lengths. That shows how much of our past sales really recurred.</div>
+<footer>Prepared Nov 5, 2026. Sources: HubSpot won deals, SoW 7220, GA4, Google Ads, March 2026 rate card. Lead rates come from the Nov 4 lead gen review.</footer>
+</section>
+</main></body></html>
