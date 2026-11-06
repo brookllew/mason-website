@@ -150,6 +150,7 @@ function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 function pd(s){const [y,m,d]=s.split('-').map(Number);return new Date(Date.UTC(y,m-1,d));}
 function iso(dt){return dt.toISOString().slice(0,10);}
 function fd(s){const d=pd(s);return MONTHS[d.getUTCMonth()]+' '+d.getUTCDate();}
+function fr(s){const e=addDays(s,6),x=pd(s),y=pd(e);return fd(s)+'–'+(x.getUTCMonth()===y.getUTCMonth()?y.getUTCDate():fd(e));}
 function fdy(s){const d=pd(s);return MONTHS[d.getUTCMonth()]+' '+d.getUTCDate()+', '+d.getUTCFullYear();}
 function addDays(s,k){const d=pd(s);d.setUTCDate(d.getUTCDate()+k);return iso(d);}
 function monday(s){const d=pd(s);const w=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-w);return iso(d);}
@@ -214,7 +215,7 @@ function progLine(p){
   if(ps)s+=' That includes Performance Max: '+m0(ps)+' and '+r0(pc)+' conversion'+(r0(pc)==='1'?'':'s')+(cur.forecast?' so far this week.':' for the week.');}
  return s;}
 function summaryTable(){
- let h='<div class="tablewrap"><table class="sum"><thead><tr><th>Program</th><th>Week of</th><th>Spend</th><th>Inquiries</th><th>Per inquiry</th><th>Week before<br><span class="dim">spend / inquiries</span></th><th>Inquiries<br><span class="dim">vs. week before</span></th></tr></thead><tbody>';
+ let h='<div class="tablewrap"><table class="sum"><thead><tr><th>Program</th><th>Week</th><th>Spend</th><th>Inquiries</th><th>Per inquiry</th><th>Week before<br><span class="dim">spend / inquiries</span></th><th>Inquiries<br><span class="dim">vs. week before</span></th></tr></thead><tbody>';
  let school='';
  for(const p of PROGS){
   if(p.school!==school){school=p.school;h+='<tr class="grp"><td colspan="7">'+esc(school)+'</td></tr>';}
@@ -225,7 +226,7 @@ function summaryTable(){
   let ch='<span class="dim">–</span>';
   if(q&&q.inq>=1){const pct=Math.round((t.inq/q.inq-1)*100);ch='<span class="pill '+(q.inq<5||t.inq<5?'dim':pct>=10?'good':pct<=-10?'bad':'dim')+'">'+(pct>0?'+':'')+pct+'%</span>';}
   else if(q&&t.inq>=1)ch='<span class="pill good">new</span>';
-  h+='<tr><td><a href="#sec-'+p.key+'">'+esc(p.name)+'</a></td><td>'+esc(fd(cur.wk))+(cur.forecast?' <span class="dim">(forecast)</span>':'')+'</td><td>'+ap+m0(t.spend)+'</td><td>'+ap+r0(t.inq)+' <span class="dim">('+r0(t.g)+' G · '+r0(t.m)+' M)</span></td><td>'+cpi+'</td><td>'+(q?m0(q.spend)+' / '+r0(q.inq):'<span class="dim">–</span>')+'</td><td>'+ch+'</td></tr>';
+  h+='<tr><td><a href="#sec-'+p.key+'">'+esc(p.name)+'</a></td><td>'+esc(fr(cur.wk))+(cur.forecast?' <span class="dim">(forecast)</span>':'')+'</td><td>'+ap+m0(t.spend)+'</td><td>'+ap+r0(t.inq)+' <span class="dim">('+r0(t.g)+' G · '+r0(t.m)+' M)</span></td><td>'+cpi+'</td><td>'+(q?m0(q.spend)+' / '+r0(q.inq):'<span class="dim">–</span>')+'</td><td>'+ch+'</td></tr>';
  }
  return h+'</tbody></table></div>';}
 function buildSections(){
