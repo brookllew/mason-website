@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a higher education marketing agency do?", "acceptedAnswer": {"@type": "Answer", "text": "We plan, make and run the marketing that fills classes: paid search and social, video and ad creative, SEO and AI search, and email nurture. At Mason, one team owns all of it, so budget moves to whatever is producing applications."}}, {"@type": "Question", "name": "How do you report results?", "acceptedAnswer": {"@type": "Answer", "text": "Against inquiries, applications, admits and cost per application, not clicks. Accipiter, our own AI, pulls from your ad platforms, GA4, Slate and your CRM so every dollar ties to an enrollment outcome."}}, {"@type": "Question", "name": "What kinds of schools do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Community colleges, public universities, private colleges and graduate and professional schools, including Rowan College, Eastern Connecticut State, the Culinary Institute of America and The Chicago School."}}, {"@type": "Question", "name": "What does the free audit include?", "acceptedAnswer": {"@type": "Answer", "text": "A review of your current enrollment marketing accounts, where spend is being wasted, and the first changes we would make."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a higher education marketing agency do?", "acceptedAnswer": {"@type": "Answer", "text": "We plan, make and run the marketing that fills classes: paid search and social, video and ad creative, SEO and AI search, and email nurture. At Mason, one team owns all of it, so budget moves to whatever is producing applications."}}, {"@type": "Question", "name": "How do you report results?", "acceptedAnswer": {"@type": "Answer", "text": "Against inquiries, applications, admits and cost per application, not clicks. Accipiter, our own AI, pulls from your ad platforms, GA4, Slate and your CRM so every dollar ties to an enrollment outcome."}}, {"@type": "Question", "name": "What kinds of schools do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Community colleges, public universities, private colleges and graduate and professional schools, including Rowan College, Eastern Connecticut State, the Culinary Institute of America and The Chicago School."}}, {"@type": "Question", "name": "What do the free 30 days include?", "acceptedAnswer": {"@type": "Answer", "text": "We plug your enrollment marketing into Accipiter, our own AI, then spend 30 days showing you what we’d change to fill more seats, and why. No cost, no contract."}}]}</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   header img { height: 28px; display: block; }
   header .hdr-cta { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
 
-  .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; padding: 48px 48px 72px; max-width: 1280px; margin: 0 auto; }
+  .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; padding: 48px 48px 40px; max-width: 1280px; margin: 0 auto; }
   .eyebrow { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
   h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(38px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
   .sub { font-size: 19px; color: var(--cream); opacity: .85; max-width: 560px; margin-bottom: 32px; }
@@ -74,6 +74,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .logos5 { grid-template-columns: repeat(5, 1fr); row-gap: 32px; }
   .quote { margin-top: 28px; max-width: 860px; font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.4; }
   .quote cite { display: block; margin-top: 12px; font-family: 'DM Mono', monospace; font-style: normal; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .hero-logos { margin-top: 28px; }
+  .hero-logos .label { margin-bottom: 14px; }
+  .hero-logos .logos { grid-template-columns: repeat(3, 1fr); gap: 18px 28px; max-width: 520px; }
+  .hero-logos .logo { height: 30px; }
+  .hero-logos .he5 { grid-template-columns: repeat(5, 1fr); gap: 16px 20px; max-width: 560px; }
+  @media (max-width: 900px) { .hero-logos .he5 { grid-template-columns: repeat(3, 1fr); } }
   details { border-bottom: 1px solid var(--border); padding: 18px 0; max-width: 860px; }
   summary { cursor: pointer; font-size: 18px; list-style: none; }
   summary::after { content: '+'; float: right; color: var(--accent); }
@@ -105,14 +111,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   body.highered-mode .logo-dark { display: block !important; }
 </style>
 </head>
-<body class="highered-mode">
-<script>/* Higher-ed landing page: always higher-ed, and carry it to the rest of the site. */try{localStorage.setItem("mason-mode","highered");}catch(e){}</script>
+<body>
+<script>/* Landing pages load dark; ?mode=highered (used by the higher-ed ad) switches to the cream higher-ed look. The choice is saved for the rest of the site. */(function(){var m="default";try{if(new URLSearchParams(location.search).get("mode")==="highered")m="highered";}catch(e){}if(m==="highered")document.body.classList.add("highered-mode");try{localStorage.setItem("mason-mode",m);}catch(e){}})();</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHG83S3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
-  <a href="/?mode=highered"><img class="logo-light" src="/Mason Logo White.png" alt="Mason Interactive" width="140" height="28"><img class="logo-dark" src="/Mason Logo.png" alt="Mason Interactive" width="140" height="28"></a>
-  <a class="hdr-cta" href="#start">Get a free enrollment audit →</a>
+  <a href="/"><img class="logo-light" src="/Mason Logo White.png" alt="Mason Interactive" width="140" height="28"><img class="logo-dark" src="/Mason Logo.png" alt="Mason Interactive" width="140" height="28"></a>
+  <a class="hdr-cta" href="#start">Try our AI free for 30 days →</a>
 </header>
 
 <div class="hero" id="start">
@@ -127,10 +133,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span>60+ colleges &amp; universities</span>
       <span>Since 2008 · Brooklyn, NY</span>
     </div>
+    <div class="hero-logos">
+      <p class="label">Institutions we’ve worked with</p>
+      <div class="logos he5">
+      <span class="logo" style="--logo:url('/logos/rowan-college.svg')" role="img" aria-label="Rowan College"></span>
+      <span class="logo" style="--logo:url('/logos/eastern-connecticut-state-university.svg')" role="img" aria-label="Eastern Connecticut State University"></span>
+      <span class="logo" style="--logo:url('/logos/culinary-institute-of-america.svg')" role="img" aria-label="The Culinary Institute of America"></span>
+      <span class="logo" style="--logo:url('/logos/the-chicago-school.svg')" role="img" aria-label="The Chicago School"></span>
+      <span class="logo" style="--logo:url('/logos/lewis-university.svg')" role="img" aria-label="Lewis University"></span>
+      <span class="logo" style="--logo:url('/logos/drew-university.svg')" role="img" aria-label="Drew University"></span>
+      <span class="logo" style="--logo:url('/logos/miracosta-college.svg')" role="img" aria-label="MiraCosta College"></span>
+      <span class="logo" style="--logo:url('/logos/william-james-college.svg')" role="img" aria-label="William James College"></span>
+      <span class="logo" style="--logo:url('/logos/st-augustine-college.svg')" role="img" aria-label="St. Augustine College"></span>
+      <span class="logo" style="--logo:url('/logos/international-center-of-photography.svg')" role="img" aria-label="International Center of Photography"></span>
+      </div>
+    </div>
   </div>
   <div class="form-card">
-    <h2>Get a free enrollment marketing audit</h2>
-    <p class="form-note">Tell us where you are. We’ll reply within one business day.</p>
+    <h2>Plug into our AI, free for 30 days</h2>
+    <p class="form-note">Tell us where you are. We’ll reply within one business day, then spend 30 days showing you what we’d do. No cost, no contract.</p>
     <form id="leadForm">
       <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
       <div class="form-row">
@@ -148,11 +169,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <option>Under $10K</option><option>$10K–$50K</option><option>$50K–$250K</option><option>$250K–$1M</option><option>$1M+</option>
         </select>
       </div>
-      <button type="submit" class="form-submit">Get a free enrollment audit</button>
+      <button type="submit" class="form-submit">Start my free 30 days</button>
     </form>
   </div>
 </div>
 
+<section>
+  <p class="label">Results</p>
+  <div class="grid3">
+      <a class="proof" href="/work/rowan-college-enrollment-growth/"><span class="proof-num">3X</span><span class="proof-what">winter enrollments: more than the previous three winters combined</span><span class="proof-who">Rowan College</span></a>
+      <a class="proof" href="/work/eastern-connecticut-state-university/"><span class="proof-num">+10%</span><span class="proof-what">completed applications after a full rebrand</span><span class="proof-who">Eastern Connecticut State University</span></a>
+      <a class="proof" href="/work/tcs-education-system/"><span class="proof-num">+216%</span><span class="proof-what">leads year over year, at 67% lower cost per lead</span><span class="proof-who">TCS Education System</span></a>
+  </div>
+  <blockquote class="quote">“A true partner, helping us navigate the ever-changing landscape of paid digital media and acting like an extension of our own team.”<cite>Scott Lucente · Director of Digital and Online Media, The Culinary Institute of America</cite></blockquote>
+</section>
 <section>
   <p class="label">What we do</p>
   <div class="grid3">
@@ -172,47 +202,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 
 <section>
-  <p class="label">Results</p>
-  <div class="grid3">
-      <a class="proof" href="/work/rowan-college-enrollment-growth/?mode=highered"><span class="proof-num">3X</span><span class="proof-what">winter enrollments: more than the previous three winters combined</span><span class="proof-who">Rowan College</span></a>
-      <a class="proof" href="/work/eastern-connecticut-state-university/?mode=highered"><span class="proof-num">+10%</span><span class="proof-what">completed applications after a full rebrand</span><span class="proof-who">Eastern Connecticut State University</span></a>
-      <a class="proof" href="/work/tcs-education-system/?mode=highered"><span class="proof-num">+216%</span><span class="proof-what">leads year over year, at 67% lower cost per lead</span><span class="proof-who">TCS Education System</span></a>
-  </div>
-  <blockquote class="quote">“A true partner, helping us navigate the ever-changing landscape of paid digital media and acting like an extension of our own team.”<cite>Scott Lucente · Director of Digital and Online Media, The Culinary Institute of America</cite></blockquote>
-</section>
-
-<section>
-  <p class="label">Institutions we’ve worked with</p>
-  <div class="logos logos5">
-      <span class="logo" style="--logo:url('/logos/rowan-college.svg')" role="img" aria-label="Rowan College"></span>
-      <span class="logo" style="--logo:url('/logos/eastern-connecticut-state-university.svg')" role="img" aria-label="Eastern Connecticut State University"></span>
-      <span class="logo" style="--logo:url('/logos/culinary-institute-of-america.svg')" role="img" aria-label="The Culinary Institute of America"></span>
-      <span class="logo" style="--logo:url('/logos/the-chicago-school.svg')" role="img" aria-label="The Chicago School"></span>
-      <span class="logo" style="--logo:url('/logos/lewis-university.svg')" role="img" aria-label="Lewis University"></span>
-      <span class="logo" style="--logo:url('/logos/drew-university.svg')" role="img" aria-label="Drew University"></span>
-      <span class="logo" style="--logo:url('/logos/miracosta-college.svg')" role="img" aria-label="MiraCosta College"></span>
-      <span class="logo" style="--logo:url('/logos/william-james-college.svg')" role="img" aria-label="William James College"></span>
-      <span class="logo" style="--logo:url('/logos/st-augustine-college.svg')" role="img" aria-label="St. Augustine College"></span>
-      <span class="logo" style="--logo:url('/logos/international-center-of-photography.svg')" role="img" aria-label="International Center of Photography"></span>
-  </div>
-</section>
-
-<section>
   <p class="label">Questions</p>
       <details><summary>What does a higher education marketing agency do?</summary><p>We plan, make and run the marketing that fills classes: paid search and social, video and ad creative, SEO and AI search, and email nurture. At Mason, one team owns all of it, so budget moves to whatever is producing applications.</p></details>
       <details><summary>How do you report results?</summary><p>Against inquiries, applications, admits and cost per application, not clicks. Accipiter, our own AI, pulls from your ad platforms, GA4, Slate and your CRM so every dollar ties to an enrollment outcome.</p></details>
       <details><summary>What kinds of schools do you work with?</summary><p>Community colleges, public universities, private colleges and graduate and professional schools, including Rowan College, Eastern Connecticut State, the Culinary Institute of America and The Chicago School.</p></details>
-      <details><summary>What does the free audit include?</summary><p>A review of your current enrollment marketing accounts, where spend is being wasted, and the first changes we would make.</p></details>
+      <details><summary>What do the free 30 days include?</summary><p>We plug your enrollment marketing into Accipiter, our own AI, then spend 30 days showing you what we’d change to fill more seats, and why. No cost, no contract.</p></details>
 </section>
 
 <section class="closer">
   <h2>Ready when you are.</h2>
-  <a class="btn" href="#start">Get a free enrollment audit</a>
+  <a class="btn" href="#start">Start my free 30 days</a>
 </section>
 
 <footer>
   <span>Mason Interactive · Brooklyn, New York · Since 2008</span>
-  <span><a href="/higher-education/?mode=highered">Higher ed work</a> · <a href="/work/?mode=highered">Case studies</a> · <a href="/about/?mode=highered">About</a> · <a href="/lets-talk/?mode=highered">Contact</a></span>
+  <span><a href="/higher-education/">Higher ed work</a> · <a href="/work/">Case studies</a> · <a href="/about/">About</a> · <a href="/lets-talk/">Contact</a></span>
 </footer>
 
 <script>
