@@ -93,14 +93,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .logos { grid-template-columns: repeat(3, 1fr); }
     .form-row { grid-template-columns: 1fr; gap: 0; }
   }
+
+  /* Higher Ed mode — shared with the main site through localStorage 'mason-mode' (same values as the homepage). */
+  body.highered-mode { --bg: #ede8df; --bg2: #e4dfd6; --cream: #2a2a28; --muted: #7a7a72; --accent: #2eb87a; --border: rgba(42,42,40,0.12); }
+  body.highered-mode .form-submit, body.highered-mode .btn { color: #fff; }
+  .logo-dark { display: none !important; }
+  body.highered-mode .logo-light { display: none !important; }
+  body.highered-mode .logo-dark { display: block !important; }
 </style>
 </head>
 <body>
+<script>/* Mode persistence: honor ?mode= and the saved site mode, like the main site. */try{var m=new URLSearchParams(location.search).get('mode');if(m)localStorage.setItem('mason-mode',m);if((localStorage.getItem('mason-mode')||'default')==='highered')document.body.classList.add('highered-mode');}catch(e){}</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHG83S3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
-  <a href="/"><img src="/Mason Logo White.png" alt="Mason Interactive" width="140" height="28"></a>
+  <a href="/"><img class="logo-light" src="/Mason Logo White.png" alt="Mason Interactive" width="140" height="28"><img class="logo-dark" src="/Mason Logo.png" alt="Mason Interactive" width="140" height="28"></a>
   <a class="hdr-cta" href="#start">Get a free creative review →</a>
 </header>
 
