@@ -47,6 +47,19 @@ table.timeline td:first-child{white-space:nowrap}
 table.timeline th{text-align:left}
 table.timeline.wrap td:first-child{white-space:normal;min-width:180px}
 table.timeline.wrap td{min-width:120px}
+p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.sub,.lede,.notes{max-width:none}
+:root{--good:#1e8e3e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--good:#5bd27a}}
+.kpis div.good{border-left-color:var(--good)}
+.kpis div.good b{color:var(--good)}
+.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:6px 0 22px;padding:0;list-style:none}
+.wins li{border:1px solid var(--rule);border-radius:6px;padding:14px 16px}
+.wins li p{margin:0 0 8px;text-align:left}
+.wins .mini{position:relative;height:150px}
+.feature{margin:28px 0 8px;padding:20px 24px;border-left:4px solid var(--good);background:color-mix(in srgb,var(--good) 7%,transparent);border-radius:0 6px 6px 0}
+.feature h3{margin:0 0 8px}
+.feature p{margin:0 0 8px}
 @media (max-width:600px){.chartwrap{height:360px}h1{font-size:1.35rem}}
 </style></head>
 <body><main>
@@ -54,15 +67,21 @@ table.timeline.wrap td{min-width:120px}
 
 <header class="exec">
 <h1>Edward Sexton Google Ads and Meta: What Changed in 2026</h1>
-<p class="sub">Meta from January 2025 and Google Ads from its launch in May 2026, through Nov. 15, 2026. Meta figures are in pounds and Google Ads figures in dollars; combined figures convert Google at $1.34 to the pound, the rate the Edward Sexton store uses. Figures for 2026 leave out two large orders Meta recorded that Edward Sexton has told us did not come from the ads: £18,900 in June and £7,007 in October. Prepared by Mason Interactive for Edward Sexton.</p>
-<p class="lede">Paid media is working harder for Edward Sexton than it did a year ago. Meta spend came down from about £8,300 a month (monthly average) in July 2025 to January 2026 to about £5,000 from February, and on March 31 Edward Sexton set paid media at £5,000 to £6,000 a month across all channels. Recorded purchases fell with the budget, from about 23 a month to about 15. Each pound now goes further: cost per purchase improved from £361 to £317, return on ad spend rose from 2.4 to 2.8, and purchase value fell 32% on 43% less spend. Google Ads, launched in May, adds about five purchases a month, and recorded its best months in August and September. October was softer on both platforms, and the Google part of that is mostly fixable inside brand search.</p>
+<p class="sub">This document is a comprehensive look back at Meta from January 2025 and Google Ads from its launch in May 2026, through Nov. 15, 2026. Meta figures are in pounds and Google Ads figures in dollars; combined figures convert Google at $1.34 to the pound. Figures for 2026 leave out two large orders Meta recorded that Edward Sexton has told us did not come from the ads: £18,900 in June and £7,424 in October (a £7,007 trunk-show order). Prepared by Mason Interactive for Edward Sexton.</p>
+<p class="lede">Paid media is working harder for Edward Sexton than it did a year ago. Meta spend came down from about £8,300 a month (monthly average) in July 2025 to January 2026 to about £5,000 from February, and on March 31 Edward Sexton set paid media at £5,000 to £6,000 a month across all channels. Recorded purchases fell with the budget, from about 23 a month to about 15. Each pound now goes further. October was softer on both platforms, and the Google part of that is mostly fixable inside brand search.</p>
+<ul class="wins">
+<li><p><strong>Cost per purchase improved from £361 to £317.</strong></p><div class="mini"><canvas id="w1"></canvas></div></li>
+<li><p><strong>Return on ad spend rose from 2.4 to 2.8.</strong></p><div class="mini"><canvas id="w2"></canvas></div></li>
+<li><p><strong>Purchase value fell 32% on 43% less spend.</strong></p><div class="mini"><canvas id="w3"></canvas></div></li>
+</ul>
+<p class="sub" style="margin-top:-12px">Meta and Google Ads together, monthly averages, July 2025 to January 2026 against April to October 2026.</p>
 <div class="kpis">
-<div><b>£361 → £317</b><span>cost per purchase, Meta and Google Ads together, July 2025 to January 2026 against April to October 2026</span></div>
-<div><b>2.4 → 2.8</b><span>return on ad spend, same periods</span></div>
+<div class="good"><b>£361 → £317</b><span>cost per purchase, Meta and Google Ads together, July 2025 to January 2026 against April to October 2026</span></div>
+<div class="good"><b>2.4 → 2.8</b><span>return on ad spend, same periods</span></div>
 <div><b>about 23 → 15</b><span>purchases a month (monthly average), on 43% less spend</span></div>
-<div><b>about 5 a month</b><span>purchases added by Google Ads since May 2026, 40 in all</span></div>
+<div class="good"><b>about 5 a month</b><span>purchases added by Google Ads since May 2026, 40 in all</span></div>
 </div>
-<p class="lede"><strong>What we recommend:</strong> plan budget around sales, when Edward Sexton's customers buy; tighten Google brand search, where most Google purchases come from; rebuild the Meta remarketing audience, then give it a steadier share of the monthly budget; and agree a new-customer measure with Edward Sexton and its ecommerce agency, using Shopify orders, so every channel is judged the same way. The volume plan follows directly below; the full list is at the end, under Next Steps.</p>
+<p class="lede"><strong>What we recommend:</strong> plan budget around sales, when Edward Sexton's customers buy; tighten Google brand search, where most Google purchases come from; expand the Meta remarketing audience, then give it a steadier share of the monthly budget; and agree a new-customer measure with Edward Sexton and its ecommerce agency, using Shopify orders, so every channel is judged the same way. The volume plan follows directly below; the full list is at the end, under Next Steps.</p>
 </header>
 
 <section class="slide2" style="margin-top:0;padding-top:0;border-top:0">
@@ -71,14 +90,19 @@ table.timeline.wrap td{min-width:120px}
 <div class="tablewrap"><table class="timeline wrap">
 <thead><tr><th>Lever</th><th>Extra purchases a month (rough ceiling)</th><th>Cost and notes</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>Tighten Google brand search</td><td>+5 to 8</td><td>Google recorded 13 purchases in August and 12 in September, then 2 in October. The national brand campaign's click-through rate fell from 27% in July to 5% in October as broader keywords crept in (Thesis VI). One broad keyword was paused on Nov. 16; negatives and a review of the Sept. 24 split follow. No extra spend.</td><td>In progress</td></tr>
+<tr><td>Tighten Google brand search</td><td>+5 to 8</td><td>Google recorded 13 purchases in August and 12 in September, then 2 in October. The national brand campaign's click-through rate fell from 27% in July to 5% in October as broader keywords crept in (Thesis VI). Non-brand negatives come next. No extra spend.</td><td>In progress</td></tr>
 <tr><td>Budget sale periods at the sale level</td><td>+10 to 15 in sale months</td><td>Sale months carry the year: January 2025 (63 Meta purchases), August 2025 (60) and August 2026 (27 Meta, 13 Google). The August 2026 push at £10,000 on Meta returned purchases at about the usual cost (Thesis III). A plan for the winter sale should be agreed now.</td><td>Proposed; needs Edward Sexton budget decision</td></tr>
-<tr><td>Rebuild Meta remarketing, then fund it</td><td>+2 to 4</td><td>Remarketing is the lowest-cost source of purchases on Meta, at £195 each in 2026. It is limited by its audience, not its budget. The ad set Mason launched on Sept. 2 targets only past purchasers and people who added to cart, narrowed by location and income; it reached about 200 to 250 people a month, each seeing the ads about 65 times. Earlier versions reached 16,000 to 35,000 people a month. More money into the current ad set would only show the same people more ads. Adding site visitors and Facebook and Instagram engagers back in comes first; then about £400 to £600 a month from inside the envelope brings it back toward its spring level (Thesis II). It mostly reaches people who already know the brand, so it sits beside the new-customer goal, not in place of it.</td><td>Audience fix first; then budget</td></tr>
-<tr><td>Move Google money from tests without purchases into brand search</td><td>+1</td><td>About $2,160 has gone to tests that have not yet recorded a purchase (Thesis VII). Most are already paused.</td><td>Mostly done</td></tr>
+<tr><td>Enhance Meta remarketing, then fund it</td><td>+2 to 4</td><td>The lowest-cost source of purchases on Meta, at £195 each in 2026. Expand the audience first, then add about £400 to £600 a month from inside the envelope (see Remarketing, Expanded, below, and Thesis II).</td><td>Audience first; then budget</td></tr>
+<tr><td>Move Google money from tests without purchases into brand search</td><td>+1</td><td>From May 1 to Nov. 15, 2026, about $2,160 went to tests that have not yet recorded a purchase (Thesis VII). Most are already paused.</td><td>Mostly done</td></tr>
 <tr class="hl"><td>Total</td><td>about +8 to 13 outside sale months; more in sale months</td><td>From about 8 to 15 a month (October and the April to October average) toward 20 or more, without raising the monthly envelope.</td><td></td></tr>
 </tbody></table></div>
+<div class="feature">
+<p class="eyebrow" style="color:var(--good)">Feature</p>
+<h3>Remarketing, Expanded</h3>
+<p>Remarketing has been the backbone of Edward Sexton's Meta account, and it is still its cheapest source of purchases: £195 each in 2026, against £442 for acquisition. In 2025 it reached 16,000 to 35,000 people a month. On Sept. 2 we focused it on the people most likely to buy, past purchasers and cart abandoners in selected locations and income brackets, to make every pound work harder. It now reaches about 250 people a month, so the next step is to widen it again: site visitors and Facebook and Instagram engagers first, then budget.</p>
+</div>
 <div class="notes">
-<p><strong>What we need from Edward Sexton.</strong> A budget decision for the winter sale; Shopify orders and revenue by month and by source, with new and returning customers split; and the new-customer target agreed with Edward Sexton's ecommerce agency, so the levers above can be weighed against it.</p>
+<p><strong>Next in the strategy.</strong> Agree the winter sale budget. Bring Shopify into the reporting: with access in place, we are adding orders and revenue by month and by source, split into new and returning customers. Then set the new-customer target with Edward Sexton's ecommerce agency, so every lever above is judged on the number that matters most.</p>
 </div>
 <h3 style="margin-top:36px">Further Down the Funnel</h3>
 <p class="sub">What the platforms report against what the business sees.</p>
@@ -86,13 +110,13 @@ table.timeline.wrap td{min-width:120px}
 <thead><tr><th>Meta, monthly average</th><th>July 2025 – Jan. 2026</th><th>April – Oct. 2026</th></tr></thead>
 <tbody>
 <tr><td>Purchases</td><td>23.0</td><td>9.7</td></tr>
-<tr><td>Average order value</td><td>£855</td><td>£1,061</td></tr>
+<tr><td>Average order value</td><td>£855</td><td>£1,055</td></tr>
 <tr><td>Purchases per 100 link clicks</td><td>0.38</td><td>0.38</td></tr>
-<tr class="hl"><td>Purchase value</td><td>£19,668</td><td>£10,304</td></tr>
+<tr class="hl"><td>Purchase value</td><td>£19,668</td><td>£10,245</td></tr>
 </tbody></table></div>
 <div class="notes">
-<p><strong>Fewer orders, larger ones.</strong> Average order value on Meta rose by about 24%, and one or two large orders can carry a month: a single grey coat order carried late October. Meta also recorded two larger orders that Edward Sexton has told us came from elsewhere, a client sent in by his stylist in June (£18,900) and a returning bespoke client paying a trunk-show order in October (£7,007). Both are left out of the 2026 figures in this report.</p>
-<p><strong>New customers: let's check them together.</strong> Neither platform separates new from returning customers, and both can claim the same order. A monthly Shopify pull by source would show how many purchases are new customers, which is the measure Edward Sexton's ecommerce agency has proposed.</p>
+<p><strong>Fewer orders, larger ones.</strong> Average order value on Meta rose by about 23%, and one or two large orders can carry a month: two tweed suit purchases worth £5,678 carried late October. Meta also recorded two larger orders that Edward Sexton has told us came from elsewhere, a client sent in by his stylist in June (£18,900) and a returning bespoke client paying a £7,007 trunk-show order in October (recorded by Meta at £7,424). Both are left out of the 2026 figures in this report.</p>
+<p><strong>New customers: let's check them together.</strong> Neither platform separates new from returning customers, and both can claim the same order. With Shopify access in place, we are adding a monthly pull by source that shows how many purchases are new customers, the measure Edward Sexton's ecommerce agency has proposed.</p>
 </div>
 </section>
 
@@ -104,7 +128,7 @@ table.timeline.wrap td{min-width:120px}
 <div class="notes">
 <p><strong>The peaks are sales.</strong> January 2025, August 2025 and August 2026 stand well above the months around them.</p>
 <p><strong>The spring 2026 step-down is the budget.</strong> Total spend fell from about £8,300 a month (monthly average) in July 2025 to January 2026 to about £4,800 from April, and purchases fell with it.</p>
-<p>Google Ads spend is converted to pounds at $1.34. The Trade Desk ran from Sept. 2 to Oct. 31, 2026, spending $2,254 (about £1,680) on 76,109 impressions and 44 clicks. It is an awareness campaign and recorded no purchases, so it is reported separately and not included in the purchase figures.</p>
+<p>Google Ads spend is converted to pounds at $1.34. The Trade Desk ran from Sept. 2 to Oct. 31, 2026, spending $2,254 (about £1,680) on 76,109 impressions and 44 clicks. It is a top-of-funnel campaign on premium inventory, built for reach rather than sales, so it is reported separately and not included in the purchase figures.</p>
 </div>
 </section>
 
@@ -123,9 +147,9 @@ table.timeline.wrap td{min-width:120px}
 <tr><td>May 2026</td><td>Google Ads launched: brand search, Shopping and Performance Max.</td><td>Spend about $2,300 a month (monthly average). One purchase in May and two in June while Performance Max learned.</td></tr>
 <tr><td>Late July 2026</td><td>Performance Max focused on top products and the right locations.</td><td>Google purchases rose to 7 in July, 13 in August and 12 in September.</td></tr>
 <tr><td>July 29 to Aug. 31, 2026</td><td>Summer sale; Meta raised to about £10,000 for August.</td><td>27 Meta purchases and 13 Google purchases in August.</td></tr>
-<tr><td>Sept. 2, 2026</td><td>The Trade Desk launched: one US brand-awareness display campaign, booked for Sept. 2 to Oct. 31.</td><td>$1,313 in September and $941 in October, about £840 a month against roughly £2,000 planned. 76,109 impressions, 44 clicks and no recorded purchases. Off since Oct. 31.</td></tr>
+<tr><td>Sept. 2, 2026</td><td>The Trade Desk launched: one US brand-awareness display campaign, booked for Sept. 2 to Oct. 31.</td><td>$1,313 in September and $941 in October, for 76,109 impressions on premium inventory Edward Sexton could not buy on its own. A top-of-funnel campaign, built to reach new audiences rather than to record sales. Off since Oct. 31.</td></tr>
 <tr><td>Sept. 24, 2026</td><td>Brand search split into a national campaign and a New York and Los Angeles campaign.</td><td>October: national brand search recorded no purchases; New York and Los Angeles recorded 2.3.</td></tr>
-<tr><td>November 2026</td><td>November refresh and gifting ads on Meta; competitor search paused; brand budgets raised; one broad keyword paused.</td><td>Too early to read (see Early November 2026).</td></tr>
+<tr><td>November 2026</td><td>November refresh on Meta (gifting ads built, not yet running); competitor search paused; brand budgets raised.</td><td>Too early to read (see Early November 2026).</td></tr>
 </tbody></table></div>
 </section>
 
@@ -160,9 +184,11 @@ table.timeline.wrap td{min-width:120px}
 <tr><td>Purchases per 100 clicks</td><td>0.38</td><td>0.38</td><td>Flat</td></tr>
 <tr><td>Purchases</td><td>23.0</td><td>9.7</td><td>−58%</td></tr>
 <tr class="hl"><td>Cost per purchase</td><td>£361</td><td>£337</td><td>−7%</td></tr>
-<tr><td>Purchase value</td><td>£19,668</td><td>£10,304</td><td>−48%</td></tr>
+<tr><td>Purchase value</td><td>£19,668</td><td>£10,245</td><td>−48%</td></tr>
 <tr class="hl"><td>Return on ad spend</td><td>2.4</td><td>3.1</td><td>+33%</td></tr>
 </tbody></table></div>
+<p class="sub" style="margin-top:22px">Change from July 2025 – January 2026 to April – October 2026. Green is an improvement.</p>
+<div class="chartwrap" style="height:300px"><canvas id="ceff"></canvas></div>
 <div class="notes">
 <p><strong>The budget explains the volume.</strong> Clicks fell almost exactly in line with spend, and the share of clicks that became purchases did not move. Nothing in the account's efficiency explains the lower purchase count.</p>
 <p><strong>Return improved more than cost per purchase.</strong> That is the larger orders (Further Down the Funnel), which also makes return on ad spend sensitive to one or two big purchases a month.</p>
@@ -177,13 +203,13 @@ table.timeline.wrap td{min-width:120px}
 <thead><tr><th>Meta campaign, monthly average</th><th>Spend, July 2025 – Jan. 2026</th><th>Spend, April – Oct. 2026</th><th>Purchases, 2026</th><th>Cost per purchase, 2026</th><th>Return on ad spend, 2026</th></tr></thead>
 <tbody>
 <tr><td>Remarketing</td><td>£3,909</td><td>£1,087</td><td>5.6</td><td>£195</td><td>6.0</td></tr>
-<tr><td>Acquisition</td><td>£3,413</td><td>£1,832</td><td>4.1</td><td>£442</td><td>2.1</td></tr>
+<tr><td>Acquisition</td><td>£3,413</td><td>£1,832</td><td>4.1</td><td>£442</td><td>2.0</td></tr>
 <tr><td>Awareness</td><td>£979</td><td>£354</td><td>—</td><td>—</td><td>—</td></tr>
 </tbody></table></div>
 <div class="notes">
 <p><strong>Remarketing converts at about half the cost of acquisition.</strong> It recorded 39 purchases from April to October 2026 at £195 each, against £442 for acquisition.</p>
-<p><strong>Its audience shrank after the sale, not just its budget.</strong> It ran at £580 to £610 a month in September and October, and its ads were shown about 15,000 times a month, against about 140,000 in August. The ad set Mason launched on Sept. 2 targets only past purchasers and people who added to cart, narrowed by location and income, and reached about 200 to 250 people a month, each about 65 times. The versions that ran from January to August reached 16,000 to 35,000 people a month. Until site visitors and Facebook and Instagram engagers are added back, more budget would only raise how often the same few people see the ads.</p>
-<p><strong>It reaches people who already know the brand.</strong> That makes it the cheapest way to close a sale, and not a replacement for the new-customer work Edward Sexton's ecommerce agency has asked for. Acquisition, Awareness and The Trade Desk build the audience that remarketing then converts, so the mix matters more than any one line.</p>
+<p><strong>We focused it on purpose, and it is ready to expand.</strong> On Sept. 2 we narrowed remarketing to the people most likely to buy, past purchasers and cart abandoners in selected locations and income brackets, so every pound went to the warmest prospects. It ran at £580 to £610 a month in September and October and reached about 200 to 250 people a month, each about 65 times, against 16,000 to 35,000 a month earlier in the year. The focus did its job; adding site visitors and Facebook and Instagram engagers is the next step, before more budget.</p>
+<p><strong>The biggest gap we see against similar clients is underfunding the premium placements available through The Trade Desk.</strong> They reach new, high-value audiences that Meta and Google cannot, and they fill the remarketing pool that converts at the lowest cost.</p>
 </div>
 </section>
 
@@ -227,7 +253,7 @@ table.timeline.wrap td{min-width:120px}
 </tbody></table></div>
 <div class="notes">
 <p><strong>Brand search is the foundation it was meant to be.</strong> Every purchase that can be traced to a search came from a search that included the brand name, at a return of 4.4 on that spend.</p>
-<p><strong>Non-brand searches have not converted yet.</strong> They are worth reaching for new customers, but they need their own budget and goal, not a share of brand search. The accompanying key term gaps workbook separates the two.</p>
+<p><strong>Non-brand searches have not converted yet.</strong> They are worth reaching for new customers, but they need their own budget and goal, not a share of brand search.</p>
 <p>Google reports the search terms behind about half of spend; the rest of Performance Max runs on placements without a search term.</p>
 </div>
 </section>
@@ -249,8 +275,8 @@ table.timeline.wrap td{min-width:120px}
 <div class="chartwrap" style="height:340px"><canvas id="cbrand"></canvas></div>
 <div class="notes">
 <p><strong>The campaign drifted wider.</strong> Click-through rate fell from 29% in June and 27% in July to 17% in August and September and 5% in October, while cost per click rose from about $1.30 to $4.26. That is the pattern of a brand campaign serving on searches that are not about the brand.</p>
-<p><strong>Two changes line up with it.</strong> Broad-match keywords were added in late July; one of them, "edward london clothing," spent $1,077 with no purchase and was paused on Nov. 16. On Sept. 24 the strongest brand searches in New York and Los Angeles moved to their own campaign, which recorded 2.3 purchases in October while the national campaign recorded none.</p>
-<p><strong>What comes next.</strong> Add the non-brand negatives in the key term gaps workbook, and either exclude New York and Los Angeles from the national campaign or fold the two back together.</p>
+<p><strong>Two changes line up with it.</strong> Broad-match keywords were added in late July. On Sept. 24 the strongest brand searches in New York and Los Angeles moved to their own campaign, which recorded 2.3 purchases in October while the national campaign recorded none.</p>
+<p><strong>What comes next.</strong> Add non-brand negatives and keep broad match out of brand. The two brand campaigns do not overlap: the main campaign targets England and the second targets New York and Los Angeles, so each can be judged and funded on its own results.</p>
 </div>
 </section>
 
@@ -276,8 +302,8 @@ table.timeline.wrap td{min-width:120px}
 <p class="sub">The main brand ad, May 1 to Nov. 15, 2026.</p>
 <div class="notes" style="border-top:0;padding-top:0;margin-top:12px">
 <p><strong>Strong on brand, light on action.</strong> The main brand ad carries 14 headlines and 4 descriptions about the house and its heritage. None invites the reader to shop, book a fitting or see a price, and none mentions a sale, delivery or returns. "Edward Sexton Official" is the headline behind most of its purchases.</p>
-<p><strong>Two landing pages to fix.</strong> Two trouser ads, one in each brand campaign, send people to the jackets page.</p>
-<p>The accompanying ad copy workbook has rewritten copy for each ad group, keeping the brand voice and adding a clear next step.</p>
+<p><strong>Landing pages to fix.</strong> Two trouser ads, one in each brand campaign, were sending people to the jackets page; both were corrected on Nov. 17. Coat searches land on jackets and tuxedo searches on suits. Our <a href="https://www.masoninteractive.com/62aabb6c11edfe50dc7bcf4a" target="_blank" rel="noopener">Accipiter recommendations</a> set out the full landing page plan, page by page.</p>
+<p>The <a href="https://docs.google.com/spreadsheets/d/1I_cX0VP0OumshDlycfwmWW-jLZOxeBeK3ceJxQ63PX8/edit" target="_blank" rel="noopener">proposed Google search ads</a> rewrite the copy for each ad group, keeping the brand voice and adding a clear next step, with new ad groups for coats and black tie.</p>
 </div>
 </section>
 
@@ -325,7 +351,7 @@ table.timeline.wrap td{min-width:120px}
 <tr><td>Competitor search (paused Nov. 10)</td><td>$151</td><td>0</td><td>$0</td></tr>
 </tbody></table></div>
 <div class="notes">
-<p><strong>A quiet first half, with the new creative only just live.</strong> The November refresh and gifting ads went live on Nov. 12 and 13, so most of this period ran on older creative.</p>
+<p><strong>A quiet first half, with the new creative only just live.</strong> The first November refresh ads went live from Nov. 10 to 13, so most of this period ran on older creative. The gifting ads are built but have not run.</p>
 <p><strong>The new Meta traffic campaign bought 2,406 clicks at 9 pence each.</strong> It is there to grow the audience, and it should be judged on that and on new visitors, not on purchases. Those visitors are not being brought back: the current remarketing ad set does not include site visitors, and it has reached about 170 people this month. That is the case for Next Step 3.</p>
 <p><strong>The Trade Desk is off.</strong> Its only campaign was booked to end on Oct. 31 and has not run in November.</p>
 <p><strong>Google budgets went up on Nov. 11</strong> for both brand search campaigns and Performance Max, so the second half of the month should spend closer to the goal than the first.</p>
@@ -339,22 +365,22 @@ table.timeline.wrap td{min-width:120px}
 <thead><tr><th>#</th><th>Step</th><th>Why (thesis)</th><th>Status</th></tr></thead>
 <tbody>
 <tr><td>1</td><td>Agree the winter sale budget and calendar now, with spend weighted to the first week.</td><td>Sale months buy the most purchases at a good price (III).</td><td>Proposed; needs Edward Sexton</td></tr>
-<tr><td>2</td><td>Tighten national brand search: add the non-brand negatives from the workbook and keep broad match out of brand.</td><td>Click-through rate fell from 27% to 5% between July and October (VI).</td><td>In progress; one keyword paused Nov. 16</td></tr>
-<tr><td>3</td><td>Rebuild the Meta remarketing audience with site visitors and Facebook and Instagram engagers, then give it a steadier share, about £1,000 to £1,200 a month, from inside the envelope.</td><td>Lowest cost per purchase on Meta, at £195; the current ad set reaches about 250 people a month (II).</td><td>Proposed; audience first</td></tr>
-<tr><td>4</td><td>Review the Sept. 24 brand split: exclude New York and Los Angeles from the national campaign, or fold the two together.</td><td>National brand search recorded no purchases in October (VI).</td><td>Proposed</td></tr>
-<tr><td>5</td><td>Rewrite search ads with a clear next step, and sale messages when a sale is live.</td><td>No call to action in the main brand ad (VIII).</td><td>Proposed; copy in workbook</td></tr>
-<tr><td>6</td><td>Point the two trouser ads to the trousers page.</td><td>Both send people to jackets (VIII).</td><td>Proposed</td></tr>
+<tr><td>2</td><td>Tighten national brand search: add non-brand negatives and keep broad match out of brand.</td><td>Click-through rate fell from 27% to 5% between July and October (VI).</td><td>In progress</td></tr>
+<tr><td>3</td><td>Expand the Meta remarketing audience with site visitors and Facebook and Instagram engagers, then give it a steadier share, about £1,000 to £1,200 a month, from inside the envelope.</td><td>Lowest cost per purchase on Meta, at £195; the current ad set reaches about 250 people a month (II).</td><td>Proposed; audience first</td></tr>
+<tr><td>4</td><td>Fund the two brand campaigns on their own results. The main campaign targets England and the second New York and Los Angeles; they do not overlap. Shift budget toward New York and Los Angeles while England records no purchases.</td><td>New York and Los Angeles recorded the brand purchases in October; England recorded none (VI).</td><td>Proposed</td></tr>
+<tr><td>5</td><td>Rewrite search ads with a clear next step, and sale messages when a sale is live.</td><td>No call to action in the main brand ad (VIII).</td><td>Proposed; see the <a href="https://docs.google.com/spreadsheets/d/1I_cX0VP0OumshDlycfwmWW-jLZOxeBeK3ceJxQ63PX8/edit" target="_blank" rel="noopener">proposed ads</a></td></tr>
+<tr><td>6</td><td>Point the two trouser ads to the trousers page.</td><td>Both sent people to jackets (VIII).</td><td>Done Nov. 17</td></tr>
 <tr><td>7</td><td>Keep competitor search and prospecting Shopping paused; judge the New York and Los Angeles Shopping test in December.</td><td>$2,158 on tests with no purchase (VII).</td><td>Mostly done</td></tr>
-<tr><td>8</td><td>Agree the new-customer target with Edward Sexton and its ecommerce agency, and report Shopify orders by source and by new or returning customer each month.</td><td>The measure proposed in September; both platforms can claim the same order (IX).</td><td>Needs Shopify access</td></tr>
+<tr><td>8</td><td>Agree the new-customer target with Edward Sexton and its ecommerce agency, and report Shopify orders by source and by new or returning customer each month.</td><td>The measure proposed in September; both platforms can claim the same order (IX).</td><td>Underway; Shopify access in place</td></tr>
 <tr><td>9</td><td>Give Performance Max the new autumn and winter assets and judge it on a 30-day window against brand search.</td><td>It paid back at 3.1 when focused, and has been quiet since October (V).</td><td>In progress</td></tr>
-<tr><td>10</td><td>Judge the new Meta traffic campaign on new visitors and audience growth, reviewed in 30 days. Decide with Edward Sexton whether to relaunch The Trade Desk, which ended Oct. 31, and if so measure it the same way.</td><td>Both are top-of-funnel; purchases are the wrong test for them. The Trade Desk spent $2,254 over two months for 44 clicks (Early November 2026).</td><td>Proposed; needs Edward Sexton decision</td></tr>
+<tr><td>10</td><td>Judge the new Meta traffic campaign on new visitors and audience growth, reviewed in 30 days. Decide with Edward Sexton whether to relaunch The Trade Desk, which ended Oct. 31, and if so measure it the same way.</td><td>Both are top-of-funnel; purchases are the wrong test for them. The Trade Desk bought 76,109 impressions of premium inventory for $2,254 over two months (Thesis II).</td><td>Proposed; needs Edward Sexton decision</td></tr>
 </tbody></table></div>
 </section>
 
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-const D={"labels": ["Jan 25", "Feb 25", "Mar 25", "Apr 25", "May 25", "Jun 25", "Jul 25", "Aug 25", "Sep 25", "Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26"], "meta_p": [63, 16, 11, 16, 14, 13, 30, 60, 14, 14, 9, 13, 21, 19, 12, 8, 8, 2, 12, 27, 6, 5, 1], "g_p": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7, 2.3, 7.0, 13.2, 11.8, 2.3, 2.7], "meta_s": [9192, 4917, 5025, 5859, 6651, 8081, 9654, 11962, 4312, 7526, 7566, 7147, 9943, 4977, 4693, 1796, 2484, 2484, 2526, 9835, 1723, 2060, 1050], "g_s": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1717, 1848, 1682, 1946, 1665, 1546, 751], "meta_v": [66778, 14587, 7234, 23069, 14815, 12110, 16672, 46778, 18258, 16057, 11139, 16933, 11838, 52549, 10526, 7151, 12916, 1740, 18538, 17922, 4502, 9362, 493], "g_v": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 410, 783, 5918, 4937, 7848, 2086, 2034], "glabels": ["May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26*"], "pmax_cost": [1364.86, 1437.4, 1212.15, 1565.37, 1163.08, 539.0, 276.69], "pmax_p": [0.66, 0.34, 3.02, 10.23, 3.75, 0.0, 0.0], "pmax_clicks": [7929.0, 10484.0, 2818.0, 2449.0, 1772.0, 426.0, 158.0], "bm_ctr": [null, 29.4, 27.4, 16.5, 16.9, 5.2, 4.7], "bm_cpc": [null, 1.16, 1.39, 1.29, 2.49, 4.26, 3.46], "bm_p": [null, 2.0, 4.0, 3.0, 8.0, 0.0, 0.0], "gs_bmix": [0.0, 724.0, 1050.0, 991.0, 808.0, 588.0, 329.0], "gs_bny": [0.0, 0.0, 0.0, 0.0, 40.0, 518.0, 237.0], "gs_pmax": [1365.0, 1437.0, 1212.0, 1565.0, 1163.0, 539.0, 277.0], "gs_other": [944.0, 323.0, 0.0, 61.0, 228.0, 435.0, 168.0], "mlabels": ["Jul 25", "Aug 25", "Sep 25", "Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26*"], "rem_s": [3689, 6446, 2024, 3347, 3184, 3713, 4961, 2418, 2263, 963, 946, 949, 928, 2636, 578, 607, 155], "rem_p": [26, 47, 10, 6, 7, 8, 16, 14, 9, 6, 5, 2, 6, 13, 3, 4, 1], "acq_s": [3493, 4527, 1815, 3484, 3560, 2823, 4190, 1941, 1649, 477, 1234, 1237, 1308, 6545, 884, 1137, 628], "aw_s": [2472, 988, 473, 695, 822, 611, 792, 619, 780, 356, 305, 298, 290, 653, 261, 316, 49], "tr_s": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 218], "rem_impr": [203609, 360456, 126091, 239247, 344942, 384453, 375560, 245496, 200081, 87555, 71571, 113903, 94474, 140814, 14402, 15640, 4261]};
+const D={"labels": ["Jan 25", "Feb 25", "Mar 25", "Apr 25", "May 25", "Jun 25", "Jul 25", "Aug 25", "Sep 25", "Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26"], "meta_p": [63, 16, 11, 16, 14, 13, 30, 60, 14, 14, 9, 13, 21, 19, 12, 8, 8, 2, 12, 27, 6, 5, 1], "g_p": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7, 2.3, 7.0, 13.2, 11.8, 2.3, 2.7], "meta_s": [9192, 4917, 5025, 5859, 6651, 8081, 9654, 11962, 4312, 7526, 7566, 7147, 9943, 4977, 4693, 1796, 2484, 2484, 2526, 9835, 1723, 2060, 1050], "g_s": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1717, 1848, 1682, 1946, 1665, 1546, 751], "meta_v": [66778, 14587, 7234, 23069, 14815, 12110, 16672, 46778, 18258, 16057, 11139, 16933, 11838, 52549, 10526, 7151, 12916, 1740, 18538, 17922, 4502, 8945, 493], "g_v": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 410, 783, 5918, 4937, 7848, 2086, 2034], "glabels": ["May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26*"], "pmax_cost": [1364.86, 1437.4, 1212.15, 1565.37, 1163.08, 539.0, 276.69], "pmax_p": [0.66, 0.34, 3.02, 10.23, 3.75, 0.0, 0.0], "pmax_clicks": [7929.0, 10484.0, 2818.0, 2449.0, 1772.0, 426.0, 158.0], "bm_ctr": [null, 29.4, 27.4, 16.5, 16.9, 5.2, 4.7], "bm_cpc": [null, 1.16, 1.39, 1.29, 2.49, 4.26, 3.46], "bm_p": [null, 2.0, 4.0, 3.0, 8.0, 0.0, 0.0], "gs_bmix": [0.0, 724.0, 1050.0, 991.0, 808.0, 588.0, 329.0], "gs_bny": [0.0, 0.0, 0.0, 0.0, 40.0, 518.0, 237.0], "gs_pmax": [1365.0, 1437.0, 1212.0, 1565.0, 1163.0, 539.0, 277.0], "gs_other": [944.0, 323.0, 0.0, 61.0, 228.0, 435.0, 168.0], "mlabels": ["Jul 25", "Aug 25", "Sep 25", "Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26", "Nov 26*"], "rem_s": [3689, 6446, 2024, 3347, 3184, 3713, 4961, 2418, 2263, 963, 946, 949, 928, 2636, 578, 607, 155], "rem_p": [26, 47, 10, 6, 7, 8, 16, 14, 9, 6, 5, 2, 6, 13, 3, 4, 1], "acq_s": [3493, 4527, 1815, 3484, 3560, 2823, 4190, 1941, 1649, 477, 1234, 1237, 1308, 6545, 884, 1137, 628], "aw_s": [2472, 988, 473, 695, 822, 611, 792, 619, 780, 356, 305, 298, 290, 653, 261, 316, 49], "tr_s": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 218], "rem_impr": [203609, 360456, 126091, 239247, 344942, 384453, 375560, 245496, 200081, 87555, 71571, 113903, 94474, 140814, 14402, 15640, 4261]};
 function v(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
 const charts={};
 function base(extra){const o={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
@@ -394,8 +420,24 @@ function drawAll(){
    o.scales.y1={position:'right',beginAtZero:true,grid:{display:false},ticks:{color:v('--muted'),callback:x=>'$'+x},title:{display:true,text:'Cost per click',color:v('--muted')}};
    o.plugins.tooltip={callbacks:{label:c=>c.dataset.yAxisID==='y1'?'Cost per click: $'+c.parsed.y.toFixed(2):'Click-through rate: '+c.parsed.y+'%'}};return o;})}));
 }
+const GOOD=()=>v('--good'), BEFORE=()=>v('--c-aw');
+function mini(id,labels,vals,cols,fmt){mk(id,()=>({type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:cols,borderWidth:0}]},
+ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)}}},
+ scales:{x:{grid:{display:false},ticks:{color:v('--muted')}},y:{beginAtZero:true,grid:{color:v('--grid')},ticks:{color:v('--muted'),callback:fmt}}}}}));}
+function drawWins(){
+ mini('w1',['2025','2026'],[361,317],[BEFORE(),GOOD()],x=>'£'+x);
+ mini('w2',['2025','2026'],[2.4,2.8],[BEFORE(),GOOD()],x=>Number(x).toFixed(1));
+ mk('w3',()=>({type:'bar',data:{labels:['Spend','Purchase value'],datasets:[{label:'2025',data:[100,100],backgroundColor:BEFORE(),borderWidth:0},{label:'2026',data:[57,68],backgroundColor:GOOD(),borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:v('--ink'),boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y+' (2025 = 100)'}}},
+  scales:{x:{grid:{display:false},ticks:{color:v('--muted')}},y:{beginAtZero:true,max:110,grid:{color:v('--grid')},ticks:{color:v('--muted')}}}}}));
+ const eff=[['Spend',-61,false],['Link clicks',-56,false],['Purchases',-58,false],['Cost per purchase',-7,true],['Purchase value',-48,false],['Return on ad spend',33,true]];
+ mk('ceff',()=>({type:'bar',data:{labels:eff.map(e=>e[0]),datasets:[{data:eff.map(e=>e[1]),backgroundColor:eff.map(e=>e[2]?GOOD():BEFORE()),borderWidth:0}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(c.parsed.x>0?'+':'')+c.parsed.x+'%'}}},
+  scales:{x:{min:-70,max:40,grid:{color:v('--grid')},ticks:{color:v('--muted'),callback:x=>(x>0?'+':'')+x+'%'}},y:{grid:{display:false},ticks:{color:v('--ink')}}}}}));
+}
 drawAll();
+drawWins();
 document.getElementById('tog').addEventListener('change',drawAll);
-if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawAll);
+if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{drawAll();drawWins();});
 </script>
 </body></html>
