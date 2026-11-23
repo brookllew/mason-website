@@ -635,6 +635,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .portfolio-grid, .posts-grid, .process-steps, .services-grid, .story-section,
     .values-grid, .verticals-grid, .team-grid { grid-template-columns: 1fr !important; }
   }
+
+  /* ── v2 portfolio grid: 12-col, per-asset aspect ratios ── */
+  .pf-head { margin-bottom: 40px; }
+  .pf-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); }
+  .pf-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+  .pf-s3 { grid-column: span 3; } .pf-s4 { grid-column: span 4; }
+  .pf-s6 { grid-column: span 6; } .pf-s8 { grid-column: span 8; } .pf-s12 { grid-column: span 12; }
+  .portfolio-visual.r-wide { aspect-ratio: 21/9; }
+  .portfolio-visual.r-l { aspect-ratio: 16/9; }
+  .portfolio-visual.r-v { aspect-ratio: 9/16; }
+  .portfolio-visual.r-p { aspect-ratio: 4/5; }
+  .portfolio-visual.r-sq { aspect-ratio: 1/1; }
+  .portfolio-visual.r-85 { aspect-ratio: 8/5; }
+  @media (max-width: 768px) {
+    .pf-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .pf-s3, .pf-s4 { grid-column: span 1; }
+    .pf-s6, .pf-s8, .pf-s12 { grid-column: span 2; }
+    .portfolio-visual.r-85 { aspect-ratio: 16/9; }
+    .portfolio-visual.r-wide { aspect-ratio: 16/9; }
+    .portfolio-section.pf-section { padding: 48px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -733,136 +755,256 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- FILTER -->
-<div class="filter-bar reveal">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="video">Video</button>
-  <button class="filter-btn" data-filter="photo">Photography</button>
-  <button class="filter-btn" data-filter="brand">Brand</button>
-  <button class="filter-btn" data-filter="performance">Performance Ads</button>
-  <button class="filter-btn" data-filter="ugc">UGC</button>
-</div>
-
-<!-- PORTFOLIO GRID -->
-<section class="portfolio-section reveal">
-  <div class="portfolio-grid" id="portfolio-grid">
-
-    <!-- Row 1: wide hero piece -->
-    <div class="portfolio-item wide" data-category="brand">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/3.aman-tennis-shorter-7.16.25-1.mp4" type="video/mp4"></video>
+<!-- PORTFOLIO (v2: Mike Mellia's selects, Nov 2026) -->
+<section class="portfolio-section pf-section reveal" id="brand-growth">
+  <div class="pf-head">
+    <span class="pf-eyebrow">01 · Brand &amp; Growth</span>
+    <h2 class="cap-title">Brand &amp; <em>growth.</em></h2>
+  </div>
+  <div class="pf-grid">
+    <div class="portfolio-item pf-s12">
+      <div class="portfolio-visual r-wide">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/laurent-ferrier.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Brand Campaign · Video</span>
-          <h3 class="portfolio-title">Dagne Dover — Find Your Flow</h3>
-          <span class="portfolio-client">Full brand campaign · TV + Digital + OOH</span>
+          <span class="portfolio-type">Brand · Film</span>
+          <h3 class="portfolio-title">Laurent Ferrier</h3>
         </div>
       </div>
     </div>
-
-    <!-- Row 2: tall + square -->
-    <div class="portfolio-item tall" data-category="photo">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/leather-11.14.24-compressed.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/aman-tennis.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Editorial Photography</span>
-          <h3 class="portfolio-title">Marimekko — Spring Collection</h3>
-          <span class="portfolio-client">Lifestyle photography · Campaign assets</span>
+          <span class="portfolio-type">Brand · Video</span>
+          <h3 class="portfolio-title">Aman — Tennis</h3>
         </div>
       </div>
     </div>
-
-    <div class="portfolio-item tall" data-category="performance">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/aman-cashmere-logo-only-COMPRESSED.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/aman-leather.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Performance Creative · Meta</span>
-          <h3 class="portfolio-title">Needed — Conversion Series</h3>
-          <span class="portfolio-client">Static + video ad creative · 40+ variants</span>
+          <span class="portfolio-type">Brand · Video</span>
+          <h3 class="portfolio-title">Aman — Leather</h3>
         </div>
       </div>
     </div>
-
-    <!-- Row 3: landscape + landscape -->
-    <div class="portfolio-item landscape" data-category="video">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/12A.main-character.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/aman-cashmere.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Video Production · CTV</span>
-          <h3 class="portfolio-title">ECSU — Living for Warrior Life</h3>
-          <span class="portfolio-client">Documentary-style · Netflix CTV campaign</span>
+          <span class="portfolio-type">Brand · Video</span>
+          <h3 class="portfolio-title">Aman — Cashmere</h3>
         </div>
       </div>
     </div>
-
-    <div class="portfolio-item landscape" data-category="ugc">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/1.-BEST-SELLERS.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <img class="portfolio-media" src="/media/portfolio/laurent-ferrier-2.jpg" alt="Laurent Ferrier" loading="lazy" decoding="async">
         <div class="portfolio-info">
-          <span class="portfolio-type">UGC · TikTok + Reels</span>
-          <h3 class="portfolio-title">RiseWell — Creator Series</h3>
-          <span class="portfolio-client">UGC sourcing + scripting · 60+ clips</span>
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">Laurent Ferrier</h3>
         </div>
       </div>
     </div>
-
-    <!-- Row 4: square + square -->
-    <div class="portfolio-item square" data-category="brand">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/VANILLA-QUINCE-SANTAL-1.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s6">
+      <div class="portfolio-visual r-l">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/dvkap-home.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Brand Identity · OOH</span>
-          <h3 class="portfolio-title">Alexis Bittar — NYC Launch</h3>
-          <span class="portfolio-client">Out-of-home · Digital activations</span>
+          <span class="portfolio-type">Brand · Film</span>
+          <h3 class="portfolio-title">DVKAP Home</h3>
         </div>
       </div>
     </div>
-
-    <div class="portfolio-item square" data-category="performance">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/video-11-vertical.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s6">
+      <div class="portfolio-visual r-l">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/roam.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Performance Creative · Google</span>
-          <h3 class="portfolio-title">Culinary Institute — Enrollment Drive</h3>
-          <span class="portfolio-client">Display + YouTube creative · 30+ assets</span>
+          <span class="portfolio-type">Brand · Film</span>
+          <h3 class="portfolio-title">ROAM</h3>
         </div>
       </div>
     </div>
-
-    <!-- Row 5: wide cinematic -->
-    <div class="portfolio-item wide" data-category="video">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/brook-therevideo-4.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/floof-amara-aqua.mp4"></video>
         <div class="portfolio-info">
-          <span class="portfolio-type">Brand Film · Higher Ed</span>
-          <h3 class="portfolio-title">Drew University — Find Your Path</h3>
-          <span class="portfolio-client">60s brand film · Paid social + CTV</span>
+          <span class="portfolio-type">Paid Social · Video</span>
+          <h3 class="portfolio-title">Floof — Amara &amp; Aqua</h3>
         </div>
       </div>
     </div>
-
-    <!-- Row 6: landscape + landscape -->
-    <div class="portfolio-item landscape" data-category="photo">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/2.pool-WITH-SOUND-1.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <img class="portfolio-media" src="/media/portfolio/floof-pillows-3.jpg" alt="Floof — World’s Finest Pillows" loading="lazy" decoding="async">
         <div class="portfolio-info">
-          <span class="portfolio-type">Product Photography</span>
-          <h3 class="portfolio-title">Oars + Alps — Product Launch</h3>
-          <span class="portfolio-client">Studio + lifestyle · E-commerce assets</span>
+          <span class="portfolio-type">Paid Social · Carousel</span>
+          <h3 class="portfolio-title">Floof — World’s Finest Pillows</h3>
         </div>
       </div>
     </div>
-
-    <div class="portfolio-item landscape" data-category="ugc">
-      <div class="portfolio-visual">
-        <video class="portfolio-media" autoplay muted loop playsinline preload="metadata"><source src="/wp-content/uploads/2023/12/4.ping-pong-balls-without-blur_4x5.mp4" type="video/mp4"></video>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <img class="portfolio-media" src="/media/portfolio/floof-pillows-4.jpg" alt="Floof — World’s Finest Pillows" loading="lazy" decoding="async">
         <div class="portfolio-info">
-          <span class="portfolio-type">UGC · Meta + TikTok</span>
-          <h3 class="portfolio-title">Lushful Aesthetics — Social Series</h3>
-          <span class="portfolio-client">Creator-led content · Hook testing</span>
+          <span class="portfolio-type">Paid Social · Carousel</span>
+          <h3 class="portfolio-title">Floof — World’s Finest Pillows</h3>
         </div>
       </div>
     </div>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <img class="portfolio-media" src="/media/portfolio/roam.jpg" alt="ROAM" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">ROAM</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s12">
+      <div class="portfolio-visual r-wide">
+        <img class="portfolio-media" src="/media/portfolio/laurent-ferrier-1.jpg" alt="Laurent Ferrier" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">Laurent Ferrier</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-p">
+        <img class="portfolio-media" src="/media/portfolio/dvkap-home-1.jpg" alt="DVKAP Home" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">DVKAP Home</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-p">
+        <img class="portfolio-media" src="/media/portfolio/dvkap-home-2.jpg" alt="DVKAP Home" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">DVKAP Home</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-p">
+        <img class="portfolio-media" src="/media/portfolio/needed.jpg" alt="Needed" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Brand · Photography</span>
+          <h3 class="portfolio-title">Needed</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s6">
+      <div class="portfolio-visual r-l">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/ecsu.mp4"></video>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Higher Ed · Video</span>
+          <h3 class="portfolio-title">ECSU</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s6">
+      <div class="portfolio-visual r-l">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/lewis-university.mp4"></video>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Higher Ed · Video</span>
+          <h3 class="portfolio-title">Lewis University</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="portfolio-section pf-section reveal" id="creative-performance">
+  <div class="pf-head">
+    <span class="pf-eyebrow">02 · Creative Performance</span>
+    <h2 class="cap-title">Creative <em>performance.</em></h2>
+  </div>
+  <div class="pf-grid">
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <img class="portfolio-media" src="/media/portfolio/caitlyn-gold-rings.jpg" alt="Caitlyn Minimalist — Sitewide Sale" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Static</span>
+          <h3 class="portfolio-title">Caitlyn Minimalist — Sitewide Sale</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/jemma-compliments.mp4"></video>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Video</span>
+          <h3 class="portfolio-title">JEMMA — Compliments</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/stilform-pencil.mp4"></video>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Video</span>
+          <h3 class="portfolio-title">Stilform</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s3">
+      <div class="portfolio-visual r-v">
+        <video class="portfolio-media" muted loop playsinline preload="none" data-src="/media/portfolio/floof-performance.mp4"></video>
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Video</span>
+          <h3 class="portfolio-title">Floof</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-sq">
+        <img class="portfolio-media" src="/media/portfolio/boop-europe.jpg" alt="Boop — Europe" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Static</span>
+          <h3 class="portfolio-title">Boop — Europe</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-sq">
+        <img class="portfolio-media" src="/media/portfolio/sunridge-picnic.jpg" alt="SunRidge — Green Chile Cashews" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Static</span>
+          <h3 class="portfolio-title">SunRidge — Green Chile Cashews</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-sq">
+        <img class="portfolio-media" src="/media/portfolio/winfield-truffles.jpg" alt="Winfield Chocolate — Space City Truffles" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Carousel</span>
+          <h3 class="portfolio-title">Winfield Chocolate — Space City Truffles</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s8">
+      <div class="portfolio-visual r-85">
+        <img class="portfolio-media" src="/media/portfolio/stilform-june.jpg" alt="Stilform" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Static</span>
+          <h3 class="portfolio-title">Stilform</h3>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-item pf-s4">
+      <div class="portfolio-visual r-p">
+        <img class="portfolio-media" src="/media/portfolio/caitlyn-mid-year.jpg" alt="Caitlyn Minimalist — Mid-Year Sale" loading="lazy" decoding="async">
+        <div class="portfolio-info">
+          <span class="portfolio-type">Paid Social · Static</span>
+          <h3 class="portfolio-title">Caitlyn Minimalist — Mid-Year Sale</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1031,6 +1173,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // v2: lazy-load + play videos only while visible
+  const vio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) v.src = v.dataset.src;
+        v.play().catch(() => {});
+      } else if (v.src) { v.pause(); }
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('video[data-src]').forEach(v => vio.observe(v));
 </script>
 </body>
 </html>

@@ -28,6 +28,7 @@ const WP_PREFIXES = [
 // /our-offerings/creative-portfolio beats /our-offerings.
 const REDIRECTS = {
   '/our-offerings/creative-portfolio': '/creative-portfolio/',
+  '/creative-portfolio-v2': '/creative-portfolio/', // review URL shared in Slack, Nov 2026
   '/our-offerings': '/services/',
   '/case-studies': '/work/',
   '/our-approach': '/about/',
