@@ -179,6 +179,29 @@ http.createServer((req, res) => {
   const filePath = resolveStatic(url);
   if (filePath) {
     const contentType = MIME[path.extname(filePath)] || 'application/octet-stream';
+    // Video needs byte-range support or iOS Safari refuses to play it.
+    if (contentType.startsWith('video/')) {
+      const size = fs.statSync(filePath).size;
+      const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+      if (m && (m[1] || m[2])) {
+        let start = m[1] ? parseInt(m[1], 10) : size - parseInt(m[2], 10);
+        let end = m[1] && m[2] ? Math.min(parseInt(m[2], 10), size - 1) : size - 1;
+        if (start < 0) start = 0;
+        if (start > end || start >= size) {
+          res.writeHead(416, { 'Content-Range': `bytes */${size}` });
+          return res.end();
+        }
+        res.writeHead(206, {
+          'Content-Type': contentType,
+          'Content-Length': end - start + 1,
+          'Content-Range': `bytes ${start}-${end}/${size}`,
+          'Accept-Ranges': 'bytes',
+        });
+        return fs.createReadStream(filePath, { start, end }).pipe(res);
+      }
+      res.writeHead(200, { 'Content-Type': contentType, 'Content-Length': size, 'Accept-Ranges': 'bytes' });
+      return fs.createReadStream(filePath).pipe(res);
+    }
     return fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(500, { 'Content-Type': 'text/html' });
