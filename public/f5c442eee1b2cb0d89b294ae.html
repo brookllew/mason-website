@@ -29,6 +29,11 @@ header.band{padding-bottom:24px;border-bottom:1px solid var(--line)}
 .lede{max-width:760px;color:#d8d3c8;font-size:17px;margin:18px 0 0}
 .flag{display:inline-block;background:var(--org);color:#111;font:500 13px "DM Mono",monospace;padding:4px 10px;border-radius:3px}
 .assume{background:var(--bg2);border-bottom:1px solid var(--line)}
+.explain{border-bottom:1px solid var(--line)}
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,40px);margin-top:22px}
+.xgrid h3{color:var(--lime);margin-bottom:8px}
+.xgrid p{margin:0 0 12px;color:#d8d3c8;font-size:16px}
+.steps{padding-left:20px;margin:0;color:#d8d3c8}.steps li{margin:0 0 10px}.steps b{color:var(--ink)}
 .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 28px;align-items:end}
 label{display:block;font-size:14px;color:var(--mute);margin-bottom:6px}
 input[type=number],select{width:100%;background:var(--bg3);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font:16px "DM Sans",sans-serif;min-height:44px}
@@ -72,17 +77,135 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 a{color:var(--lime)}
 .scroll{overflow-x:auto}
 footer{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
-@media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}}
+.bar0{padding-top:18px;padding-bottom:18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.bar0 .top{margin:0;align-items:center}
+.steps0{display:flex;gap:6px;flex-wrap:wrap}
+.steps0 a{color:var(--mute);text-decoration:none;font-size:14px;padding:10px 12px;border-radius:6px;min-height:44px;display:flex;align-items:center;gap:8px}
+.steps0 a span{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:inline-grid;place-items:center;font:500 12px "DM Mono",monospace}
+.steps0 a[aria-current=step]{color:var(--ink);background:var(--bg2)}
+.steps0 a[aria-current=step] span{background:var(--lime);color:#111;border-color:var(--lime)}
+.step{display:none}.step.on{display:block}
+.huge{font-size:clamp(36px,6.2vw,72px);line-height:1.04;max-width:1000px;margin-top:14px}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.statrow div{border-top:2px solid var(--lime);padding-top:14px}
+.statrow b{display:block;font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(40px,5vw,56px);line-height:1;white-space:nowrap}
+.statrow span{color:var(--mute);font-size:15px}
+.next{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:36px;background:var(--lime);color:#111;text-decoration:none;border-radius:12px;padding:clamp(20px,3vw,30px) clamp(22px,3vw,36px);font-family:"Playfair Display",serif;font-size:clamp(24px,3.4vw,40px);line-height:1.1}
+.next span{font-family:"DM Sans",sans-serif;font-size:clamp(36px,5vw,60px);transition:transform .2s}
+.next:hover span{transform:translateX(8px)}
+.back{display:inline-block;margin-top:16px;color:var(--mute);font-size:15px;min-height:44px;padding-top:10px}
+.pillars{display:grid;gap:18px}
+.pillar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(16px,3vw,40px);background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:clamp(20px,3vw,36px);align-items:start}
+.pillar .pn{font:500 13px "DM Mono",monospace;color:var(--org)}
+.pillar h2{margin-top:8px}
+.pillar .fig0{font-family:"Playfair Display",serif;font-size:clamp(44px,6vw,72px);line-height:1;color:var(--lime);margin-top:14px;white-space:nowrap}
+.pillar .fig0 small{display:block;font-family:"DM Sans",sans-serif;font-size:15px;color:var(--mute);margin-top:6px;white-space:normal}
+.pillar p{margin:0 0 12px;color:#d8d3c8}
+.pillar ul{color:#d8d3c8}
+@media(max-width:860px){.hero,.pillar{grid-template-columns:minmax(0,1fr)}.flag{display:none}}
+@media(prefers-reduced-motion:reduce){.next span{transition:none}}
 @media(max-width:600px){.fr{grid-template-columns:90px minmax(0,1fr) 72px}table{font-size:13px}.kpis b{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.fr .bar i{transition:none}}
 </style>
 </head>
 <body>
+<div class="bar0 band"><div class="wrap top">
+  <div class="logo">MASON<i aria-hidden="true"></i></div>
+  <nav class="steps0" aria-label="Sections">
+    <a href="#problem" data-step="1"><span>1</span> Your problem</a>
+    <a href="#pillars" data-step="2"><span>2</span> Three pillars</a>
+    <a href="#tier-b" data-step="3"><span>3</span> Three ways to start</a>
+  </nav>
+  <span class="flag">Internal draft for Ashley &amp; Ben</span>
+</div></div>
+
+<!-- STEP 1 -->
+<section class="step" id="s1" aria-labelledby="h1a">
+ <div class="band"><div class="wrap">
+  <p class="mono">Southern New Hampshire University · Professional Skills · Discovery call, Nov 23, 2026</p>
+  <h1 id="h1a" class="huge">“Skills is the <em>best-kept secret</em>. You really can't find it.”</h1>
+  <p class="lede">That's how your leadership describes Professional Skills today, and it matches what you told us. SNHU has one of the best-known brands in American education, and a new product line that almost nobody knows exists.</p>
+ </div></div>
+ <div class="band" style="padding-top:0"><div class="wrap">
+  <div class="statrow">
+   <div><b>~10</b><span>paid learners so far, mostly alumni and partner referrals</span></div>
+   <div><b>$2,999</b><span>per 6-week course, bought by credit card</span></div>
+   <div><b>8 → 12</b><span>courses on the site, four more launching now</span></div>
+   <div><b>9</b><span>undergraduate credits GenAI and Data Literacy can stack into</span></div>
+  </div>
+  <div class="cols" style="margin-top:28px">
+   <div class="card"><h3>What we heard</h3><ul>
+    <li>Your remit is direct to learner. A separate SNHU team sells to employers and partners.</li>
+    <li>Generative AI and Data Literacy are the early leaders.</li>
+    <li>Stackability is a real differentiator: finish a course and you are part of the way to a degree.</li>
+    <li>skills.snhu.edu sits on its own subdomain, apart from the main site and its marketing.</li>
+    <li>A product-by-product campaign about 18 months ago didn't build momentum.</li>
+   </ul></div>
+   <div class="card"><h3>What's changing</h3><ul>
+    <li>Today the site is checkout only. Lead capture and HubSpot email nurture go live in the next couple of months.</li>
+    <li>By the end of January the site can run bundles, buy-one-get-one, referral and friends-and-family pricing.</li>
+    <li>From January, courses can be bought in two-week modules, with short-form content planned as a feeder.</li>
+    <li>There is no admissions team. Nurture runs by email.</li>
+   </ul></div>
+   <div class="card"><h3>What success looks like</h3><ul>
+    <li>More than 10 new paid enrollments.</li>
+    <li>An acquisition cost per enrollment below the $2,999 price.</li>
+    <li>Timed to the March, May and June starts, before the fiscal year ends June 30.</li>
+    <li>Credibility, not just traffic: learner stories, cohort results, badges shared on LinkedIn.</li>
+   </ul></div>
+  </div>
+  <a class="next" href="#pillars">Next: how we'd fix it <span aria-hidden="true">→</span></a>
+ </div></div>
+</section>
+
+<!-- STEP 2 -->
+<section class="step" id="s2" aria-labelledby="h2a">
+ <div class="band"><div class="wrap">
+  <p class="mono">The plan in three pillars · targets shown for Tier B, base case</p>
+  <h1 id="h2a" class="huge">From <em>hidden</em> to enrolled, in three steps</h1>
+  <p class="lede">Every target below comes from the same model as the pricing on the next page, built on Mason's own results from certificate and credential programs over the last 12 months.</p>
+ </div></div>
+ <div class="band" style="padding-top:0"><div class="wrap pillars" id="pillars-list"></div>
+  <div class="wrap"><a class="next" href="#tier-b">Next: three ways to start <span aria-hidden="true">→</span></a>
+  <a class="back" href="#problem">← Back</a></div>
+ </div>
+</section>
+
+<!-- STEP 3 -->
+<div class="step" id="s3">
 <header class="band"><div class="wrap">
-  <div class="top"><div class="logo">MASON<i aria-hidden="true"></i></div><span class="flag">Internal draft for Ashley &amp; Ben, not client-ready</span></div>
-  <h1>SNHU Professional Skills: three ways to sell <em>$2,999 courses</em> direct to learners</h1>
-  <p class="lede">Marcy's bar for a first test: more than 10 paid enrollments at an acquisition cost under the $2,999 sticker price, landing in the March, May and June starts. Each tier below builds on the one before. Every number recalculates from the assumptions bar, which is seeded from Mason's own client data.</p>
+  <h1>Three ways to sell <em>$2,999 courses</em> direct to learners</h1>
+  <p class="lede">Each tier builds on the one before. Every number recalculates from the assumptions bar, which is seeded from Mason's own client data.</p>
+  <a class="back" href="#pillars">← Back to the pillars</a>
 </div></header>
+
+<section class="band explain" aria-labelledby="xh"><div class="wrap">
+  <h2 id="xh">How to read this</h2>
+  <div class="xgrid">
+    <div>
+      <h3>The situation</h3>
+      <p>SNHU's Professional Skills courses are 6-week, non-credit, $2,999, bought by credit card on skills.snhu.edu. Marcy owns the direct-to-learner side; a separate SNHU team sells to employers. There has been almost no marketing: about 10 paid learners to date, mostly alumni. There is no admissions team, and lead capture plus HubSpot email nurture go live in the next couple of months.</p>
+      <p>Her definition of success for a first test is more than 10 paid enrollments at an acquisition cost below the sticker price, aimed at the March, May and June starts. Her fiscal year ends June 30.</p>
+    </div>
+    <div>
+      <h3>How the numbers work</h3>
+      <p>Every tier runs the same chain, one month at a time:</p>
+      <ol class="steps">
+        <li><b>Media buys leads.</b> Performance media divided by cost per lead. We start at $88, the average across 21 certificate and credential landing pages in Mason's own Google Ads accounts over the last 12 months.</li>
+        <li><b>Some leads are junk.</b> At The Community Solution, 73% of leads reach the CRM; the rest are duplicates or junk.</li>
+        <li><b>Some valid leads buy.</b> TCS enrolls about 4% of CRM leads, but that includes multi-year doctoral programs with an admissions process. SNHU's course is short, cheaper and sold with a buy-now checkout, so the base case here is 6%, with 4% and 10% as the low and high cases.</li>
+        <li><b>Cost per enrollment</b> is shown two ways: media only, and all-in with Mason's monthly fees. Setup and the commercial are one-time and sit outside the monthly math.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>How the tiers differ</h3>
+      <p><b>Tier A</b> is the smallest program that can prove the funnel: systems setup, search and social, performance creative.</p>
+      <p><b>Tier B</b> adds the three things that lower cost per enrollment: landing page optimization with Accipiter, AI search visibility, and creators paid only on sales. It is the tier we recommend.</p>
+      <p><b>Tier C</b> adds a commercial, connected TV and out-of-home to build the Professional Skills name. Buying the commercial lowers the management fee.</p>
+      <p class="hint">Change any assumption in the bar below and all three tabs recalculate.</p>
+    </div>
+  </div>
+</div></section>
 
 <section class="band assume" aria-label="Shared assumptions"><div class="wrap">
   <div class="agrid">
@@ -115,6 +238,7 @@ footer{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
     <p class="note" style="margin-top:16px">No Mason client sells a buy-now, non-credit course. Every benchmark is a lead form for programs sold through admissions. SNHU's course has a credit-card checkout and no admissions team, so the enrollment rate is the least certain number on this page. That is why it is a scenario switch.</p>
   </section>
 </div></main>
+</div>
 
 <footer class="band"><div class="wrap">Mason Interactive · 20 Jay Street, Suite 1115, Brooklyn, NY · Draft prepared Nov 24, 2026. Fees, add-on prices, discounts and creative rates are proposals for internal review. Terms to be set separately.</div></footer>
 
@@ -229,15 +353,34 @@ function render(){
     <div class="card"><h3>Notes for Ashley and Ben</h3><ul>${T.notes.map(s=>`<li>${s}</li>`).join('')}</ul></div>
    </div>
   </section>`;}).join('');
+ pillars();
  show();
 }
 
+const CPC=539355/77264, CTR=77264/2284230; /* benchmark sheet totals */
+function pillars(){
+ const r=calc('b'),clicks=r.T.perf/CPC,impr=clicks/CTR;
+ const P=[
+  ['Pillar 1','Get Professional Skills in front of the people already looking',`${num(Math.floor(impr/1000)*1000)}+`,'search and social impressions a month, producing about '+num(Math.round(clicks/100)*100)+' visits',
+   `<p>Show up when working adults search for things like “generative AI course,” “data literacy certificate” or “online professional development,” and in the feeds of people who look like your current learners.</p><ul><li>Google Search on course and skill terms</li><li>Meta and LinkedIn prospecting, plus retargeting</li><li>AI search visibility, so ChatGPT and Google's AI answers name SNHU</li><li>Creators who already teach these skills, paid per sale</li></ul>`],
+  ['Pillar 2','Turn that visibility into learners who raise their hand',`${num(Math.floor(r.v/5)*5)}+`,'valid leads a month, from about '+num(Math.round(r.leads/5)*5)+' total',
+   `<p>Give a working adult a reason to act now: what they'll be able to do in six weeks, proof from people like them, and the credits it can earn toward a degree. Capture them even when they aren't ready to buy today.</p><ul><li>Course pages rebuilt and tested with Accipiter, against other schools' pages</li><li>Lead capture and HubSpot nurture as they come online</li><li>Learner stories, cohort results and LinkedIn badges as ad creative</li></ul>`],
+  ['Pillar 3','Turn those leads into paid enrollments, below the sticker price',`${num(r.enr,0)}`,`enrollments a month at about ${usd(r.mediaCPA)} in media per enrollment, ${usd(r.rev)} in course revenue`,
+   `<p>Track every enrollment back to the search, ad or creator that produced it, and move budget to what fills seats. At a ${Math.round(r.er*100)}% enrollment rate from valid leads, that's more than 10 a month, so a single start can clear the goal.</p><ul><li>Purchase and lead events tied to source</li><li>Bundles, referral and friends-and-family offers when the site supports them</li><li>Second-course offers by email to every finisher</li></ul>`]
+ ];
+ $('#pillars-list').innerHTML=P.map(p=>`<article class="pillar"><div><p class="pn">${p[0]}</p><h2>${p[1]}</h2><div class="fig0">${p[2]}<small>${p[3]}</small></div></div><div>${p[4]}</div></article>`).join('');
+}
+
 function show(){
- const h=(location.hash||'#tier-b').replace('#tier-','');
- const t=['a','b','c'].includes(h)?h:'b';
+ const h=(location.hash||'#problem').slice(1);
+ const step=h==='pillars'?2:h.startsWith('tier-')?3:1;
+ document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',s.id==='s'+step));
+ document.querySelectorAll('.steps0 a').forEach(a=>a.setAttribute('aria-current',+a.dataset.step===step?'step':'false'));
+ const t=['a','b','c'].includes(h.replace('tier-',''))?h.replace('tier-',''):'b';
  document.querySelectorAll('.tier').forEach(s=>s.classList.toggle('on',s.id==='p-'+t));
  document.querySelectorAll('nav.tabs a').forEach(a=>a.setAttribute('aria-current',a.dataset.t===t?'page':'false'));
 }
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(!h.startsWith('tier-')||!document.querySelector('#s3').classList.contains('on'))window.scrollTo(0,0);});
 
 $('#scen').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;scen=b.dataset.s;document.querySelectorAll('#scen button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
 ['#cpl','#valid','#price','#crate'].forEach(id=>$(id).addEventListener('input',render));
